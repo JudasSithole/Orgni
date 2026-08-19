@@ -89,7 +89,7 @@ machine that can reach it, or a one-off Container Apps job):
 
 ```bash
 DATABASE_URL='postgres://orgni:<password>@orgni-pg.postgres.database.azure.com:5432/orgni?sslmode=require' \
-  pnpm --filter @workspace/db run push-force
+  pnpm --filter @workspace/db run migrate
 ```
 
 ---

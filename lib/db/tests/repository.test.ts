@@ -1,8 +1,8 @@
 /**
  * Persistence integration tests — run against a REAL Postgres.
  *
- * Set DATABASE_URL to a Postgres the schema has been pushed to
- * (`pnpm --filter @workspace/db run push-force`). When it is unset the suite
+ * Set DATABASE_URL to a Postgres the schema has been migrated to
+ * (`pnpm --filter @workspace/db run migrate`). When it is unset the suite
  * fails loudly rather than passing vacuously, because a persistence layer that
  * was never exercised against a database proves nothing.
  */

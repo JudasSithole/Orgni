@@ -75,8 +75,8 @@ jobs:
       - name: Smoke test the API
         run: |
           API_FQDN=$(az containerapp show -n orgni-api \
-            -g "${{ inputs.resource_group || vars.AZURE_RESOURCE_GROUP || 'orgni-rg' }}" \
-            --query properties.configuration.ingress.fqdn -o tsv)
+           -g "${{ inputs.resource_group || vars.AZURE_RESOURCE_GROUP || 'orgni-rg' }}" \
+           --query properties.configuration.ingress.fqdn -o tsv)
           echo "API: https://$API_FQDN"
           for i in $(seq 1 10); do
             code=$(curl -s -o /dev/null -w "%{http_code}" "https://$API_FQDN/api/health" || true)

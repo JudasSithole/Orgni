@@ -44,7 +44,7 @@ services:
   migrate:
     image: node:24-alpine
     working_dir: /repo
-    command: sh -c "corepack enable && pnpm install --frozen-lockfile=false && pnpm --filter @workspace/db run push-force"
+    command: sh -c "corepack enable && pnpm install --frozen-lockfile=false && pnpm --filter @workspace/db run migrate"
     environment:
       DATABASE_URL: postgres://orgni:orgni_dev_password@postgres:5432/orgni
     depends_on:

@@ -95,7 +95,7 @@ build ontology                infrastructure/docker/organizational-ontology.Dock
 
 # ── 4. Database migration ────────────────────────────────────────────────────
 log "Applying database schema"
-DATABASE_URL="$DATABASE_URL" pnpm --filter @workspace/db run push-force
+DATABASE_URL="$DATABASE_URL" pnpm --filter @workspace/db run migrate
 
 # ── 5. Deploy the internal Python services first ─────────────────────────────
 ACR_PASS="$(az acr credential show -n "$ACR_NAME" --query 'passwords[0].value' -o tsv)"
