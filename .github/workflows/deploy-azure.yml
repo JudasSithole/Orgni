@@ -3,6 +3,9 @@ name: Deploy to Azure
 # One-click backend deploy to Azure Container Apps. Run it from the Actions tab
 # ("Deploy to Azure" → Run workflow). Idempotent — re-run to ship a new build.
 #
+# Deployment only runs after the CI workflow (typecheck, tests, lint, Docker
+# builds) has passed for this exact commit — see the `ci` job below.
+#
 # Required GitHub secrets (Settings → Secrets and variables → Actions):
 #   AZURE_CLIENT_ID        - app registration (federated credential) client id
 #   AZURE_TENANT_ID        - Entra tenant id
@@ -34,8 +37,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  ci:
+    name: Run CI (typecheck, tests, lint, Docker build)
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
   deploy:
     name: Provision & deploy backend
+    needs: ci
     runs-on: ubuntu-latest
     environment: production
 
