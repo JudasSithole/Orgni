@@ -325,7 +325,9 @@ function adaptContract(envelope: NormalizedEnvelope): AdaptResult {
     parties,
     executionStatus,
     ...(title && { title }),
-    ...(str(f, "contractReference") && { reference: str(f, "contractReference")! }),
+    ...(str(f, "contractReference") && {
+      reference: str(f, "contractReference")!,
+    }),
     ...(str(f, "expirationDate") && { expiryDate: str(f, "expirationDate")! }),
     ...(num(f, "contractValue") && { contractValue: num(f, "contractValue")! }),
     ...(str(f, "currency") && { currency: str(f, "currency")! }),
