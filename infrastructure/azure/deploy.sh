@@ -62,10 +62,20 @@ if ! exists az postgres flexible-server show -n "$PG_NAME" -g "$RESOURCE_GROUP";
     --tier Burstable --sku-name Standard_B1ms --version 16 \
     --database-name "$PG_DB" --public-access 0.0.0.0 --yes -o none
 fi
+# ── Database networking: internal-alpha exception, not final architecture ────
+# Public access + firewall rules is accepted ONLY for internal alpha (Stage 1).
+# Must move to private networking (VNet integration) before Stage 2 external
+# customer onboarding. Tracked in the Risk Register.
+#
 # Allow Azure services (Container Apps) to reach Postgres.
 az postgres flexible-server firewall-rule create -n "$PG_NAME" -g "$RESOURCE_GROUP" \
   --rule-name AllowAzure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0 -o none 2>/dev/null || true
+
 # Allow the machine running this script (for the migration step).
+# The previous deployer rule is removed first so stale IPs don't accumulate
+# across every deploy run.
+az postgres flexible-server firewall-rule delete -n "$PG_NAME" -g "$RESOURCE_GROUP" \
+  --rule-name deployer --yes -o none 2>/dev/null || true
 MY_IP="$(curl -fsS https://api.ipify.org 2>/dev/null || echo '')"
 if [ -n "$MY_IP" ]; then
   az postgres flexible-server firewall-rule create -n "$PG_NAME" -g "$RESOURCE_GROUP" \
