@@ -89,10 +89,29 @@ been validated.
 - **Scope:** Stage 1 is limited to a controlled internal-alpha deployment.
   External customer onboarding is out of scope for this stage.
 - **Deployment authority:** Alisha owns deployment decisions for Stage 1.
-  This was confirmed by Tabu during the deployment review.
+  This was confirmed by Lethabo during the deployment review.
 - **Incident owner:** Alisha is the incident owner for Stage 1 deployment and
   runtime incidents.
 - **Escalation:** Any incident requiring decisions beyond the Stage 1 internal
   scope will be escalated to the appropriate project owner.
 - **Status:** Confirmed for Stage 1.
 - **Date:** 2026-08-24
+
+## Note: Relationship to PHASE1_TEST_RESULTS.md NO-GO Decision
+
+The `docs/release/` NO-GO decision (persistence, queue/DLQ, authentication,
+and tenant isolation blockers) applies specifically to onboarding external
+pilot organizations — see PHASE1_LAUNCH_CHECKLIST.md: "Gate result: NO-GO.
+Do not onboard pilot organizations."
+
+Stage 1, as scoped in this Decision Log, is narrower: a controlled
+internal-alpha deployment with no external organizations onboarded. The
+NO-GO for external pilots remains in force and unchanged. Stage 1's
+accepted limitations (synchronous processing, dev-mode auth) are only
+approved for this internal-only scope — they do not constitute a reversal
+of the NO-GO decision, and none of the original blockers are considered
+resolved for external pilot purposes.
+
+Before any external organization is onboarded (Stage 2), the original
+PHASE1_TEST_RESULTS.md blockers must be revisited and closed, independent
+of what was accepted here for internal Stage 1.
