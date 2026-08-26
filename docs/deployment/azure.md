@@ -84,13 +84,12 @@ out a revision that needs the new schema.
 
 ## 7. Rollback
 
-Container Apps keeps previous revisions:
+If a deployment introduces a regression or the new API revision fails its
+health checks, roll back to the previous known-good Container Apps revision.
+
+### 7.1 Identify the revisions
+
+List the API revisions:
 
 ```bash
 az containerapp revision list -n orgni-api -g orgni-rg -o table
-az containerapp ingress traffic set -n orgni-api -g orgni-rg \
-  --revision-weight <previous-revision>=100
-```
-
-Because migrations are separate and additive, rolling back a container does
-not require a schema rollback.
