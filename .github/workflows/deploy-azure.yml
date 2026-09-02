@@ -46,7 +46,7 @@ jobs:
     name: Provision & deploy backend
     needs: ci
     runs-on: ubuntu-latest
-    environment: production
+    environment: Production
 
     steps:
       - uses: actions/checkout@v4
