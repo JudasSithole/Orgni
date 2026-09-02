@@ -67,11 +67,11 @@ fi
 if ! exists az postgres flexible-server db show \
   -g "$RESOURCE_GROUP" \
   --server-name "$PG_NAME" \
-  --database-name "$PG_DB"; then
+  --name "$PG_DB"; then
   az postgres flexible-server db create \
     -g "$RESOURCE_GROUP" \
     --server-name "$PG_NAME" \
-    --database-name "$PG_DB" \
+    --name "$PG_DB" \
     -o none
 fi
 # ── Database networking: internal-alpha exception, not final architecture ────
