@@ -60,7 +60,19 @@ if ! exists az postgres flexible-server show -n "$PG_NAME" -g "$RESOURCE_GROUP";
   az postgres flexible-server create -n "$PG_NAME" -g "$RESOURCE_GROUP" -l "$LOCATION" \
     --admin-user "$PG_ADMIN" --admin-password "$PG_ADMIN_PASSWORD" \
     --tier Burstable --sku-name Standard_B1ms --version 16 \
-    --database-name "$PG_DB" --public-access 0.0.0.0 --yes -o none
+    --public-access 0.0.0.0 --yes -o none
+fi
+
+# Create the application database if it does not already exist.
+if ! exists az postgres flexible-server db show \
+  -g "$RESOURCE_GROUP" \
+  --server-name "$PG_NAME" \
+  --database-name "$PG_DB"; then
+  az postgres flexible-server db create \
+    -g "$RESOURCE_GROUP" \
+    --server-name "$PG_NAME" \
+    --database-name "$PG_DB" \
+    -o none
 fi
 # ── Database networking: internal-alpha exception, not final architecture ────
 # Public access + firewall rules is accepted ONLY for internal alpha (Stage 1).
