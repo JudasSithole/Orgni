@@ -96,12 +96,35 @@ fi
 PG_HOST="${PG_NAME}.postgres.database.azure.com"
 DATABASE_URL="postgres://${PG_ADMIN}:${PG_ADMIN_PASSWORD}@${PG_HOST}:5432/${PG_DB}?sslmode=require"
 
-log "Redis: $REDIS_NAME"
-if ! exists az redis show -n "$REDIS_NAME" -g "$RESOURCE_GROUP"; then
-  az redis create -n "$REDIS_NAME" -g "$RESOURCE_GROUP" -l "$LOCATION" --sku Basic --vm-size c0 -o none
+log "Redis Enterprise: $REDIS_NAME"
+if ! exists az redisenterprise show \
+  --cluster-name "$REDIS_NAME" \
+  -g "$RESOURCE_GROUP"; then
+  az redisenterprise create \
+    --cluster-name "$REDIS_NAME" \
+    -g "$RESOURCE_GROUP" \
+    -l "$LOCATION" \
+    --sku Balanced_B0 \
+    --client-protocol Encrypted \
+    --public-network-access Enabled \
+    --access-keys-authentication Enabled \
+    --port 10000 \
+    -o none
 fi
-REDIS_KEY="$(az redis list-keys -n "$REDIS_NAME" -g "$RESOURCE_GROUP" --query primaryKey -o tsv)"
-REDIS_URL="rediss://:${REDIS_KEY}@${REDIS_NAME}.redis.cache.windows.net:6380"
+
+REDIS_KEY="$(az redisenterprise database list-keys \
+  --cluster-name "$REDIS_NAME" \
+  -g "$RESOURCE_GROUP" \
+  --query primaryKey \
+  -o tsv)"
+
+REDIS_HOST="$(az redisenterprise show \
+  --cluster-name "$REDIS_NAME" \
+  -g "$RESOURCE_GROUP" \
+  --query hostName \
+  -o tsv)"
+
+REDIS_URL="rediss://:${REDIS_KEY}@${REDIS_HOST}:10000"
 
 # ── 3. Build & push images (in ACR — no local Docker needed) ─────────────────
 ACR_LOGIN="$(az acr show -n "$ACR_NAME" --query loginServer -o tsv)"
