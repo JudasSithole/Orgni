@@ -201,12 +201,14 @@ deploy_internal() {
   log "Deploy internal app: orgni-$name (:$port)"
   if exists az containerapp show -n "orgni-$name" -g "$RESOURCE_GROUP"; then
     az containerapp update -n "orgni-$name" -g "$RESOURCE_GROUP" \
-      --image "$ACR_LOGIN/orgni-$name:$IMAGE_TAG" -o none
+      --image "$ACR_LOGIN/orgni-$name:$IMAGE_TAG" \
+      --min-replicas 1 -o none
   else
     az containerapp create -n "orgni-$name" -g "$RESOURCE_GROUP" --environment "$ENV_NAME" \
       --image "$ACR_LOGIN/orgni-$name:$IMAGE_TAG" \
       --registry-server "$ACR_LOGIN" --registry-username "$ACR_USER" --registry-password "$ACR_PASS" \
       --target-port "$port" --ingress internal \
+      --min-replicas 1 \
       --env-vars "PORT=$port" -o none
   fi
 }

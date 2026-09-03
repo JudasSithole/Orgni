@@ -35,7 +35,7 @@ async function checkHttpHealth(baseUrl: string | undefined): Promise<boolean> {
   if (!baseUrl) return true; // not configured — not a required dependency
   try {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 3000);
+    const timer = setTimeout(() => controller.abort(), 10000);
     const res = await fetch(`${baseUrl.replace(/\/+$/, "")}/health`, {
       signal: controller.signal,
     });
