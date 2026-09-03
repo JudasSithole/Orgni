@@ -80,19 +80,37 @@ fi
 # customer onboarding. Tracked in the Risk Register.
 #
 # Allow Azure services (Container Apps) to reach Postgres.
-az postgres flexible-server firewall-rule create -n "$PG_NAME" -g "$RESOURCE_GROUP" \
-  --rule-name AllowAzure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0 -o none 2>/dev/null || true
+az postgres flexible-server firewall-rule create \
+  --server-name "$PG_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --name AllowAzure \
+  --start-ip-address 0.0.0.0 \
+  --end-ip-address 0.0.0.0 \
+  -o none
 
 # Allow the machine running this script (for the migration step).
 # The previous deployer rule is removed first so stale IPs don't accumulate
 # across every deploy run.
-az postgres flexible-server firewall-rule delete -n "$PG_NAME" -g "$RESOURCE_GROUP" \
-  --rule-name deployer --yes -o none 2>/dev/null || true
+az postgres flexible-server firewall-rule delete \
+  --server-name "$PG_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --name deployer \
+  --yes -o none 2>/dev/null || true
+
 MY_IP="$(curl -fsS https://api.ipify.org 2>/dev/null || echo '')"
+
 if [ -n "$MY_IP" ]; then
-  az postgres flexible-server firewall-rule create -n "$PG_NAME" -g "$RESOURCE_GROUP" \
-    --rule-name deployer --start-ip-address "$MY_IP" --end-ip-address "$MY_IP" -o none 2>/dev/null || true
+  log "Allowing deployer IP: $MY_IP"
+
+  az postgres flexible-server firewall-rule create \
+    --server-name "$PG_NAME" \
+    --resource-group "$RESOURCE_GROUP" \
+    --name deployer \
+    --start-ip-address "$MY_IP" \
+    --end-ip-address "$MY_IP" \
+    -o none
 fi
+
 PG_HOST="${PG_NAME}.postgres.database.azure.com"
 DATABASE_URL="postgres://${PG_ADMIN}:${PG_ADMIN_PASSWORD}@${PG_HOST}:5432/${PG_DB}?sslmode=require"
 
@@ -140,7 +158,20 @@ build ontology                infrastructure/docker/organizational-ontology.Dock
 
 # ── 4. Database migration ────────────────────────────────────────────────────
 log "Applying database schema"
-DATABASE_URL="$DATABASE_URL" pnpm --filter @workspace/db run migrate
+MIGRATE_ATTEMPTS=6
+for i in $(seq 1 "$MIGRATE_ATTEMPTS"); do
+  if DATABASE_URL="$DATABASE_URL" pnpm --filter @workspace/db run migrate; then
+    break
+  fi
+
+  if [ "$i" = "$MIGRATE_ATTEMPTS" ]; then
+    echo "Migration failed after $MIGRATE_ATTEMPTS attempts"
+    exit 1
+  fi
+
+  echo "Migration attempt $i failed, retrying in 20s (Postgres may still be starting up)..."
+  sleep 20
+done
 
 # ── 5. Deploy the internal Python services first ─────────────────────────────
 ACR_PASS="$(az acr credential show -n "$ACR_NAME" --query 'passwords[0].value' -o tsv)"
