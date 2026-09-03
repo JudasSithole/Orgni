@@ -112,7 +112,10 @@ if [ -n "$MY_IP" ]; then
 fi
 
 PG_HOST="${PG_NAME}.postgres.database.azure.com"
-DATABASE_URL="postgres://${PG_ADMIN}:${PG_ADMIN_PASSWORD}@${PG_HOST}:5432/${PG_DB}?sslmode=require"
+# URL-encode the password: an unescaped @, /, :, #, %, ? etc. in
+# PG_ADMIN_PASSWORD silently corrupts the connection URI.
+PG_ADMIN_PASSWORD_ENC="$(node -e 'process.stdout.write(encodeURIComponent(process.argv[1]))' "$PG_ADMIN_PASSWORD")"
+DATABASE_URL="postgres://${PG_ADMIN}:${PG_ADMIN_PASSWORD_ENC}@${PG_HOST}:5432/${PG_DB}?sslmode=require"
 
 log "Redis Enterprise: $REDIS_NAME"
 if ! exists az redisenterprise show \
@@ -155,6 +158,22 @@ build api                     infrastructure/docker/api.Dockerfile
 build worker                  infrastructure/docker/worker.Dockerfile
 build document-intelligence   infrastructure/docker/document-intelligence.Dockerfile
 build ontology                infrastructure/docker/organizational-ontology.Dockerfile
+
+# ── 3b. Verify Postgres connectivity before migration ────────────────────────
+log "Verifying Postgres connectivity"
+
+if ! command -v psql >/dev/null 2>&1; then
+  sudo apt-get update -qq
+  sudo apt-get install -y --no-install-recommends postgresql-client
+fi
+
+if ! PGCONNECT_TIMEOUT=10 psql "$DATABASE_URL" -c 'SELECT 1;' >/tmp/pg-probe.log 2>&1; then
+  echo "Postgres connectivity check failed:"
+  cat /tmp/pg-probe.log
+  exit 1
+fi
+
+log "Postgres reachable"
 
 # ── 4. Database migration ────────────────────────────────────────────────────
 log "Applying database schema"
