@@ -1,0 +1,133 @@
+{
+    "extractionId": "ext_con_001",
+    "tenantId": "tenant_olyxee",
+    "documentRef": "docs/contracts/svc-agreement-apex-2026.pdf",
+    "mimeType": "application/pdf",
+    "checksum": "sha256:d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+    "observedAt": "2026-07-16T11:00:00Z",
+    "schemaVersion": "0.1.0",
+    "extractionStatus": "COMPLETE",
+    "documentType": "CONTRACT",
+    "contractType": {
+        "value": "SERVICE_AGREEMENT",
+        "confidence": 0.97,
+        "method": "ML_MODEL",
+        "page": 1
+    },
+    "title": {
+        "value": "Master Service Agreement — AI Platform Integration",
+        "confidence": 0.95,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "parties": [
+        {
+            "name": {
+                "value": "Olyxee AI (Pty) Ltd",
+                "confidence": 0.99,
+                "method": "OCR_EXTRACTION",
+                "page": 1
+            },
+            "role": {
+                "value": "CLIENT",
+                "confidence": 0.96,
+                "method": "ML_MODEL"
+            },
+            "registrationNumber": {
+                "value": "2024/123456/07",
+                "confidence": 0.94,
+                "method": "OCR_EXTRACTION"
+            },
+            "jurisdiction": {
+                "value": "South Africa",
+                "confidence": 0.98,
+                "method": "RULE_MATCH"
+            }
+        },
+        {
+            "name": {
+                "value": "Apex Solutions (Pty) Ltd",
+                "confidence": 0.99,
+                "method": "OCR_EXTRACTION",
+                "page": 1
+            },
+            "role": {
+                "value": "SERVICE_PROVIDER",
+                "confidence": 0.96,
+                "method": "ML_MODEL"
+            },
+            "registrationNumber": {
+                "value": "2019/098765/07",
+                "confidence": 0.93,
+                "method": "OCR_EXTRACTION"
+            },
+            "jurisdiction": {
+                "value": "South Africa",
+                "confidence": 0.98,
+                "method": "RULE_MATCH"
+            }
+        }
+    ],
+    "effectiveDate": {
+        "value": "2026-07-01",
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION",
+        "page": 2,
+        "raw": "1st July 2026"
+    },
+    "expiryDate": {
+        "value": "2027-06-30",
+        "confidence": 0.95,
+        "method": "OCR_EXTRACTION",
+        "page": 2,
+        "raw": "30 June 2027"
+    },
+    "signedDate": {
+        "value": "2026-06-28",
+        "confidence": 0.94,
+        "method": "OCR_EXTRACTION",
+        "page": 8
+    },
+    "contractValue": {
+        "value": 480000.00,
+        "confidence": 0.93,
+        "method": "OCR_EXTRACTION",
+        "page": 3,
+        "raw": "R 480,000.00 per annum"
+    },
+    "currency": {
+        "value": "ZAR",
+        "confidence": 0.99,
+        "method": "RULE_MATCH"
+    },
+    "governingLaw": {
+        "value": "Republic of South Africa",
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION",
+        "page": 7
+    },
+    "noticePeriodDays": {
+        "value": 30,
+        "confidence": 0.95,
+        "method": "OCR_EXTRACTION",
+        "page": 6,
+        "raw": "30 (thirty) days written notice"
+    },
+    "autoRenewal": {
+        "value": false,
+        "confidence": 0.91,
+        "method": "ML_MODEL"
+    },
+    "terminationClause": {
+        "value": "Either party may terminate this agreement by providing 30 days written notice. Immediate termination is permitted in the event of material breach.",
+        "confidence": 0.88,
+        "method": "ML_MODEL",
+        "page": 6
+    },
+    "confidentialityClause": {
+        "value": "Both parties agree to maintain strict confidentiality of all proprietary information disclosed during the term of this agreement and for 2 years thereafter.",
+        "confidence": 0.87,
+        "method": "ML_MODEL",
+        "page": 5
+    }
+}

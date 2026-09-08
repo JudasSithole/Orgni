@@ -1,0 +1,538 @@
+{
+  "dataset_id": "MIG-ORGNI-HARDTEST-2026-01",
+  "version": "1.0.0",
+  "fictional": true,
+  "description": "Connected synthetic organisation pack for Orgni ingestion, extraction, entity resolution, provenance and conflict testing.",
+  "files": [
+    {
+      "document_no": 1,
+      "file": "documents/01_company_registration_certificate.pdf",
+      "format": "PDF",
+      "purpose": "Legal identity and directors",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": []
+      }
+    },
+    {
+      "document_no": 2,
+      "file": "documents/02_organisational_chart_employee_directory.docx",
+      "format": "DOCX",
+      "purpose": "Reporting lines and authoritative departments",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-06"
+        ]
+      }
+    },
+    {
+      "document_no": 3,
+      "file": "documents/03_customer_master_list.xlsx",
+      "format": "XLSX",
+      "purpose": "Customer identity, terms and limits",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-11"
+        ]
+      }
+    },
+    {
+      "document_no": 4,
+      "file": "documents/04_supplier_master_list.csv",
+      "format": "CSV",
+      "purpose": "Supplier aliases and master status",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-04",
+          "EX-15"
+        ]
+      }
+    },
+    {
+      "document_no": 5,
+      "file": "documents/05_product_inventory_catalogue.xlsx",
+      "format": "XLSX",
+      "purpose": "Products, SKUs and inventory",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": []
+      }
+    },
+    {
+      "document_no": 6,
+      "file": "documents/06_customer_invoice_CI-2026-01052.pdf",
+      "format": "PDF",
+      "purpose": "Customer billing, tax, partial payment and duplicate",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-02",
+          "EX-10"
+        ]
+      }
+    },
+    {
+      "document_no": 7,
+      "file": "documents/07_supplier_invoice_SI-USW-7719.pdf",
+      "format": "PDF",
+      "purpose": "Supplier billing and PO variance",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-01",
+          "EX-04"
+        ]
+      }
+    },
+    {
+      "document_no": 8,
+      "file": "documents/08_purchase_order_PO-2026-00418.pdf",
+      "format": "PDF",
+      "purpose": "Purchase commitment and authority breach",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-01",
+          "EX-03",
+          "EX-04",
+          "EX-12"
+        ]
+      }
+    },
+    {
+      "document_no": 9,
+      "file": "documents/09_sales_order_SO-2026-0081.xml",
+      "format": "XML",
+      "purpose": "Customer order and quantity",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-07"
+        ]
+      }
+    },
+    {
+      "document_no": 10,
+      "file": "documents/10_delivery_note_DN-2026-557.pdf",
+      "format": "PDF",
+      "purpose": "Short delivery evidence",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-07"
+        ]
+      }
+    },
+    {
+      "document_no": 11,
+      "file": "documents/11_goods_received_note_GRN-2026-331.txt",
+      "format": "TXT",
+      "purpose": "Receipt and quality exception",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-04"
+        ]
+      }
+    },
+    {
+      "document_no": 12,
+      "file": "documents/12_bank_statement_July_2026.xlsx",
+      "format": "XLSX",
+      "purpose": "Cash movements and unmatched payment",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-02",
+          "EX-09",
+          "EX-15"
+        ]
+      }
+    },
+    {
+      "document_no": 13,
+      "file": "documents/13_payment_remittance_RA-2026-0714.pdf",
+      "format": "PDF",
+      "purpose": "Partial settlement allocation",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-02"
+        ]
+      }
+    },
+    {
+      "document_no": 14,
+      "file": "documents/14_customer_contract_APEX-2024-11.docx",
+      "format": "DOCX",
+      "purpose": "Customer obligations and credit terms",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": []
+      }
+    },
+    {
+      "document_no": 15,
+      "file": "documents/15_supplier_agreement_USW-2025-03.docx",
+      "format": "DOCX",
+      "purpose": "Supplier terms and policy conflict",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-08"
+        ]
+      }
+    },
+    {
+      "document_no": 16,
+      "file": "documents/16_employment_agreement_EMP-004.docx",
+      "format": "DOCX",
+      "purpose": "Employment, role and authority",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-06"
+        ]
+      }
+    },
+    {
+      "document_no": 17,
+      "file": "documents/17_service_level_agreement_VFS-2025-09.pdf",
+      "format": "PDF",
+      "purpose": "Expired service relationship",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-05"
+        ]
+      }
+    },
+    {
+      "document_no": 18,
+      "file": "documents/18_non_disclosure_agreement_NDA-2026-014.docx",
+      "format": "DOCX",
+      "purpose": "Confidentiality obligations",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": []
+      }
+    },
+    {
+      "document_no": 19,
+      "file": "documents/19_expense_claim_EXP-2026-071.docx",
+      "format": "DOCX",
+      "purpose": "Expense and missing receipt",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-16"
+        ]
+      }
+    },
+    {
+      "document_no": 20,
+      "file": "documents/20_payroll_report_July_2026.xlsx",
+      "format": "XLSX",
+      "purpose": "Payroll and department contradiction",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-06"
+        ]
+      }
+    },
+    {
+      "document_no": 21,
+      "file": "documents/21_general_ledger_export.csv",
+      "format": "CSV",
+      "purpose": "Accounting postings and unmatched payment",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-09",
+          "EX-15"
+        ]
+      }
+    },
+    {
+      "document_no": 22,
+      "file": "documents/22_accounts_receivable_ageing.xlsx",
+      "format": "XLSX",
+      "purpose": "Credit exposure and ageing",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-11"
+        ]
+      }
+    },
+    {
+      "document_no": 23,
+      "file": "documents/23_accounts_payable_ageing.xlsx",
+      "format": "XLSX",
+      "purpose": "Supplier liabilities and expired agreement",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-05"
+        ]
+      }
+    },
+    {
+      "document_no": 24,
+      "file": "documents/24_budget_financial_forecast.xlsx",
+      "format": "XLSX",
+      "purpose": "Budget and forecast variance",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": []
+      }
+    },
+    {
+      "document_no": 25,
+      "file": "documents/25_internal_approval_policy.docx",
+      "format": "DOCX",
+      "purpose": "Approval thresholds and evidence",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-03",
+          "EX-16"
+        ]
+      }
+    },
+    {
+      "document_no": 26,
+      "file": "documents/26_procurement_policy.pdf",
+      "format": "PDF",
+      "purpose": "Procurement rules and breach",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-08",
+          "EX-12"
+        ]
+      }
+    },
+    {
+      "document_no": 27,
+      "file": "documents/27_credit_collections_policy.docx",
+      "format": "DOCX",
+      "purpose": "Credit limits and collections",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-11"
+        ]
+      }
+    },
+    {
+      "document_no": 28,
+      "file": "documents/28_information_security_policy.html",
+      "format": "HTML",
+      "purpose": "Security requirements and violation",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-17"
+        ]
+      }
+    },
+    {
+      "document_no": 29,
+      "file": "documents/29_delegation_of_authority_matrix.xlsx",
+      "format": "XLSX",
+      "purpose": "Effective-dated authority limits",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-03",
+          "EX-08",
+          "EX-13"
+        ]
+      }
+    },
+    {
+      "document_no": 30,
+      "file": "documents/30_board_meeting_minutes_2026-07-22.docx",
+      "format": "DOCX",
+      "purpose": "Future board policy change",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-13"
+        ]
+      }
+    },
+    {
+      "document_no": 31,
+      "file": "documents/31_incident_report_INC-2026-017.json",
+      "format": "JSON",
+      "purpose": "Security incident and remediation",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-17"
+        ]
+      }
+    },
+    {
+      "document_no": 32,
+      "file": "documents/32_audit_finding_AF-2026-09.pdf",
+      "format": "PDF",
+      "purpose": "Approval audit and corrected asset fact",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-14"
+        ]
+      }
+    },
+    {
+      "document_no": 33,
+      "file": "documents/33_compliance_report_Q2_2026.json",
+      "format": "JSON",
+      "purpose": "Control results",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-17"
+        ]
+      }
+    },
+    {
+      "document_no": 34,
+      "file": "documents/34_project_status_report_Atlas.pptx",
+      "format": "PPTX",
+      "purpose": "Project status and forecast risk",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": []
+      }
+    },
+    {
+      "document_no": 35,
+      "file": "documents/35_asset_register.xml",
+      "format": "XML",
+      "purpose": "Historical asset location",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-14"
+        ]
+      }
+    },
+    {
+      "document_no": 36,
+      "file": "documents/36_warehouse_stock_report.xlsx",
+      "format": "XLSX",
+      "purpose": "Current stock and corrected asset location",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-14"
+        ]
+      }
+    },
+    {
+      "document_no": 37,
+      "file": "documents/37_customer_support_ticket_TKT-8041.txt",
+      "format": "TXT",
+      "purpose": "Customer shortage complaint",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-07"
+        ]
+      }
+    },
+    {
+      "document_no": 38,
+      "file": "documents/38_business_email_thread.html",
+      "format": "HTML",
+      "purpose": "Approval-chain email evidence",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-03",
+          "EX-12"
+        ]
+      }
+    },
+    {
+      "document_no": 39,
+      "file": "documents/39_operational_data.xlsx",
+      "format": "XLSX",
+      "purpose": "Cross-source operational table",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-09",
+          "EX-10"
+        ]
+      }
+    },
+    {
+      "document_no": 40,
+      "file": "documents/40_scanned_invoice_VFS-INV-882.png",
+      "format": "PNG",
+      "purpose": "OCR noise and post-expiry invoice",
+      "expected_extraction": {
+        "entities": "See ground_truth.json",
+        "facts": "Evidence-linked by filename",
+        "scenarios": [
+          "EX-05"
+        ]
+      }
+    }
+  ],
+  "validation_targets": {
+    "entities": 35,
+    "relationships": 37,
+    "facts": 60,
+    "policies": 18,
+    "conflicts": 17
+  }
+}

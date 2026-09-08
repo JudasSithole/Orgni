@@ -1,0 +1,50 @@
+{
+    "extractionId": "ext_inv_002",
+    "tenantId": "tenant_olyxee",
+    "documentRef": "docs/invoices/inv-2026-0043-scan.pdf",
+    "mimeType": "application/pdf",
+    "checksum": "sha256:b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
+    "observedAt": "2026-07-16T09:15:00Z",
+    "schemaVersion": "0.1.0",
+    "extractionStatus": "PARTIAL",
+    "documentType": "INVOICE",
+    "invoiceNumber": {
+        "value": "INV-2026-0043",
+        "confidence": 0.81,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "raw": "INV-2026 0043"
+    },
+    "invoiceDate": {
+        "value": "2026-07-05",
+        "confidence": 0.75,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "raw": "05/07/2026"
+    },
+    "vendorName": {
+        "value": "Bright Future Tech",
+        "confidence": 0.88,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "buyerName": {
+        "value": "Olyxee AI (Pty) Ltd",
+        "confidence": 0.91,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "totalAmount": {
+        "value": 12500.00,
+        "confidence": 0.72,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "raw": "12.500,00"
+    },
+    "currency": {
+        "value": "ZAR",
+        "confidence": 0.85,
+        "method": "INFERRED"
+    },
+    "lineItems": []
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://orgni.olyxee.com/schemas/organizational-token/0.1.0",
+  "title": "OrganizationalToken",
+  "description": "Canonical machine-readable contract for OrganizationalToken. This mirrors the TypeScript interface in packages/contracts/src/schemas.ts field-for-field and is the single authority consumed by the Python intelligence plane (e.g. the ontology). No module may define a second OrganizationalToken; both languages conform to this schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tokenId",
+    "tenantId",
+    "tokenKind",
+    "transactionTime",
+    "sourceRefs",
+    "confidence",
+    "epistemicStatus",
+    "visibility",
+    "actionScope",
+    "retentionClass"
+  ],
+  "properties": {
+    "tokenId": { "type": "string", "minLength": 1 },
+    "tenantId": { "type": "string", "minLength": 1 },
+    "tokenKind": {
+      "type": "string",
+      "enum": ["EVENT", "ENTITY", "RELATION", "STATE", "POLICY", "QUERY", "ACTION"]
+    },
+    "eventType": { "type": "string" },
+    "subjectId": { "type": "string" },
+    "predicate": { "type": "string" },
+    "objectId": { "type": "string" },
+    "scalarValue": {},
+    "validTime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from"],
+      "properties": {
+        "from": { "type": "string" },
+        "to": { "type": "string" }
+      }
+    },
+    "transactionTime": { "type": "string", "minLength": 1 },
+    "sourceRefs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/evidenceReference" }
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "epistemicStatus": {
+      "type": "string",
+      "enum": ["OBSERVED", "ASSERTED", "INFERRED", "PREDICTED", "DISPUTED"]
+    },
+    "visibility": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/principalRule" }
+    },
+    "actionScope": { "type": "array", "items": { "type": "string" } },
+    "retentionClass": { "type": "string", "minLength": 1 },
+    "payloadRef": { "type": "string" },
+    "embeddingRef": { "type": "string" }
+  },
+  "definitions": {
+    "evidenceReference": {
+      "type": "object",
+      "required": ["evidenceId", "sourceSystem", "sourceObjectId"],
+      "properties": {
+        "evidenceId": { "type": "string" },
+        "signalId": { "type": "string" },
+        "sourceSystem": { "type": "string" },
+        "sourceObjectId": { "type": "string" },
+        "locator": {
+          "type": "object",
+          "properties": {
+            "page": { "type": "number" },
+            "section": { "type": "string" },
+            "range": { "type": "string" },
+            "path": { "type": "string" }
+          }
+        },
+        "checksum": { "type": "string" },
+        "excerpt": { "type": "string" }
+      }
+    },
+    "principalRule": {
+      "type": "object",
+      "required": ["principalId", "principalType", "effect", "actions"],
+      "properties": {
+        "principalId": { "type": "string" },
+        "principalType": {
+          "type": "string",
+          "enum": ["USER", "GROUP", "ROLE", "SERVICE", "PUBLIC"]
+        },
+        "effect": { "type": "string", "enum": ["ALLOW", "DENY"] },
+        "actions": { "type": "array", "items": { "type": "string" } },
+        "conditions": { "type": "object" }
+      }
+    }
+  }
+}

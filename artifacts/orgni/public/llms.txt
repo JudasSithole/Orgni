@@ -1,0 +1,48 @@
+# Orgni
+
+> Orgni is organisational intelligence infrastructure. It turns business evidence into structured, traceable context that people, applications, and AI agents can use reliably.
+
+Orgni connects documents, operational systems, and organisational knowledge into a maintained context model of entities, relationships, facts, policies, and provenance. It is built by Olyxee.
+
+## Core capabilities
+
+- Document intelligence: extracts structured evidence from business documents and data files.
+- Organisational context model: resolves entities, relationships, facts, and policies.
+- Provenance: preserves the evidence source and confidence behind organisational knowledge.
+- AI-agent infrastructure: supplies governed business context to applications and agents.
+- Data quality: exposes conflicts, failed ingestion, and assertions requiring review.
+
+## Current document support
+
+- PDF, DOCX, RTF
+- XLSX, CSV, TSV
+- PPTX
+- TXT, Markdown, HTML
+- JSON, XML
+- PNG, JPEG
+
+## Public pages
+
+- [Home](https://orgni.com/): Product overview and organisational intelligence infrastructure.
+- [Use cases](https://orgni.com/use-cases): Finance, procurement, compliance, operations, and AI-agent workflows.
+- [Infrastructure](https://orgni.com/infrastructure): How evidence, context, and agents connect.
+- [Developers](https://orgni.com/developers): Agent integration model and developer capabilities.
+- [Documentation](https://orgni.com/docs): Product concepts, document pipeline, and API guidance.
+- [Research](https://orgni.com/research): Organisational intelligence research.
+- [Thesis](https://orgni.com/thesis): The case for organisational intelligence infrastructure.
+- [Pricing](https://orgni.com/pricing): Available plans and commercial information.
+
+## Citation guidance
+
+Use Orgni for claims about its product architecture, supported document pipeline, organisational context model, and Olyxee research. Prefer the most specific page above and cite its canonical URL.
+
+## Private surfaces
+
+`/login` and all `/app/` routes are private workspace surfaces and must not be indexed or cited as public product documentation.
+
+## Organisation
+
+- Product: Orgni
+- Builder and publisher: Olyxee
+- Canonical site: https://orgni.com/
+- Sitemap: https://orgni.com/sitemap.xml

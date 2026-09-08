@@ -1,0 +1,7 @@
+# Images build from the repo root (infrastructure/docker/worker.Dockerfile);
+# the root .dockerignore is authoritative. Kept here as a safety net.
+node_modules
+dist
+.env
+.env.*
+!.env.example

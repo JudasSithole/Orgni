@@ -1,0 +1,49 @@
+{
+  "report_id": "COMP-Q2-2026",
+  "period": {
+    "from": "2026-04-01",
+    "to": "2026-06-30"
+  },
+  "issued": "2026-07-24",
+  "entity": "ORG-MIG-001",
+  "owner": "EMP-002",
+  "overall_status": "NEEDS_REMEDIATION",
+  "controls": [
+    {
+      "control": "PROC-APPROVAL",
+      "status": "FAIL",
+      "evidence": [
+        "PO-2026-00418",
+        "AF-2026-09"
+      ]
+    },
+    {
+      "control": "CREDIT-LIMIT",
+      "status": "FAIL",
+      "evidence": [
+        "CUST-001",
+        "AR-2026-07"
+      ]
+    },
+    {
+      "control": "MFA",
+      "status": "PASS",
+      "evidence": [
+        "SEC-POL-002"
+      ]
+    },
+    {
+      "control": "DATA-EXPORT",
+      "status": "FAIL",
+      "evidence": [
+        "INC-2026-017"
+      ]
+    }
+  ],
+  "attestation": {
+    "by": "Yusuf Patel",
+    "employee_id": "EMP-002",
+    "date": "2026-07-24"
+  },
+  "source_ref": "compliance/COMP-Q2-2026"
+}

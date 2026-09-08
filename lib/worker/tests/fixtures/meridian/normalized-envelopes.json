@@ -1,0 +1,1314 @@
+[
+  {
+    "source_id": "inspect_0",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nCertificate of Registration\nLegal entity Meridian Industrial Group (Pty) Ltd\nRegistration number 2018/447291/07\nEntity type Private company\nIncorporated 18 September 2018\nRegistered address 44 Foundry Avenue, Isando, Gauteng, 1600, South Africa\nVAT number 4760291845\nStatus IN BUSINESS\nCertification\nThis certificate records the incorporation of Meridian Industrial Group (Pty) Ltd under the fictional Meridian\nCompanies Registry.\nDirectors\nNaledi Mokoena (Chief Executive Officer); Yusuf Patel (Chief Financial Officer); Thandi Ndlovu (Chief Operating\nOfficer).\nSource reference\nRegistry extract REG-MIG-2018-447291, issued 15 January 2026.\nFictional data (cid:127) Source: 01_company_registration_certificate.pdf Page 1",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "01_company_registration_certificate.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "2e1f1118ab7e4cc39b31434104ef91b7f7879c48acc37b1d1caef22e90372d14",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.5 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_1",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Organisational Chart & Employee Directory Document ID HR-DIR-2026-07 Effective date 01 July 2026 Owner People Operations Classification INTERNAL Reporting structure Naledi Mokoena leads Meridian Industrial Group. Yusuf Patel, Thandi Ndlovu and Aisha Naidoo report to the CEO. Department heads manage the employees listed below. Data note This directory is authoritative for current department assignments. Liam Jacobs is assigned to Procurement. Employees Employee ID Name Role Department Reports to Email EMP-001 Naledi Mokoena Chief Executive Officer Executive — naledi.mokoena@meridian.example EMP-002 Yusuf Patel Chief Financial Officer Finance EMP-001 yusuf.patel@meridian.example EMP-003 Thandi Ndlovu Chief Operating Officer Operations EMP-001 thandi.ndlovu@meridian.example EMP-004 Liam Jacobs Procurement Manager Procurement EMP-003 liam.jacobs@meridian.example EMP-005 Zanele Khumalo Finance Manager Finance EMP-002 zanele.khumalo@meridian.example EMP-006 Aisha Naidoo Sales Director Sales EMP-001 aisha.naidoo@meridian.example EMP-007 Kabelo Dlamini Warehouse Supervisor Warehouse EMP-003 kabelo.dlamini@meridian.example EMP-008 Priya Govender IT Security Manager IT & Security EMP-002 priya.govender@meridian.example EMP-009 Peter Molefe Project Manager PMO EMP-003 peter.molefe@meridian.example EMP-010 Lerato Seabi Accounts Payable Clerk Finance EMP-005 lerato.seabi@meridian.example EMP-011 Mo Chen Industrial Engineer Manufacturing EMP-003 mo.chen@meridian.example",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "02_organisational_chart_employee_directory.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "f030a47f8bfd47e25b54f3aa7d71c38b7297deff3e3f9f6aae2e9cd119fa0ab3",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=CONTRACT score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_2",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Customer ID\tLegal name\tAlias\tCountry\tCurrency\tCredit limit\tTerms\tStatus\tAddress\nCUST-001\tApex Retail Holdings Ltd\tApex Retail\tZA\tZAR\t500000\tNET30\tACTIVE\t98 Market Quay, Durban, 4001\nCUST-002\tCape Horizon Mining (Pty) Ltd\tCape Horizon Mining\tZA\tZAR\t900000\tNET45\tACTIVE\t16 Copper Road, Kathu, 8446\nCUST-003\tNorthstar Components B.V.\tNorthstar Components\tNL\tEUR\t180000\tNET30\tACTIVE\t11 Havenlaan, Rotterdam, 3011",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "03_customer_master_list.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "f07d39aa4fed155df89314e3b63ca1b11e54e005cc136d9726041ceb24e63918",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_3",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "supplier_id,legal_name,known_aliases,country,currency,status,tax_reference\r\nSUP-001,Ubuntu Steelworks (Pty) Ltd,Ubuntu Steelworks|Ubuntu Steel Works (Pty) Ltd|Ubuntu Steelworks SA,ZA,ZAR,ACTIVE,VAT 4120397751\r\nSUP-002,Vector Freight Solutions CC,Vector Freight,ZA,ZAR,ACTIVE,VAT 4480216690\r\nSUP-003,Nimbus Cloud Africa (Pty) Ltd,Nimbus Cloud Africa,ZA,USD,ACTIVE,VAT 4890150032\r\n",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "04_supplier_master_list.csv",
+      "mime_type": "text/csv",
+      "checksum": "933be36b4b3e3f646a0afa7aaf9fb8eac2f1b2e592ca8665d2088ef3fd3d2c99",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.5 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_4",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Product ID\tSKU\tDescription\tUOM\tStock on hand\tAvailable\tUnit price\tCurrency\nPROD-100\tMIG-PMP-100\tIndustrial Process Pump\tEA\t50\t46\t12000\tZAR\nPROD-220\tMIG-VLV-220\tHigh-pressure Control Valve\tEA\t120\t120\t3450\tZAR\nPROD-310\tMIG-SNS-310\tTelemetry Sensor\tEA\t300\t282\t980\tZAR",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "05_product_inventory_catalogue.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "13ad04804b3f25dc491b8d077c73238ba7f74142419265b815048f9a40f36801",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_5",
+    "source_type": "UPLOAD",
+    "document_type": "INVOICE",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nTax Invoice\nInvoice number CI-2026-01052\nInvoice date 25 June 2026\nDue date 25 July 2026\nSeller Meridian Industrial Group (Pty) Ltd\nCustomer Apex Retail Holdings Ltd (CUST-001)\nSales order SO-2026-0081\nCustomer contract APEX-2024-11\nCurrency ZAR\nStatus PARTIALLY PAID\nPayment position\nRemittance RA-2026-0714 records ZAR 90,000 received. Outstanding balance: ZAR 46,275.\nConfidentiality\nCustomer commercial terms. Fictional data only.\nDuplicate warning\nA second document labelled CI-2026-01052-DUP was received on 06 July with the same invoice number,\ncustomer and total; treat as a suspected duplicate.\nLine items\nItem Qty Unit price Discount Net\nMIG-PMP-100 Industrial Process Pump 10 12,000.00 0% 120,000.00\nTotals\nSubtotal VAT 15% Total Paid Balance\n118,500.00 17,775.00 136,275.00 90,000.00 46,275.00\nFictional data (cid:127) Source: 06_customer_invoice_CI-2026-01052.pdf Page 1",
+      "language": "en"
+    },
+    "extracted_fields": {
+      "invoiceNumber": {
+        "value": "CI-2026-01052",
+        "confidence": 0.92,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "CI-2026-01052"
+      },
+      "invoiceDate": {
+        "value": "2026-06-25",
+        "confidence": 0.88,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "25 June 2026"
+      },
+      "dueDate": {
+        "value": "2026-07-25",
+        "confidence": 0.88,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "25 July 2026"
+      },
+      "vendorName": {
+        "value": "Seller Meridian Industrial Group (Pty) Ltd",
+        "confidence": 0.55,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "parties",
+        "raw": "Seller Meridian Industrial Group (Pty) Ltd"
+      },
+      "subtotal": {
+        "value": 15,
+        "confidence": 0.88,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "totals",
+        "raw": "15"
+      },
+      "taxAmount": {
+        "value": 15,
+        "confidence": 0.85,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "totals",
+        "raw": "15"
+      },
+      "currency": {
+        "value": "ZAR",
+        "confidence": 0.9,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "ZAR"
+      },
+      "documentStatus": {
+        "value": "PAID",
+        "confidence": 0.85,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "status",
+        "raw": "PAID"
+      }
+    },
+    "tables": [],
+    "metadata": {
+      "filename": "06_customer_invoice_CI-2026-01052.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "bee6c6e6c8980925de5ae9e91b55cdc5ca58558c87206bcbac79062f09637bdf",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [
+      {
+        "field": "invoiceNumber",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 85,
+        "end": 98,
+        "excerpt": "CI-2026-01052"
+      },
+      {
+        "field": "invoiceDate",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 112,
+        "end": 124,
+        "excerpt": "25 June 2026"
+      },
+      {
+        "field": "dueDate",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 134,
+        "end": 146,
+        "excerpt": "25 July 2026"
+      },
+      {
+        "field": "vendorName",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 147,
+        "end": 189,
+        "excerpt": "Seller Meridian Industrial Group (Pty) Ltd"
+      },
+      {
+        "field": "subtotal",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 789,
+        "end": 791,
+        "excerpt": "15"
+      },
+      {
+        "field": "taxAmount",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 789,
+        "end": 791,
+        "excerpt": "15"
+      },
+      {
+        "field": "currency",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 300,
+        "end": 303,
+        "excerpt": "ZAR"
+      },
+      {
+        "field": "documentStatus",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 321,
+        "end": 325,
+        "excerpt": "PAID"
+      }
+    ],
+    "confidence": 0.883,
+    "warnings": [
+      "vendor_name_inferred_from_letterhead: no explicit vendor label; used the document letterhead - verify before use",
+      "no_line_items_parsed",
+      "missing_critical_field: totalAmount",
+      "fields_not_found: buyerName, paymentTerms, purchaseOrderRef, totalAmount, vendorVatNumber"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "PARTIAL"
+  },
+  {
+    "source_id": "inspect_6",
+    "source_type": "UPLOAD",
+    "document_type": "INVOICE",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nSupplier Tax Invoice\nSupplier Ubuntu Steelworks SA\nSupplier ID SUP-001\nInvoice SI-USW-7719\nInvoice date 08 July 2026\nPO reference PO-2026-00418\nGRN GRN-2026-331\nBill to Meridian Industrial Group (Pty) Ltd\nCurrency ZAR\nStatus DISPUTED\nVariance\nInvoice total exceeds purchase-order total by ZAR 15,180. Extra freight of ZAR 13,200 and a price variance\nwere not approved.\nContract position\nSupplier agreement USW-2025-03 is active. Clause 8.4 permits a Procurement Manager to approve purchases\nup to ZAR 300,000, conflicting with current internal policy.\nTerms\nPayment due 07 August 2026. Disputed items must be resolved before payment.\nCharges\nDescription Qty Unit Amount\nSteel pump housings 20 11,150.00 223,000.00\nUnapproved freight 1 13,200.00 13,200.00\nTotals\nSubtotal VAT 15% Total\n234,400.00 35,160.00 269,560.00\nFictional data (cid:127) Source: 07_supplier_invoice_SI-USW-7719.pdf Page 1",
+      "language": "en"
+    },
+    "extracted_fields": {
+      "invoiceDate": {
+        "value": "2026-07-08",
+        "confidence": 0.88,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "08 July 2026"
+      },
+      "vendorName": {
+        "value": "Bill to Meridian Industrial Group (Pty) Ltd",
+        "confidence": 0.55,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "parties",
+        "raw": "Bill to Meridian Industrial Group (Pty) Ltd"
+      },
+      "subtotal": {
+        "value": 15,
+        "confidence": 0.88,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "totals",
+        "raw": "15"
+      },
+      "taxAmount": {
+        "value": 15,
+        "confidence": 0.85,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "totals",
+        "raw": "15"
+      },
+      "currency": {
+        "value": "ZAR",
+        "confidence": 0.9,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "ZAR"
+      }
+    },
+    "tables": [],
+    "metadata": {
+      "filename": "07_supplier_invoice_SI-USW-7719.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "df936489e39bc3ae20b66424abf0de01b095bc99e245b6daf9a800499366c925",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [
+      {
+        "field": "invoiceDate",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 162,
+        "end": 174,
+        "excerpt": "08 July 2026"
+      },
+      {
+        "field": "vendorName",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 219,
+        "end": 262,
+        "excerpt": "Bill to Meridian Industrial Group (Pty) Ltd"
+      },
+      {
+        "field": "subtotal",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 833,
+        "end": 835,
+        "excerpt": "15"
+      },
+      {
+        "field": "taxAmount",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 833,
+        "end": 835,
+        "excerpt": "15"
+      },
+      {
+        "field": "currency",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 272,
+        "end": 275,
+        "excerpt": "ZAR"
+      }
+    ],
+    "confidence": 0.867,
+    "warnings": [
+      "vendor_name_inferred_from_letterhead: no explicit vendor label; used the document letterhead - verify before use",
+      "invoice_status_not_stated: no payment status asserted from this document",
+      "no_line_items_parsed",
+      "missing_critical_field: totalAmount",
+      "fields_not_found: buyerName, documentStatus, dueDate, invoiceNumber, paymentTerms, purchaseOrderRef, totalAmount, vendorVatNumber"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "PARTIAL"
+  },
+  {
+    "source_id": "inspect_7",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nPurchase Order\nPO number PO-2026-00418\nIssued 03 July 2026\nBuyer Meridian Industrial Group (Pty) Ltd\nSupplier Ubuntu Steel Works (Pty) Ltd\nSupplier ID SUP-001\nRequestor Mo Chen (EMP-011)\nApprover Liam Jacobs (EMP-004)\nApproval timestamp 03 July 2026 15:42 SAST\nCurrency ZAR\nStatus RELEASED\nApproval record\nLiam Jacobs approved the full order. At approval time, the Procurement Manager limit was ZAR 150,000 and\norders above ZAR 200,000 required CFO approval. No CFO approval is recorded.\nDelivery\nDeliver to Germiston Plant, 7 Alloy Street, Germiston, by 11 July 2026.\nPolicy reference\nPROC-POL-004 §5.2; DOA-MATRIX-2026-01 row PROC-03.\nOrder lines\nItem Qty Unit price Net\nSteel pump housings 20 11,060.00 221,200.00\nTotals\nSubtotal VAT 15% Total\n221,200.00 33,180.00 254,380.00\nFictional data (cid:127) Source: 08_purchase_order_PO-2026-00418.pdf Page 1",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "08_purchase_order_PO-2026-00418.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "7d9c04753a067f8f86fe1c92048b8eae65a19a5760e328832966190af6fdefbb",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.5 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_8",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "<?xml version='1.0' encoding='utf-8'?>\n<SalesOrder id=\"SO-2026-0081\" status=\"CONFIRMED\"><CustomerId>CUST-001</CustomerId><CustomerName>Apex Retail Holdings Ltd</CustomerName><OrderDate>2026-06-20</OrderDate><RequestedDelivery>2026-06-28</RequestedDelivery><Currency>ZAR</Currency><ContractId>APEX-2024-11</ContractId><Lines><Line number=\"1\"><ProductId>PROD-100</ProductId><SKU>MIG-PMP-100</SKU><QuantityOrdered>50</QuantityOrdered><UnitPrice>12000.00</UnitPrice><DiscountPercent>2.5</DiscountPercent></Line></Lines><Notes>Credit check approved against limit ZAR 500000 although current exposure later exceeded the limit.</Notes></SalesOrder>",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "09_sales_order_SO-2026-0081.xml",
+      "mime_type": "application/xml",
+      "checksum": "14dd5cc8670f3e89a3c0edb6baed5c230b0b8b3d2b541d2010113b5d9a82b8fe",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_9",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nDelivery Note\nDelivery note DN-2026-557\nSales order SO-2026-0081\nCustomer Apex Retail Holdings Ltd\nShip from Midrand Warehouse\nDelivered to Apex Retail — Durban DC\nDelivery date 28 June 2026\nCarrier Vector Freight Solutions CC\nStatus SHORT DELIVERED\nException\nOrder quantity was 50 units. Only 46 units were delivered. Four units are back-ordered.\nReceipt\nReceived by fictional customer employee Nomsa Dube at 14:10 SAST; signature recorded on source.\nEvidence\nSeal MIG-557-A; vehicle VF-82-MG.\nDelivered goods\nSKU Description Ordered Delivered Short\nMIG-PMP-100 Industrial Process Pump 50 46 4\nFictional data (cid:127) Source: 10_delivery_note_DN-2026-557.pdf Page 1",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "10_delivery_note_DN-2026-557.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "1fe5fa806328a4c5a7c92e0e538d67fb0bc5096ec7f4b4e3d14bd1938203b6a5",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=CONTRACT score=1.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_10",
+    "source_type": "UPLOAD",
+    "document_type": "INVOICE",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP — GOODS RECEIVED NOTE\nGRN: GRN-2026-331\nDate received: 11 July 2026\nWarehouse: Germiston Plant\nSupplier shown on delivery: Ubuntu Steelworks\nSupplier master ID: SUP-001\nPurchase order: PO-2026-00418\nSupplier invoice: SI-USW-7719\n\nITEM: Steel pump housings\nQUANTITY ORDERED: 20\nQUANTITY RECEIVED: 20\nQUANTITY ACCEPTED: 19\nQUANTITY QUARANTINED: 1\n\nReceived by: Kabelo Dlamini (EMP-007)\nInspection note: One housing has a surface defect and was moved to quarantine bay Q-3.\nSource reference: receiving ledger row 331. Fictional data.\n",
+      "language": "und"
+    },
+    "extracted_fields": {
+      "invoiceNumber": {
+        "value": "SI-USW-7719",
+        "confidence": 0.92,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "SI-USW-7719"
+      },
+      "purchaseOrderRef": {
+        "value": "PO-2026-00418",
+        "confidence": 0.85,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "header",
+        "raw": "PO-2026-00418"
+      }
+    },
+    "tables": [],
+    "metadata": {
+      "filename": "11_goods_received_note_GRN-2026-331.txt",
+      "mime_type": "text/plain",
+      "checksum": "932c610e59c2b58ad87234848cc60dc7a93d1232a94ce77c8a5fb27022e36a98",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [
+      {
+        "field": "invoiceNumber",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 243,
+        "end": 254,
+        "excerpt": "SI-USW-7719"
+      },
+      {
+        "field": "purchaseOrderRef",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 211,
+        "end": 224,
+        "excerpt": "PO-2026-00418"
+      }
+    ],
+    "confidence": 0.851,
+    "warnings": [
+      "invoice_status_not_stated: no payment status asserted from this document",
+      "no_line_items_parsed",
+      "missing_critical_field: totalAmount",
+      "missing_critical_field: currency",
+      "fields_not_found: buyerName, currency, documentStatus, dueDate, invoiceDate, paymentTerms, subtotal, taxAmount, totalAmount, vendorName, vendorVatNumber"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "PARTIAL"
+  },
+  {
+    "source_id": "inspect_11",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Date\tReference\tDescription\tDebit\tCredit\tCurrency\tBalance\n2026-07-01\tOPEN\tOpening balance\t0\t0\tZAR\t1320880\n2026-07-14\tAPEX/CI1052/PART\tApex Retail partial payment\t0\t90000\tZAR\t1410880\n2026-07-15\tPAY-260715-99\tEFT Eastern Bearings Trading\t47850\t0\tZAR\t1363030\n2026-07-17\tPAY-USW-HOLD\tUbuntu Steelworks invoice hold\t0\t0\tZAR\t1363030",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "12_bank_statement_July_2026.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "12b074cd5f06e0bb09d0c69dca7325bb1b1b791ac5c46dc748c83efd9b716f80",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_12",
+    "source_type": "UPLOAD",
+    "document_type": "PROOF_OF_PAYMENT",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nPayment Remittance Advice\nRemittance RA-2026-0714\nPayment date 14 July 2026\nPayer Apex Retail Holdings Ltd\nPayee Meridian Industrial Group (Pty) Ltd\nBank reference APEX/CI1052/PART\nInvoice CI-2026-01052\nCurrency ZAR\nAmount 90,000.00\nSettlement PARTIAL\nAllocation\nApply ZAR 90,000 to invoice CI-2026-01052. Do not treat this remittance as full settlement.\nBalance\nInvoice total ZAR 136,275; balance after allocation ZAR 46,275.\nSource reference\nCustomer email attachment REM-APEX-1407.\nFictional data (cid:127) Source: 13_payment_remittance_RA-2026-0714.pdf Page 1",
+      "language": "en"
+    },
+    "extracted_fields": {
+      "paymentDate": {
+        "value": "2026-07-14",
+        "confidence": 0.88,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "payment",
+        "raw": "14 July 2026"
+      },
+      "amount": {
+        "value": 90000,
+        "confidence": 0.9,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "payment",
+        "raw": "90,000.00"
+      },
+      "currency": {
+        "value": "ZAR",
+        "confidence": 0.82,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "payment",
+        "raw": "ZAR"
+      },
+      "referencedInvoiceNumber": {
+        "value": "CI-2026-01052",
+        "confidence": 0.78,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "reference",
+        "raw": "CI-2026-01052"
+      }
+    },
+    "tables": [],
+    "metadata": {
+      "filename": "13_payment_remittance_RA-2026-0714.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "921d80c9f5321dd9c040ad6eb1035f899d4e01f3b0a405119ddfd060b34195d7",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [
+      {
+        "field": "paymentDate",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 121,
+        "end": 133,
+        "excerpt": "14 July 2026"
+      },
+      {
+        "field": "amount",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 281,
+        "end": 290,
+        "excerpt": "90,000.00"
+      },
+      {
+        "field": "currency",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 270,
+        "end": 273,
+        "excerpt": "ZAR"
+      },
+      {
+        "field": "referencedInvoiceNumber",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 247,
+        "end": 260,
+        "excerpt": "CI-2026-01052"
+      }
+    ],
+    "confidence": 0.827,
+    "warnings": [
+      "payment_status_not_stated: payment reported but no explicit transaction status",
+      "invoice_reference_is_not_settlement: referenced invoice captured as a reference only; settlement is not asserted",
+      "fields_not_found: bankName, payeeName, payerName, paymentMethod, paymentReference, proofReference, transactionStatus"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "PARTIAL"
+  },
+  {
+    "source_id": "inspect_13",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Customer Supply Contract Contract ID APEX-2024-11 Parties Meridian Industrial Group (Pty) Ltd and Apex Retail Holdings Ltd Effective 01 December 2024 Expiry 30 November 2027 Status ACTIVE Classification CONFIDENTIAL Purpose Meridian will supply industrial pumps and related services to Apex Retail Holdings Ltd. Commercial terms Payment is due within 30 days of invoice. Apex receives a 2.5% product discount. Total credit exposure must remain within the approved credit limit unless the CFO approves an exception. Delivery Meridian must record delivered quantities against each sales order. Short deliveries must be disclosed within one business day. Disputes Invoice disputes do not suspend payment of undisputed amounts. Appendix A — contacts Meridian: Aisha Naidoo (EMP-006). Apex: fictional procurement contact Sibusiso Radebe.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "14_customer_contract_APEX-2024-11.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "90bf3541173de09039116d399678afea9542b3e801a10aaa1a91aa68175437c1",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_14",
+    "source_type": "UPLOAD",
+    "document_type": "CONTRACT",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Supplier Framework Agreement Agreement ID USW-2025-03 Parties Meridian Industrial Group (Pty) Ltd and Ubuntu Steelworks (Pty) Ltd Effective 01 March 2025 Expiry 28 February 2027 Status ACTIVE Supply Ubuntu Steelworks supplies fabricated pump housings and steel assemblies. Pricing Prices in an accepted purchase order are binding. Freight requires a separate written approval. Approval clause 8.4 For this agreement, a Meridian Procurement Manager may approve individual orders up to ZAR 300,000. Conflict notice If this agreement conflicts with a later mandatory internal control, Meridian's internal approval workflow must still be followed. Audit Supplier invoices must quote a valid PO and goods-received note.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "15_supplier_agreement_USW-2025-03.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "5ab753e86e6bb541e93375ccca085f391be783b39fe6c1f02739437b26a08284",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0.34,
+    "warnings": [
+      "contract_parties_incomplete: fewer than two parties identified",
+      "no_obligations_parsed",
+      "contract_execution_unknown: no signature evidence found; contract is not treated as executed",
+      "fields_not_found: contractReference, contractTitle, contractValue, currency, effectiveDate, executionStatus, expirationDate, paymentTerms",
+      "low_extraction_confidence: 0.34"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_15",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Employment Agreement Agreement EMP-AGR-004 Employee Liam Jacobs (EMP-004) Employer Meridian Industrial Group (Pty) Ltd Start date 01 February 2023 Role Procurement Manager Department Procurement Reporting line The employee reports to Thandi Ndlovu, Chief Operating Officer (EMP-003). Authority Spending authority is governed by the current Delegation of Authority matrix and may change by board resolution. Confidentiality Commercial, employee and supplier data must be protected under policy SEC-POL-002. Notice Either party may terminate with the fictional notice period stated in Schedule 1.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "16_employment_agreement_EMP-004.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "a86cd7fd94de6a581f541a3ba99fb52891711c14a47f4ae7d5507359a011f178",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_16",
+    "source_type": "UPLOAD",
+    "document_type": "INVOICE",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nService-Level Agreement\nSLA SLA-VFS-2025-09\nParties Meridian Industrial Group (Pty) Ltd and Vector Freight Solutions CC\nEffective 01 July 2025\nExpiry 30 June 2026\nStatus EXPIRED\nService levels\n98% on-time delivery; incident acknowledgement within 4 business hours; monthly performance report.\nRates\nFreight rates are fixed until expiry. Services after expiry require written renewal or a new purchase order.\nException\nNo renewal is attached. Vector nevertheless issued invoice VFS-INV-882 dated 12 July 2026.\nSecurity\nDrivers may receive delivery addresses but not customer credit or banking data.\nFictional data (cid:127) Source: 17_service_level_agreement_VFS-2025-09.pdf Page 1",
+      "language": "und"
+    },
+    "extracted_fields": {
+      "vendorName": {
+        "value": "Parties Meridian Industrial Group (Pty) Ltd and Vector Freight Solutions CC",
+        "confidence": 0.55,
+        "method": "RULE_MATCH",
+        "page": 1,
+        "section": "parties",
+        "raw": "Parties Meridian Industrial Group (Pty) Ltd and Vector Freight Solutions CC"
+      }
+    },
+    "tables": [],
+    "metadata": {
+      "filename": "17_service_level_agreement_VFS-2025-09.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "f28cc45575b316d4f921d62c6438fcabd5a3bbe05a40ff6989be0acbc3eda55e",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [
+      {
+        "field": "vendorName",
+        "type": "TEXT_SPAN",
+        "page": 1,
+        "start": 102,
+        "end": 177,
+        "excerpt": "Parties Meridian Industrial Group (Pty) Ltd and Vector Freight Solutions CC"
+      }
+    ],
+    "confidence": 0.65,
+    "warnings": [
+      "vendor_name_inferred_from_letterhead: no explicit vendor label; used the document letterhead - verify before use",
+      "invoice_status_not_stated: no payment status asserted from this document",
+      "no_line_items_parsed",
+      "missing_critical_field: totalAmount",
+      "missing_critical_field: currency",
+      "fields_not_found: buyerName, currency, documentStatus, dueDate, invoiceDate, invoiceNumber, paymentTerms, purchaseOrderRef, subtotal, taxAmount, totalAmount, vendorVatNumber"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "PARTIAL"
+  },
+  {
+    "source_id": "inspect_17",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Mutual Non-Disclosure Agreement NDA NDA-2026-014 Parties Meridian Industrial Group (Pty) Ltd and Nimbus Cloud Africa (Pty) Ltd Effective 15 May 2026 Expiry 14 May 2029 Confidential information Architecture, customer records, pricing, security reports and Project Atlas materials. Purpose Evaluation of cloud hosting for Project Atlas. Exclusions Information independently developed, lawfully public, or received without restriction. Security Access must use named accounts and multi-factor authentication. Return Confidential material must be returned or deleted within 20 business days after request.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "18_non_disclosure_agreement_NDA-2026-014.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "138fe0b4ceb7968d7b6e5761440388b852f240c7caf3d5d9f4df9276ef9ba4f1",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_18",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Employee Expense Claim Claim ID EXP-2026-071 Claimant Peter Molefe (EMP-009) Department PMO Submitted 18 July 2026 Project PRJ-ATLAS-26 Currency ZAR Total 18,750.00 Business purpose Project Atlas customer-site readiness workshop in Durban. Approval Approved by Thandi Ndlovu (EMP-003) on 19 July 2026. Exception Hotel line has no receipt. Policy permits missing receipts only below ZAR 1,000; the hotel line is ZAR 6,800. Lines Date Category Description Amount Receipt 2026-07-16 Air travel Return flight 9,250.00 YES 2026-07-16 Hotel Two nights 6,800.00 NO 2026-07-17 Ground transport Customer site 2,700.00 YES",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "19_expense_claim_EXP-2026-071.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "1162ea14616d939d6a09ace42c89f97d6cb12190ad6191919ae6a780beb7759a",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_19",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Employee ID\tName\tDepartment\tGross pay\tDeductions\tNet pay\tBank mask\nEMP-001\tNaledi Mokoena\tExecutive\t185000\t53200\t131800\t****1120\nEMP-002\tYusuf Patel\tFinance\t160000\t45400\t114600\t****2231\nEMP-003\tThandi Ndlovu\tOperations\t155000\t43800\t111200\t****3342\nEMP-004\tLiam Jacobs\tOperations\t85000\t22800\t62200\t****4453\nEMP-005\tZanele Khumalo\tFinance\t92000\t25100\t66900\t****5564\nEMP-006\tAisha Naidoo\tSales\t120000\t33800\t86200\t****6675\nEMP-007\tKabelo Dlamini\tWarehouse\t48000\t10500\t37500\t****7786\nEMP-008\tPriya Govender\tIT & Security\t98000\t27100\t70900\t****8897\nEMP-009\tPeter Molefe\tPMO\t76000\t19800\t56200\t****9908\nEMP-010\tLerato Seabi\tFinance\t42000\t8700\t33300\t****1019\nEMP-011\tMo Chen\tManufacturing\t68000\t16900\t51100\t****2120",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "20_payroll_report_July_2026.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "1baa85f5e4ea4aade2a9e151efc9f0bc741ed5c436a66242875bb0ad01d0ee33",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_20",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "posting_date,journal_id,account,description,debit_zar,credit_zar,source_ref,entity_id\r\n2026-06-25,J-6012,1100-AR,Invoice CI-2026-01052,136275,0,CI-2026-01052,CUST-001\r\n2026-06-25,J-6012,4000-SALES,Pump revenue,0,118500,CI-2026-01052,CUST-001\r\n2026-06-25,J-6012,2200-VAT,Output VAT,0,17775,CI-2026-01052,CUST-001\r\n2026-07-14,J-7141,1000-BANK,Partial receipt,90000,0,RA-2026-0714,CUST-001\r\n2026-07-14,J-7141,1100-AR,Partial receipt,0,90000,RA-2026-0714,CUST-001\r\n2026-07-15,J-7159,2100-SUSPENSE,Unmatched payment,47850,0,PAY-260715-99,UNKNOWN\r\n2026-07-15,J-7159,1000-BANK,Unmatched payment,0,47850,PAY-260715-99,UNKNOWN\r\n",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "21_general_ledger_export.csv",
+      "mime_type": "text/csv",
+      "checksum": "c78c41d16e1e777b402bef27a4517fb00a0996fdae673c9fa8e7f04a95807161",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.5 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_21",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Customer ID\tCustomer\tCurrent\t1-30\t31-60\t61-90\t90+\tTotal\tCredit limit\nCUST-001\tApex Retail Holdings Ltd\t136275\t205000\t171205\t100000\t0\t612480\t500000\nCUST-002\tCape Horizon Mining (Pty) Ltd\t220000\t0\t0\t0\t0\t220000\t900000\nCUST-003\tNorthstar Components B.V.\t72000\t0\t0\t0\t0\t72000\t180000",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "22_accounts_receivable_ageing.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "862a2ee144ef705c5f7b06c42aa06617673229fe6f89862aab16b8c62f1a921a",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_22",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Supplier ID\tSupplier\tInvoice\tCurrent\t1-30\t31-60\tTotal\tStatus\nSUP-001\tUbuntu Steelworks\tSI-USW-7719\t269560\t0\t0\t269560\tDISPUTED\nSUP-002\tVector Freight Solutions CC\tVFS-INV-882\t47850\t0\t0\t47850\tEXPIRED CONTRACT\nSUP-003\tNimbus Cloud Africa (Pty) Ltd\tNCA-2607\t42000\t0\t0\t42000\tAPPROVED",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "23_accounts_payable_ageing.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "a262aab341c958cbd1180331aca6050ce00c300ecd922efe997b489c82be90ab",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_23",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Metric\tFY2025 Actual\tFY2026 Budget\tFY2026 Forecast\tVariance\nRevenue ZAR\t18400000\t22000000\t21150000\t-850000\nGross profit ZAR\t6620000\t7920000\t7340000\t-580000\nOperating cost ZAR\t5180000\t5740000\t6110000\t370000\nProject Atlas ZAR\t1200000\t2400000\t2580000\t180000\nID\tAssumption\tEffective date\nA-01\tZAR/EUR 20.10\t2026-07-01\nA-02\tZAR/USD 18.25\t2026-07-01\nA-03\tPump volume grows 8%\t2026-08-01",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "24_budget_financial_forecast.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "d4a0d94c8e5c0724f08b5a1d205be83a4e9ac8012bca55768f5fa15fdc2a0102",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=CONTRACT score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_24",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Internal Approval Policy Policy APP-POL-001 Version 3.2 Effective 01 January 2026 Owner Finance Status CURRENT 1. Purpose Defines evidence and approval controls for commitments, payments and expenses. 2. Thresholds Up to ZAR 25,000: department manager. ZAR 25,001–150,000: functional manager. ZAR 150,001–500,000: CFO. Above ZAR 500,000: CEO plus CFO. 3. Separation of duties A requester may not be the sole approver or payment releaser. 4. Exceptions Emergency approval may be retrospective within two business days only where life, safety or production continuity is at immediate risk. 5. Evidence Approval identity, timestamp and source record must be retained for seven years.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "25_internal_approval_policy.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "01e0092f20fd8346169108e32e11b3cb5153bd259d1bbfce00da8b1d6a751ce6",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_25",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nProcurement Policy\nPolicy PROC-POL-004\nVersion 4.0\nEffective 01 April 2026\nOwner Procurement\nStatus CURRENT\nCompetitive sourcing\nThree written quotations are required above ZAR 100,000 unless an approved sole-source exception exists.\nApproval chain\nPurchase orders above ZAR 150,000 require functional approval. Orders above ZAR 200,000 also require CFO\napproval before release.\nNo PO, no pay\nSupplier invoices must quote a valid PO. Freight or price variances above 2% require written approval.\nProhibition\nOrder splitting to avoid a threshold is prohibited.\nException\nEmergency procurement must be documented within two business days and reviewed by Internal Audit.\nObserved breach\nPO-2026-00418 was released for ZAR 254,380 with Procurement Manager approval only.\nFictional data (cid:127) Source: 26_procurement_policy.pdf Page 1",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "26_procurement_policy.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "49c9d7c105789f238d16e6fd5d04199b04e70f282e17ca79896ee29b84eb9f03",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_26",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Credit & Collections Policy Policy CRD-POL-003 Version 2.1 Effective 01 February 2026 Owner Finance Status CURRENT Credit limits Orders that would take exposure above a customer's approved credit limit must be placed on hold. Override Only the CFO may approve a credit-limit override, in writing, before dispatch. Collections Invoices past due by more than 15 days require a documented customer contact. Allocation Partial payments reduce the oldest undisputed invoice unless a remittance specifies another invoice. Observed exception Apex Retail Holdings Ltd has exposure of ZAR 612,480 against a ZAR 500,000 limit; no CFO override is recorded.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "27_credit_collections_policy.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "9b639ab60bb6fc06acc9646d6a3035da9fd82719d5d74a517e975775ee9e5b6a",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_27",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "<!doctype html><html><head><meta charset=\"utf-8\"><title>Information Security Policy</title>\n<style>body{font:15px Arial;color:#173b39;max-width:850px;margin:40px auto;line-height:1.5}header{border-bottom:5px solid #d97706}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbc;padding:8px}th{background:#173b39;color:white}</style></head>\n<body><header><h1>Information Security Policy</h1><p>SEC-POL-002 • v3.0 • Effective 01 June 2026 • Owner: IT & Security</p></header>\n<h2>Access</h2><p>Named accounts and multi-factor authentication are mandatory for production and confidential systems. Shared accounts are prohibited except for documented break-glass access.</p>\n<h2>Data handling</h2><p>Customer banking, payroll and identity data are CONFIDENTIAL. Export requires manager approval and encryption.</p>\n<h2>Incidents</h2><p>Suspected exposure must be reported within four hours to Priya Govender (EMP-008). Evidence must be preserved.</p>\n<h2>Retention</h2><p>Access logs: 365 days. Financial evidence: seven years. Temporary exports: delete within 30 days.</p>\n<h2>Exception</h2><p>INC-2026-017 records an unencrypted payroll export sent to an incorrect fictional address, breaching this policy.</p>\n<footer><small>Fictional synthetic data • Source SEC-POL-002</small></footer></body></html>",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "28_information_security_policy.html",
+      "mime_type": "text/html",
+      "checksum": "83f32b04772fa69098524c42beaa2005c52154e65af1f616992876b8452dabe1",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_28",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Code\tTransaction\tRole\tLimit ZAR\tAdditional approval\tEffective from\tEffective to\nPROC-01\tPurchase order\tDepartment manager\t25000\tNone\t2026-01-01\t\nPROC-02\tPurchase order\tFunctional manager\t150000\tNone\t2026-01-01\t2026-07-31\nPROC-03\tPurchase order\tProcurement Manager\t150000\tCFO above 200000\t2026-01-01\t2026-07-31\nPROC-04\tPurchase order\tProcurement Manager\t225000\tCFO above 225000\t2026-08-01\t\nPAY-01\tPayment\tFinance Manager\t100000\tCFO above 100000\t2026-01-01\t\nEXP-01\tExpense claim\tCOO\t50000\tReceipt required above 1000\t2026-01-01\t",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "29_delegation_of_authority_matrix.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "375630a7ddbeb7cf1735077ce4a97c0919a6d5cd15fe1911f3bce9f7f87a26c7",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=1.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_29",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP Board Meeting Minutes Meeting BRD-2026-07 Date 22 July 2026 Chair Naledi Mokoena Secretary Fictional company secretary Refilwe Maseko Status APPROVED Attendance Naledi Mokoena, Yusuf Patel, Thandi Ndlovu and Aisha Naidoo. Resolution BR-2026-14 The Procurement Manager approval limit will increase from ZAR 150,000 to ZAR 225,000 effective 01 August 2026. Transactions approved before that date remain subject to the earlier limit. Project Atlas Board noted AMBER status, a ZAR 180,000 forecast overrun and a two-week integration risk. Compliance Management must close audit finding AF-2026-09 by 31 August 2026. Approval Minutes approved electronically on 25 July 2026.",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "30_board_meeting_minutes_2026-07-22.docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "checksum": "f4aa1c6b0789ac67235e6784c646fba8cec572a015c3893d62334891bbaf6cd8",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_30",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "{\n  \"incident_id\": \"INC-2026-017\",\n  \"reported_at\": \"2026-07-09T10:32:00+02:00\",\n  \"reported_by\": \"EMP-010\",\n  \"owner\": \"EMP-008\",\n  \"status\": \"CONTAINED\",\n  \"severity\": \"HIGH\",\n  \"policy\": \"SEC-POL-002\",\n  \"summary\": \"An unencrypted payroll export was emailed to payroll.test@outside.example instead of the approved fictional processor address.\",\n  \"affected_records\": 11,\n  \"data_types\": [\n    \"employee_id\",\n    \"bank_account_mask\",\n    \"gross_pay\",\n    \"net_pay\"\n  ],\n  \"actions\": [\n    {\n      \"at\": \"2026-07-09T10:47:00+02:00\",\n      \"action\": \"Recipient deletion confirmed\"\n    },\n    {\n      \"at\": \"2026-07-09T11:05:00+02:00\",\n      \"action\": \"Mailbox rule blocked repeat delivery\"\n    }\n  ],\n  \"root_cause\": \"Manual address selection and missing outbound DLP rule\",\n  \"source_ref\": \"security-case/INC-2026-017\"\n}",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "31_incident_report_INC-2026-017.json",
+      "mime_type": "application/json",
+      "checksum": "0201a6a08613e4aedba3e06d5b0c9c99678f9d01420e963ea2c4de6594a99bcf",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_31",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP (cid:127) SYNTHETIC TEST RECORD\nInternal Audit Finding\nFinding AF-2026-09\nIssued 20 July 2026\nRating HIGH\nOwner Thandi Ndlovu (EMP-003)\nDue 31 August 2026\nStatus OPEN\nFinding\nPO-2026-00418 was approved by Liam Jacobs for ZAR 254,380 without required CFO approval and without\nthree quotations.\nCause\nWorkflow used the supplier agreement limit of ZAR 300,000 instead of the lower current internal Delegation of\nAuthority limit.\nCorrection of earlier fact\nAsset FL-07 was recorded at Germiston Plant in the 01 July asset extract. Physical verification confirmed it\nmoved to Midrand Warehouse on 20 July 2026. The later location supersedes the earlier record from that date.\nRecommendation\nEnforce policy-effective dates, block release above authority, and require evidence of quotations.\nManagement response\nAccepted. Workflow remediation assigned to Project Atlas.\nFictional data (cid:127) Source: 32_audit_finding_AF-2026-09.pdf Page 1",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "32_audit_finding_AF-2026-09.pdf",
+      "mime_type": "application/pdf",
+      "checksum": "9975889034b0a867c77708131b2ab2e6a503e9670df83c8251e3651ca93f3b7f",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_32",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "{\n  \"report_id\": \"COMP-Q2-2026\",\n  \"period\": {\n    \"from\": \"2026-04-01\",\n    \"to\": \"2026-06-30\"\n  },\n  \"issued\": \"2026-07-24\",\n  \"entity\": \"ORG-MIG-001\",\n  \"owner\": \"EMP-002\",\n  \"overall_status\": \"NEEDS_REMEDIATION\",\n  \"controls\": [\n    {\n      \"control\": \"PROC-APPROVAL\",\n      \"status\": \"FAIL\",\n      \"evidence\": [\n        \"PO-2026-00418\",\n        \"AF-2026-09\"\n      ]\n    },\n    {\n      \"control\": \"CREDIT-LIMIT\",\n      \"status\": \"FAIL\",\n      \"evidence\": [\n        \"CUST-001\",\n        \"AR-2026-07\"\n      ]\n    },\n    {\n      \"control\": \"MFA\",\n      \"status\": \"PASS\",\n      \"evidence\": [\n        \"SEC-POL-002\"\n      ]\n    },\n    {\n      \"control\": \"DATA-EXPORT\",\n      \"status\": \"FAIL\",\n      \"evidence\": [\n        \"INC-2026-017\"\n      ]\n    }\n  ],\n  \"attestation\": {\n    \"by\": \"Yusuf Patel\",\n    \"employee_id\": \"EMP-002\",\n    \"date\": \"2026-07-24\"\n  },\n  \"source_ref\": \"compliance/COMP-Q2-2026\"\n}",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "33_compliance_report_Q2_2026.json",
+      "mime_type": "application/json",
+      "checksum": "de90844e13032349ef41d3410e4ee4df02e15754f440c23120a4086f297223a0",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_33",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "MERIDIAN INDUSTRIAL GROUP PROJECT ATLAS • 25 JUL 2026 Project Atlas is AMBER Customer-context platform rollout Status report • PRJ-ATLAS-26 AMBER Board attention required Owner: Peter Molefe (EMP-009) • Sponsor: Thandi Ndlovu (EMP-003)\nMERIDIAN INDUSTRIAL GROUP DELIVERY Core build is 72% complete, but integration is two weeks at risk 72% overall complete 14 days schedule risk ZAR 180k forecast overrun Completed • Document ingestion API • Invoice and proof-of-payment tokenizers • Ontology persistence At risk • Approval-policy effective dating • Contract-to-policy conflict handling • Data-quality review workflow\nMERIDIAN INDUSTRIAL GROUP DEPENDENCIES Four linked records define the launch-critical control test PO-2026-00418 ZAR 254,380 Manager-only approval SI-USW-7719 ZAR 269,560 Variance ZAR 15,180 AF-2026-09 HIGH finding Due 31 Aug BR-2026-14 Limit changes 01 Aug 2026 Launch gate: Orgni must preserve evidence, detect the breach, and apply the board resolution prospectively—not retroactively.\nMERIDIAN INDUSTRIAL GROUP NEXT DECISION Hold launch until trustworthy-context gates pass 1 Entity resolution Resolve Ubuntu’s three aliases without merging Eastern Bearings. 2 Policy reasoning Detect PO authority breach and agreement-policy conflict. 3 Temporal truth Keep FL-07 correction and 01 Aug authority change effective-dated. 4 Transaction linkage Link order, delivery, invoice and partial payment with provenance. Decision owner: Naledi Mokoena • Evidence pack: MIG-ORGNI-HARDTEST-2026-01",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "34_project_status_report_Atlas.pptx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "checksum": "15e1a1cbbadfaf5c8fb95db2a0543a9f84fc9955b7158c0eaf301d30fa95e00e",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_34",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "<?xml version='1.0' encoding='utf-8'?>\n<AssetRegister snapshotDate=\"2026-07-01\" owner=\"ORG-MIG-001\"><Asset id=\"AST-CNC-04\"><Name>CNC Milling Centre 04</Name><Location>Germiston Plant</Location><Department>Manufacturing</Department><BookValueZAR>1250000</BookValueZAR><Status>ACTIVE</Status></Asset><Asset id=\"AST-FL-07\"><Name>Forklift FL-07</Name><Location>Germiston Plant</Location><Department>Warehouse</Department><BookValueZAR>385000</BookValueZAR><Status>ACTIVE</Status></Asset><Asset id=\"AST-SRV-02\"><Name>Application Server SRV-02</Name><Location>Isando HQ</Location><Department>IT &amp; Security</Department><BookValueZAR>240000</BookValueZAR><Status>ACTIVE</Status></Asset></AssetRegister>",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "35_asset_register.xml",
+      "mime_type": "application/xml",
+      "checksum": "00396c2547dd17ad2c4eb162fb7b3621f0f1e349ed8fdd11bd68db6483a7104c",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_35",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Snapshot date\tWarehouse\tProduct ID\tSKU\tOn hand\tReserved\tAvailable\tNote\n2026-07-25\tMidrand Warehouse\tPROD-100\tMIG-PMP-100\t50\t4\t46\tFour reserved for Apex back-order\n2026-07-25\tMidrand Warehouse\tPROD-220\tMIG-VLV-220\t120\t0\t120\t\n2026-07-25\tMidrand Warehouse\tPROD-310\tMIG-SNS-310\t300\t18\t282\t\n2026-07-25\tMidrand Warehouse\tAST-FL-07\tForklift FL-07\t1\t0\t1\tCorrected location; moved 20 July",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "36_warehouse_stock_report.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "83969fc09ddc617cc889b81f8c21cd5986a5b01e80ecb1dd27a7b0bbde898184",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_36",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "CUSTOMER SUPPORT TICKET\nTicket: TKT-8041\nOpened: 29 June 2026 08:18 SAST\nCustomer: Apex Retail (CUST-001)\nRelated sales order: SO-2026-0081\nRelated delivery: DN-2026-557\nProduct: MIG-PMP-100\nPriority: HIGH\nStatus: WAITING FOR PARTS\nOwner: Mo Chen (EMP-011)\n\nCustomer statement:\n“We ordered 50 pumps but received 46. Please confirm the remaining four and the revised delivery date.”\n\nOrgni-relevant resolution:\nWarehouse confirmed a short delivery of four units. Back-order expected 05 August 2026. No credit note has been issued.\n\nSource reference: support/TKT-8041. All names and data are fictional.\n",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "37_customer_support_ticket_TKT-8041.txt",
+      "mime_type": "text/plain",
+      "checksum": "f3017aa9e8b5d342640d09074bfb8598ec168cccb9bce6907d7e3c5931a558dc",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=0.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_37",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "<!doctype html><html><head><meta charset=\"utf-8\"><title>PO approval thread</title>\n<style>body{font-family:Arial;max-width:850px;margin:30px auto;color:#263238}.msg{border-left:5px solid #d97706;padding:12px 18px;margin:20px 0;background:#f7faf9}.meta{color:#54706e;font-size:13px}</style></head>\n<body><h1>Business email thread: PO-2026-00418</h1>\n<div class=\"msg\"><div class=\"meta\">From: Mo Chen &lt;mo.chen@meridian.example&gt; • 03 Jul 2026 13:02</div>\n<p>Liam, please approve PO-2026-00418 for ZAR 254,380. Production needs the housings by 11 July. We only have one quotation because Ubuntu is the nominated supplier.</p></div>\n<div class=\"msg\"><div class=\"meta\">From: Liam Jacobs &lt;liam.jacobs@meridian.example&gt; • 03 Jul 2026 15:42</div>\n<p>Approved. The supplier agreement lets Procurement approve up to ZAR 300k. Release it today.</p></div>\n<div class=\"msg\"><div class=\"meta\">From: Lerato Seabi &lt;lerato.seabi@meridian.example&gt; • 09 Jul 2026 09:10</div>\n<p>The internal policy says CFO approval is also required above ZAR 200k. I cannot find Yusuf’s approval or a sole-source exception.</p></div>\n<div class=\"msg\"><div class=\"meta\">From: Yusuf Patel &lt;yusuf.patel@meridian.example&gt; • 09 Jul 2026 10:03</div>\n<p>I did not approve this PO. Place the invoice on hold and refer it to Internal Audit.</p></div>\n<footer>Thread ID MAIL-PO418-2026 • Fictional synthetic data</footer></body></html>",
+      "language": "en"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "38_business_email_thread.html",
+      "mime_type": "text/html",
+      "checksum": "be735de639ecb0aa1344d092b40243902eca3e972330894d5bc6e4a0b147db29",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=INVOICE score=2.0 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_38",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "Transaction ID\tType\tParty ID\tReference\tDate\tCurrency\tAmount\tStatus\nTX-001\tCUSTOMER_INVOICE\tCUST-001\tCI-2026-01052\t2026-06-25\tZAR\t136275\tPARTIALLY_PAID\nTX-002\tCUSTOMER_INVOICE\tCUST-001\tCI-2026-01052\t2026-07-06\tZAR\t136275\tSUSPECTED_DUPLICATE\nTX-003\tPURCHASE_ORDER\tSUP-001\tPO-2026-00418\t2026-07-03\tZAR\t254380\tRELEASED\nTX-004\tSUPPLIER_INVOICE\tSUP-001\tSI-USW-7719\t2026-07-08\tZAR\t269560\tDISPUTED\nTX-005\tPAYMENT\tCUST-001\tRA-2026-0714\t2026-07-14\tZAR\t90000\tALLOCATED\nTX-006\tBANK_PAYMENT\tUNKNOWN\tPAY-260715-99\t2026-07-15\tZAR\t47850\tUNMATCHED\nTX-007\tSUPPLIER_INVOICE\tSUP-002\tVFS-INV-882\t2026-07-12\tZAR\t47850\tCONTRACT_EXPIRED\nTX-008\tFOREIGN_INVOICE\tCUST-003\tNS-2026-77\t2026-07-18\tEUR\t7450\tOPEN\nEntity ID\tCanonical\tObserved alias\tSource\nSUP-001\tUbuntu Steelworks (Pty) Ltd\tUbuntu Steelworks\t11_goods_received_note_GRN-2026-331.txt\nSUP-001\tUbuntu Steelworks (Pty) Ltd\tUbuntu Steel Works (Pty) Ltd\t08_purchase_order_PO-2026-00418.pdf\nSUP-001\tUbuntu Steelworks (Pty) Ltd\tUbuntu Steelworks SA\t07_supplier_invoice_SI-USW-7719.pdf\nException ID\tScenario\tReference\tSeverity\nEX-01\tPO/invoice variance\tPO-2026-00418 / SI-USW-7719\tHIGH\nEX-02\tPartial payment\tCI-2026-01052 / RA-2026-0714\tMEDIUM\nEX-03\tAuthority breach\tPO-2026-00418\tHIGH\nEX-04\tExpired SLA invoice\tVFS-INV-882\tHIGH\nEX-05\tDepartment conflict\tEMP-004\tMEDIUM\nEX-06\tShort delivery\tDN-2026-557\tMEDIUM\nEX-07\tPolicy-contract conflict\tUSW-2025-03\tHIGH\nEX-08\tUnmatched payment\tPAY-260715-99\tHIGH\nEX-09\tDuplicate invoice\tCI-2026-01052\tHIGH\nEX-10\tCredit limit exceeded\tCUST-001\tHIGH\nEX-11\tApproval chain bypass\tPO-2026-00418\tHIGH\nEX-12\tFuture policy change\tBR-2026-14\tINFO\nEX-13\tCorrected asset location\tAST-FL-07\tINFO\nEX-14\tUnknown supplier\tEastern Bearings Trading\tHIGH\nEX-15\tMissing expense receipt\tEXP-2026-071\tMEDIUM",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "39_operational_data.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "checksum": "5255c795fb8cef69e2efa1aa9705ebdf0fbdec1569fea9907f7d7f332e51e341",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "classification_below_threshold: best=PROOF_OF_PAYMENT score=2.5 min=3.0"
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  },
+  {
+    "source_id": "inspect_39",
+    "source_type": "UPLOAD",
+    "document_type": "UNKNOWN",
+    "content": {
+      "text": "",
+      "language": "und"
+    },
+    "extracted_fields": {},
+    "tables": [],
+    "metadata": {
+      "filename": "40_scanned_invoice_VFS-INV-882.png",
+      "mime_type": "image/png",
+      "checksum": "bf1d996f862aa4fa22002c26522b76b9667cf7b53dddea1e752b773f66d318c2",
+      "tenant_id": "inspect"
+    },
+    "evidence_locations": [],
+    "confidence": 0,
+    "warnings": [
+      "text_extraction_failed: tesseract is not installed or it's not in your PATH. See README file for more information."
+    ],
+    "schema_version": "0.1.0",
+    "extraction_status": "LOW_CONFIDENCE"
+  }
+]

@@ -1,0 +1,4 @@
+supplier_id,legal_name,known_aliases,country,currency,status,tax_reference
+SUP-001,Ubuntu Steelworks (Pty) Ltd,Ubuntu Steelworks|Ubuntu Steel Works (Pty) Ltd|Ubuntu Steelworks SA,ZA,ZAR,ACTIVE,VAT 4120397751
+SUP-002,Vector Freight Solutions CC,Vector Freight,ZA,ZAR,ACTIVE,VAT 4480216690
+SUP-003,Nimbus Cloud Africa (Pty) Ltd,Nimbus Cloud Africa,ZA,USD,ACTIVE,VAT 4890150032

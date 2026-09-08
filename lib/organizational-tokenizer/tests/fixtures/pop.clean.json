@@ -1,0 +1,74 @@
+{
+    "extractionId": "ext_pop_001",
+    "tenantId": "tenant_olyxee",
+    "documentRef": "docs/payments/pop-2026-0042.pdf",
+    "mimeType": "application/pdf",
+    "checksum": "sha256:c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5",
+    "observedAt": "2026-07-16T10:00:00Z",
+    "schemaVersion": "0.1.0",
+    "extractionStatus": "COMPLETE",
+    "documentType": "PROOF_OF_PAYMENT",
+    "referenceNumber": {
+        "value": "TXN-FNB-20260715-998877",
+        "confidence": 0.99,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "paymentDate": {
+        "value": "2026-07-15",
+        "confidence": 0.98,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "raw": "15 July 2026"
+    },
+    "payerName": {
+        "value": "Olyxee AI (Pty) Ltd",
+        "confidence": 0.99,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "payerAccountRef": {
+        "value": "****4821",
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION"
+    },
+    "payeeName": {
+        "value": "Apex Solutions (Pty) Ltd",
+        "confidence": 0.98,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "payeeAccountRef": {
+        "value": "****2234",
+        "confidence": 0.95,
+        "method": "OCR_EXTRACTION"
+    },
+    "amount": {
+        "value": 49450.00,
+        "confidence": 0.99,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "raw": "R 49,450.00"
+    },
+    "currency": {
+        "value": "ZAR",
+        "confidence": 0.99,
+        "method": "RULE_MATCH"
+    },
+    "paymentMethod": {
+        "value": "EFT",
+        "confidence": 0.99,
+        "method": "RULE_MATCH"
+    },
+    "invoiceRef": {
+        "value": "INV-2026-0042",
+        "confidence": 0.96,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "bankRef": {
+        "value": "FNB-20260715-998877",
+        "confidence": 0.98,
+        "method": "OCR_EXTRACTION"
+    }
+}

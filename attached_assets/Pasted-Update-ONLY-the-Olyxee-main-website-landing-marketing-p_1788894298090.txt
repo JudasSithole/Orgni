@@ -1,0 +1,434 @@
+Update ONLY the Olyxee main website landing/marketing page.
+
+Do not redesign the full website.
+Do not change unrelated product pages.
+Do not rebuild the visual identity.
+Do not change navigation unless necessary for the landing page.
+Preserve existing functionality, responsiveness, and components where possible.
+
+The goal is to reposition the landing page around:
+
+- operational intelligence
+- business speed
+- growth
+- fewer blockers
+- less waiting
+- less repetitive work
+- faster execution
+- Orgni as the flagship product
+- Olyxee as the infrastructure company behind it
+
+The landing page should feel modern, premium, enterprise-focused, minimal, and forward-looking.
+
+Do not make the page sound like:
+- a chatbot company
+- a RAG company
+- an enterprise search company
+- a generic AI assistant company
+- a knowledge-base company
+- an AI agency
+- a collection of random products
+
+The page should tell one clear story:
+
+Businesses grow.
+As they grow, work becomes fragmented across people, systems, messages, documents, and departments.
+That creates waiting, blockers, interruptions, and slow execution.
+Olyxee is building operational intelligence infrastructure to reduce that friction.
+Orgni is the flagship product that helps keep work moving.
+
+Use this landing page narrative.
+
+--------------------------------------------------
+1. HERO
+--------------------------------------------------
+
+Main headline:
+
+“Operational intelligence for businesses in motion.”
+
+Supporting copy:
+
+“Olyxee builds infrastructure that helps organisations understand what is happening, reduce operational friction, and keep work moving.”
+
+Primary CTA:
+“Explore Orgni”
+
+Secondary CTA:
+“About Olyxee”
+
+The hero should visually communicate:
+- speed
+- growth
+- movement
+- intelligence
+- scale
+
+Avoid cliché AI visuals like glowing robot heads, brains, generic neural networks, or excessive gradients.
+
+Prefer abstract motion, flowing systems, connected business operations, subtle data movement, or a clean visual showing an organisation accelerating.
+
+--------------------------------------------------
+2. PROBLEM / BRAND STATEMENT
+--------------------------------------------------
+
+Headline:
+
+“Growth should not create friction.”
+
+Supporting message:
+
+“As businesses grow, so do the people, systems, conversations, decisions, and dependencies required to keep them running.”
+
+Then:
+
+“Work should not stop because someone is waiting for an answer, a document, an approval, an update, or another person.”
+
+Use a strong visual showing increasing complexity but smooth movement through Orgni/Olyxee.
+
+--------------------------------------------------
+3. ORGNI FEATURE SECTION
+--------------------------------------------------
+
+Headline:
+
+“Built for businesses in motion.”
+
+Supporting copy:
+
+“Orgni understands how your organisation works and helps keep knowledge, decisions, and routine work moving across teams and systems.”
+
+Value points:
+
+- Find answers without chasing people
+- Give Orgni work directly
+- Reduce repetitive internal requests
+- Handle routine customer requests
+- Identify blockers and dependencies
+- Coordinate work across business systems
+- Reduce unnecessary handoffs
+- Keep teams moving
+
+CTA:
+“Discover Orgni”
+
+Do not position Orgni as only an internal employee assistant.
+
+Orgni should feel useful across the entire organisation.
+
+--------------------------------------------------
+4. SHOW THE EXPERIENCE
+--------------------------------------------------
+
+Create a clean interactive or animated product example.
+
+Example command:
+
+“@Orgni prepare everything for tomorrow’s client meeting.”
+
+Then show Orgni completing work:
+
+- Gathered recent emails
+- Found the latest proposal
+- Retrieved account history
+- Identified unresolved issues
+- Prepared the meeting brief
+- Checked relevant calendars
+
+Final state:
+
+“Ready.”
+
+The point of this section is to show that Orgni does not only answer questions.
+
+Users can give Orgni work and receive a completed result.
+
+Keep this section visually simple and believable.
+
+--------------------------------------------------
+5. SPEED / GROWTH BRAND SECTION
+--------------------------------------------------
+
+This should be one of the strongest visual sections on the page.
+
+Headline:
+
+“Move at the speed of your ambition.”
+
+Supporting copy:
+
+“As organisations grow, complexity grows with them. Orgni helps prevent that complexity from becoming operational friction.”
+
+Key line:
+
+“Less waiting. Fewer blockers. Faster operations.”
+
+The visual should strongly communicate acceleration, growth, momentum, or increasing throughput.
+
+Do not use fake business metrics.
+
+Use abstract visual storytelling instead.
+
+--------------------------------------------------
+6. CROSS-BUSINESS USE CASES
+--------------------------------------------------
+
+Headline:
+
+“One operational layer. Across the business.”
+
+Show several business areas.
+
+Logistics:
+“Track shipments, handle exceptions, coordinate updates, and retrieve operational context.”
+
+Finance:
+“Retrieve invoices, answer financial questions, follow up on payments, and route approvals.”
+
+Sales:
+“Prepare account context, surface open issues, coordinate follow-ups, and support meetings.”
+
+Operations:
+“Identify blockers, dependencies, owners, deadlines, and unresolved work.”
+
+Customer Service:
+“Understand customer requests, retrieve context, handle routine work, and escalate exceptions.”
+
+HR:
+“Support onboarding, policies, internal requests, scheduling, and authorised employee information.”
+
+Keep each one concise.
+
+Do not make the site feel industry-specific.
+
+The point is that Orgni can sit across many parts of a business.
+
+--------------------------------------------------
+7. OLYXEE INFRASTRUCTURE STORY
+--------------------------------------------------
+
+Now zoom out from Orgni.
+
+Headline:
+
+“We are building beyond the interface.”
+
+Supporting copy:
+
+“AI models, agents, voice systems, and business software will continue to change. Olyxee is focused on the infrastructure underneath them.”
+
+Then explain that Olyxee is building around:
+
+- organisational context
+- operational intelligence
+- memory
+- authority
+- business state
+- execution
+- intelligent systems
+
+Use this corporate descriptor:
+
+“Research and infrastructure for operational intelligence.”
+
+Do not make the section overly technical.
+
+Keep it understandable to executives while still signalling infrastructure depth.
+
+--------------------------------------------------
+8. MODEL / PLATFORM INDEPENDENCE
+--------------------------------------------------
+
+Communicate that Orgni is not tied to one interface or AI model.
+
+Possible visual:
+
+Teams
+Voice
+Email
+Chat
+API
+Internal Apps
+Other Agents
+
+All connect into:
+
+ORGNI
+
+Then underneath:
+
+Business context
+Memory
+Identity
+Permissions
+Policies
+Operational state
+
+Then underneath:
+
+Models / tools / systems
+
+This section should communicate:
+
+“Teams is an interface, not the product.”
+
+“AI models are capabilities Orgni can use, not Orgni itself.”
+
+Do not over-focus on specific model brands.
+
+If model names are shown, keep them secondary.
+
+--------------------------------------------------
+9. FUTURE DIRECTION
+--------------------------------------------------
+
+Headline:
+
+“From asking for work to work happening automatically.”
+
+Show progression:
+
+Today:
+Human → Orgni → Work
+
+Next:
+Business event → Orgni → Work
+
+Long-term:
+Goals + constraints → continuous intelligent operation
+
+Supporting copy:
+
+“As the infrastructure becomes more capable, routine work can increasingly happen without waiting for someone to initiate every step.”
+
+Do not claim full autonomy exists today.
+
+Clearly frame this as the long-term direction.
+
+--------------------------------------------------
+10. RESEARCH / FINIR
+--------------------------------------------------
+
+Keep Olyxee research visible but secondary to the landing-page business story.
+
+Use a section such as:
+
+“Researching the infrastructure behind operational intelligence.”
+
+Include FinIR and other research without allowing the research section to dominate the homepage.
+
+Do not remove existing valid research links.
+
+--------------------------------------------------
+11. FINAL CTA
+--------------------------------------------------
+
+Headline:
+
+“Keep your business moving.”
+
+Supporting copy:
+
+“See how Orgni can become part of the way your organisation works.”
+
+Primary CTA:
+“Explore Orgni”
+
+Optional secondary CTA:
+“Talk to Olyxee”
+
+--------------------------------------------------
+COPY / BRAND RULES
+--------------------------------------------------
+
+Tone:
+- concise
+- enterprise
+- modern
+- credible
+- ambitious
+- minimal
+- no hype
+- no unnecessary AI buzzwords
+
+Prefer:
+- movement
+- operations
+- speed
+- intelligence
+- execution
+- context
+- growth
+- coordination
+
+Avoid excessive use of:
+- autonomous
+- revolutionary
+- cutting-edge
+- disruptive
+- AI-powered
+- agentic
+- superintelligence
+
+Do not use technical implementation details such as:
+- embeddings
+- vector databases
+- RAG
+- ontology internals
+- tokenisation
+- graph databases
+
+unless they already exist in a technical/research-specific section.
+
+--------------------------------------------------
+DESIGN DIRECTION
+--------------------------------------------------
+
+Keep the current Olyxee visual identity, but make the landing page feel more premium and deliberate.
+
+Prefer:
+- large typography
+- strong spacing
+- clean white/neutral backgrounds
+- subtle motion
+- minimal cards
+- smooth section transitions
+- clear visual hierarchy
+- few but meaningful elements
+
+Avoid:
+- icon clutter
+- excessive cards
+- generic SaaS feature grids
+- excessive gradients
+- stock photos
+- fake dashboards
+- overly futuristic sci-fi visuals
+
+The page should feel closer to an infrastructure/technology company than a typical SaaS startup.
+
+--------------------------------------------------
+IMPLEMENTATION
+--------------------------------------------------
+
+1. Audit the existing main landing page.
+2. Preserve sections that still support this narrative.
+3. Rewrite or remove sections that reflect the old positioning.
+4. Reorder sections if necessary to improve the story.
+5. Preserve all working links.
+6. Preserve mobile responsiveness.
+7. Update landing-page SEO/meta description to align with the new positioning.
+8. Do not change unrelated pages.
+9. Do not break existing routes.
+10. Reuse existing components where appropriate rather than creating unnecessary duplication.
+
+After implementation, report:
+
+- files changed
+- landing-page sections changed
+- old messaging removed
+- new messaging added
+- any structural changes
+- metadata changes
+- anything intentionally left unchanged
+- final landing-page narrative from top to bottom

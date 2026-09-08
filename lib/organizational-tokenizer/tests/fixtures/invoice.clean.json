@@ -1,0 +1,176 @@
+{
+    "extractionId": "ext_inv_001",
+    "tenantId": "tenant_olyxee",
+    "documentRef": "docs/invoices/inv-2026-0042.pdf",
+    "mimeType": "application/pdf",
+    "checksum": "sha256:a3f1c9d2e4b7f08a1c3e5d7f9b2a4c6e8f0b2d4f6a8c0e2f4b6d8f0a2c4e6f8",
+    "observedAt": "2026-07-16T08:00:00Z",
+    "schemaVersion": "0.1.0",
+    "extractionStatus": "COMPLETE",
+    "documentType": "INVOICE",
+    "invoiceNumber": {
+        "value": "INV-2026-0042",
+        "confidence": 0.98,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "section": "header",
+        "raw": "INV-2026-0042"
+    },
+    "invoiceDate": {
+        "value": "2026-07-01",
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "section": "header",
+        "raw": "01 July 2026"
+    },
+    "dueDate": {
+        "value": "2026-07-31",
+        "confidence": 0.95,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "section": "header",
+        "raw": "31 July 2026"
+    },
+    "vendorName": {
+        "value": "Apex Solutions (Pty) Ltd",
+        "confidence": 0.99,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "section": "header"
+    },
+    "vendorId": {
+        "value": "vendor_apex_001",
+        "confidence": 0.90,
+        "method": "RULE_MATCH"
+    },
+    "vendorAddress": {
+        "value": "12 Innovation Drive, Sandton, 2196, South Africa",
+        "confidence": 0.94,
+        "method": "OCR_EXTRACTION"
+    },
+    "vendorVatNumber": {
+        "value": "ZA4012345678",
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION",
+        "page": 1
+    },
+    "buyerName": {
+        "value": "Olyxee AI (Pty) Ltd",
+        "confidence": 0.99,
+        "method": "OCR_EXTRACTION",
+        "page": 1,
+        "section": "header"
+    },
+    "buyerId": {
+        "value": "tenant_olyxee",
+        "confidence": 0.95,
+        "method": "RULE_MATCH"
+    },
+    "buyerAddress": {
+        "value": "25 Tech Park Lane, Cape Town, 8001, South Africa",
+        "confidence": 0.93,
+        "method": "OCR_EXTRACTION"
+    },
+    "subtotal": {
+        "value": 43000.00,
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION",
+        "page": 2,
+        "raw": "R 43,000.00"
+    },
+    "taxAmount": {
+        "value": 6450.00,
+        "confidence": 0.97,
+        "method": "OCR_EXTRACTION",
+        "page": 2,
+        "raw": "R 6,450.00"
+    },
+    "taxRate": {
+        "value": 0.15,
+        "confidence": 0.99,
+        "method": "RULE_MATCH"
+    },
+    "totalAmount": {
+        "value": 49450.00,
+        "confidence": 0.98,
+        "method": "OCR_EXTRACTION",
+        "page": 2,
+        "raw": "R 49,450.00"
+    },
+    "currency": {
+        "value": "ZAR",
+        "confidence": 0.99,
+        "method": "RULE_MATCH"
+    },
+    "lineItems": [
+        {
+            "description": {
+                "value": "AI Model Integration — Phase 1",
+                "confidence": 0.95,
+                "method": "OCR_EXTRACTION",
+                "page": 2
+            },
+            "quantity": {
+                "value": 1,
+                "confidence": 0.99,
+                "method": "OCR_EXTRACTION"
+            },
+            "unitPrice": {
+                "value": 28000.00,
+                "confidence": 0.97,
+                "method": "OCR_EXTRACTION",
+                "raw": "R 28,000.00"
+            },
+            "totalPrice": {
+                "value": 28000.00,
+                "confidence": 0.97,
+                "method": "OCR_EXTRACTION"
+            },
+            "currency": {
+                "value": "ZAR",
+                "confidence": 0.99,
+                "method": "RULE_MATCH"
+            }
+        },
+        {
+            "description": {
+                "value": "Data Pipeline Setup",
+                "confidence": 0.94,
+                "method": "OCR_EXTRACTION",
+                "page": 2
+            },
+            "quantity": {
+                "value": 1,
+                "confidence": 0.99,
+                "method": "OCR_EXTRACTION"
+            },
+            "unitPrice": {
+                "value": 15000.00,
+                "confidence": 0.97,
+                "method": "OCR_EXTRACTION",
+                "raw": "R 15,000.00"
+            },
+            "totalPrice": {
+                "value": 15000.00,
+                "confidence": 0.97,
+                "method": "OCR_EXTRACTION"
+            },
+            "currency": {
+                "value": "ZAR",
+                "confidence": 0.99,
+                "method": "RULE_MATCH"
+            }
+        }
+    ],
+    "paymentTerms": {
+        "value": "Net 30",
+        "confidence": 0.96,
+        "method": "OCR_EXTRACTION"
+    },
+    "purchaseOrderRef": {
+        "value": "PO-OLX-2026-019",
+        "confidence": 0.94,
+        "method": "OCR_EXTRACTION"
+    }
+}

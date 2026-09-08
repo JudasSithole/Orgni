@@ -1,0 +1,18 @@
+MERIDIAN INDUSTRIAL GROUP — GOODS RECEIVED NOTE
+GRN: GRN-2026-331
+Date received: 11 July 2026
+Warehouse: Germiston Plant
+Supplier shown on delivery: Ubuntu Steelworks
+Supplier master ID: SUP-001
+Purchase order: PO-2026-00418
+Supplier invoice: SI-USW-7719
+
+ITEM: Steel pump housings
+QUANTITY ORDERED: 20
+QUANTITY RECEIVED: 20
+QUANTITY ACCEPTED: 19
+QUANTITY QUARANTINED: 1
+
+Received by: Kabelo Dlamini (EMP-007)
+Inspection note: One housing has a surface defect and was moved to quarantine bay Q-3.
+Source reference: receiving ledger row 331. Fictional data.

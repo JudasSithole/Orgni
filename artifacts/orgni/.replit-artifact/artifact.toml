@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Orgni"
+description = "Orgni is an organizational intelligence platform that turns fragmented business documents and systems into connected, reviewable operational knowledge for teams, developers, and AI agents."
+version = "1.0.0"
+id = "artifacts/orgni"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24137
+
+[services.development]
+run = "pnpm --filter @workspace/orgni run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/orgni", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/orgni/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24137"
+BASE_PATH = "/"

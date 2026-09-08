@@ -1,0 +1,29 @@
+{
+  "incident_id": "INC-2026-017",
+  "reported_at": "2026-07-09T10:32:00+02:00",
+  "reported_by": "EMP-010",
+  "owner": "EMP-008",
+  "status": "CONTAINED",
+  "severity": "HIGH",
+  "policy": "SEC-POL-002",
+  "summary": "An unencrypted payroll export was emailed to payroll.test@outside.example instead of the approved fictional processor address.",
+  "affected_records": 11,
+  "data_types": [
+    "employee_id",
+    "bank_account_mask",
+    "gross_pay",
+    "net_pay"
+  ],
+  "actions": [
+    {
+      "at": "2026-07-09T10:47:00+02:00",
+      "action": "Recipient deletion confirmed"
+    },
+    {
+      "at": "2026-07-09T11:05:00+02:00",
+      "action": "Mailbox rule blocked repeat delivery"
+    }
+  ],
+  "root_cause": "Manual address selection and missing outbound DLP rule",
+  "source_ref": "security-case/INC-2026-017"
+}

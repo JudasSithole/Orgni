@@ -1,0 +1,49 @@
+# Orgni crawler policy
+# Public research, product, documentation, and pricing pages may be indexed.
+
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: GPTBot
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+User-agent: CCBot
+Allow: /
+Disallow: /app/
+Disallow: /login
+
+Sitemap: https://orgni.com/sitemap.xml

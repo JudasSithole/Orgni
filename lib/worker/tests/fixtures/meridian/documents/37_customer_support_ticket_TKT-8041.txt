@@ -1,0 +1,18 @@
+CUSTOMER SUPPORT TICKET
+Ticket: TKT-8041
+Opened: 29 June 2026 08:18 SAST
+Customer: Apex Retail (CUST-001)
+Related sales order: SO-2026-0081
+Related delivery: DN-2026-557
+Product: MIG-PMP-100
+Priority: HIGH
+Status: WAITING FOR PARTS
+Owner: Mo Chen (EMP-011)
+
+Customer statement:
+“We ordered 50 pumps but received 46. Please confirm the remaining four and the revised delivery date.”
+
+Orgni-relevant resolution:
+Warehouse confirmed a short delivery of four units. Back-order expected 05 August 2026. No credit note has been issued.
+
+Source reference: support/TKT-8041. All names and data are fictional.

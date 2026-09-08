@@ -1,0 +1,1450 @@
+{
+  "dataset_id": "MIG-ORGNI-HARDTEST-2026-01",
+  "version": "1.0.0",
+  "fictional": true,
+  "counts": {
+    "entities": 35,
+    "relationships": 37,
+    "facts": 60,
+    "policies": 18,
+    "conflicts": 17
+  },
+  "entities": [
+    {
+      "id": "ORG-MIG-001",
+      "type": "COMPANY",
+      "name": "Meridian Industrial Group (Pty) Ltd",
+      "aliases": [
+        "Meridian Industrial Group",
+        "MIG",
+        "Meridian Industrial (Pty) Ltd"
+      ]
+    },
+    {
+      "id": "ORG-APEX-001",
+      "type": "COMPANY",
+      "name": "Apex Retail Holdings Ltd",
+      "aliases": [
+        "Apex Retail"
+      ]
+    },
+    {
+      "id": "ORG-CHM-001",
+      "type": "COMPANY",
+      "name": "Cape Horizon Mining (Pty) Ltd",
+      "aliases": [
+        "Cape Horizon Mining"
+      ]
+    },
+    {
+      "id": "ORG-NSC-001",
+      "type": "COMPANY",
+      "name": "Northstar Components B.V.",
+      "aliases": [
+        "Northstar Components"
+      ]
+    },
+    {
+      "id": "ORG-USW-001",
+      "type": "COMPANY",
+      "name": "Ubuntu Steelworks (Pty) Ltd",
+      "aliases": [
+        "Ubuntu Steelworks",
+        "Ubuntu Steel Works (Pty) Ltd",
+        "Ubuntu Steelworks SA"
+      ]
+    },
+    {
+      "id": "ORG-VFS-001",
+      "type": "COMPANY",
+      "name": "Vector Freight Solutions CC",
+      "aliases": [
+        "Vector Freight"
+      ]
+    },
+    {
+      "id": "ORG-NCA-001",
+      "type": "COMPANY",
+      "name": "Nimbus Cloud Africa (Pty) Ltd",
+      "aliases": []
+    },
+    {
+      "id": "EMP-001",
+      "type": "PERSON",
+      "name": "Naledi Mokoena",
+      "attributes": {
+        "role": "Chief Executive Officer",
+        "department": "Executive"
+      }
+    },
+    {
+      "id": "EMP-002",
+      "type": "PERSON",
+      "name": "Yusuf Patel",
+      "attributes": {
+        "role": "Chief Financial Officer",
+        "department": "Finance"
+      }
+    },
+    {
+      "id": "EMP-003",
+      "type": "PERSON",
+      "name": "Thandi Ndlovu",
+      "attributes": {
+        "role": "Chief Operating Officer",
+        "department": "Operations"
+      }
+    },
+    {
+      "id": "EMP-004",
+      "type": "PERSON",
+      "name": "Liam Jacobs",
+      "attributes": {
+        "role": "Procurement Manager",
+        "department": "Procurement"
+      }
+    },
+    {
+      "id": "EMP-005",
+      "type": "PERSON",
+      "name": "Zanele Khumalo",
+      "attributes": {
+        "role": "Finance Manager",
+        "department": "Finance"
+      }
+    },
+    {
+      "id": "EMP-006",
+      "type": "PERSON",
+      "name": "Aisha Naidoo",
+      "attributes": {
+        "role": "Sales Director",
+        "department": "Sales"
+      }
+    },
+    {
+      "id": "EMP-007",
+      "type": "PERSON",
+      "name": "Kabelo Dlamini",
+      "attributes": {
+        "role": "Warehouse Supervisor",
+        "department": "Warehouse"
+      }
+    },
+    {
+      "id": "EMP-008",
+      "type": "PERSON",
+      "name": "Priya Govender",
+      "attributes": {
+        "role": "IT Security Manager",
+        "department": "IT & Security"
+      }
+    },
+    {
+      "id": "EMP-009",
+      "type": "PERSON",
+      "name": "Peter Molefe",
+      "attributes": {
+        "role": "Project Manager",
+        "department": "PMO"
+      }
+    },
+    {
+      "id": "EMP-010",
+      "type": "PERSON",
+      "name": "Lerato Seabi",
+      "attributes": {
+        "role": "Accounts Payable Clerk",
+        "department": "Finance"
+      }
+    },
+    {
+      "id": "EMP-011",
+      "type": "PERSON",
+      "name": "Mo Chen",
+      "attributes": {
+        "role": "Industrial Engineer",
+        "department": "Manufacturing"
+      }
+    },
+    {
+      "id": "DEPT-FIN",
+      "type": "DEPARTMENT",
+      "name": "Finance"
+    },
+    {
+      "id": "DEPT-PROC",
+      "type": "DEPARTMENT",
+      "name": "Procurement"
+    },
+    {
+      "id": "DEPT-OPS",
+      "type": "DEPARTMENT",
+      "name": "Operations"
+    },
+    {
+      "id": "DEPT-SALES",
+      "type": "DEPARTMENT",
+      "name": "Sales"
+    },
+    {
+      "id": "DEPT-IT",
+      "type": "DEPARTMENT",
+      "name": "IT & Security"
+    },
+    {
+      "id": "LOC-HQ",
+      "type": "LOCATION",
+      "name": "Isando HQ"
+    },
+    {
+      "id": "LOC-PLANT",
+      "type": "LOCATION",
+      "name": "Germiston Plant"
+    },
+    {
+      "id": "LOC-WH",
+      "type": "LOCATION",
+      "name": "Midrand Warehouse"
+    },
+    {
+      "id": "PRJ-ATLAS-26",
+      "type": "PROJECT",
+      "name": "Project Atlas"
+    },
+    {
+      "id": "PROD-100",
+      "type": "PRODUCT",
+      "name": "Industrial Process Pump",
+      "attributes": {
+        "sku": "MIG-PMP-100"
+      }
+    },
+    {
+      "id": "PROD-220",
+      "type": "PRODUCT",
+      "name": "High-pressure Control Valve",
+      "attributes": {
+        "sku": "MIG-VLV-220"
+      }
+    },
+    {
+      "id": "PROD-310",
+      "type": "PRODUCT",
+      "name": "Telemetry Sensor",
+      "attributes": {
+        "sku": "MIG-SNS-310"
+      }
+    },
+    {
+      "id": "AST-CNC-04",
+      "type": "ASSET",
+      "name": "CNC Milling Centre 04"
+    },
+    {
+      "id": "AST-FL-07",
+      "type": "ASSET",
+      "name": "Forklift FL-07"
+    },
+    {
+      "id": "AST-SRV-02",
+      "type": "ASSET",
+      "name": "Application Server SRV-02"
+    },
+    {
+      "id": "ACC-BANK-001",
+      "type": "ACCOUNT",
+      "name": "Fictional Bank Operating Account"
+    },
+    {
+      "id": "ORG-EBT-UNKNOWN",
+      "type": "UNRESOLVED_ORGANISATION",
+      "name": "Eastern Bearings Trading",
+      "master_data_match": false
+    }
+  ],
+  "relationships": [
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-001",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-002",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-002",
+      "to": "EMP-001",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-003",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-003",
+      "to": "EMP-001",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-004",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-004",
+      "to": "EMP-003",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-005",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-005",
+      "to": "EMP-002",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-006",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-006",
+      "to": "EMP-001",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-007",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-007",
+      "to": "EMP-003",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-008",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-008",
+      "to": "EMP-002",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-009",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-009",
+      "to": "EMP-003",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-010",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-010",
+      "to": "EMP-005",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "EMPLOYS",
+      "from": "ORG-MIG-001",
+      "to": "EMP-011",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "REPORTS_TO",
+      "from": "EMP-011",
+      "to": "EMP-003",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "type": "SUPPLIES",
+      "from": "ORG-USW-001",
+      "to": "ORG-MIG-001",
+      "support": [
+        "15_supplier_agreement_USW-2025-03.docx",
+        "07_supplier_invoice_SI-USW-7719.pdf"
+      ]
+    },
+    {
+      "type": "SUPPLIES",
+      "from": "ORG-VFS-001",
+      "to": "ORG-MIG-001",
+      "support": [
+        "17_service_level_agreement_VFS-2025-09.pdf",
+        "40_scanned_invoice_VFS-INV-882.png"
+      ]
+    },
+    {
+      "type": "CONTRACTS_WITH",
+      "from": "ORG-MIG-001",
+      "to": "ORG-APEX-001",
+      "support": [
+        "14_customer_contract_APEX-2024-11.docx"
+      ]
+    },
+    {
+      "type": "CONTRACTS_WITH",
+      "from": "ORG-MIG-001",
+      "to": "ORG-USW-001",
+      "support": [
+        "15_supplier_agreement_USW-2025-03.docx"
+      ]
+    },
+    {
+      "type": "CONTRACTS_WITH",
+      "from": "ORG-MIG-001",
+      "to": "ORG-NCA-001",
+      "support": [
+        "18_non_disclosure_agreement_NDA-2026-014.docx"
+      ]
+    },
+    {
+      "type": "PURCHASES_FROM",
+      "from": "ORG-MIG-001",
+      "to": "ORG-USW-001",
+      "support": [
+        "08_purchase_order_PO-2026-00418.pdf"
+      ]
+    },
+    {
+      "type": "INVOICES",
+      "from": "ORG-MIG-001",
+      "to": "ORG-APEX-001",
+      "support": [
+        "06_customer_invoice_CI-2026-01052.pdf"
+      ]
+    },
+    {
+      "type": "INVOICES",
+      "from": "ORG-USW-001",
+      "to": "ORG-MIG-001",
+      "support": [
+        "07_supplier_invoice_SI-USW-7719.pdf"
+      ]
+    },
+    {
+      "type": "PAYS",
+      "from": "ORG-APEX-001",
+      "to": "ORG-MIG-001",
+      "support": [
+        "13_payment_remittance_RA-2026-0714.pdf",
+        "12_bank_statement_July_2026.xlsx"
+      ]
+    },
+    {
+      "type": "OWNS",
+      "from": "ORG-MIG-001",
+      "to": "AST-CNC-04",
+      "support": [
+        "35_asset_register.xml"
+      ]
+    },
+    {
+      "type": "OWNS",
+      "from": "ORG-MIG-001",
+      "to": "AST-FL-07",
+      "support": [
+        "35_asset_register.xml"
+      ]
+    },
+    {
+      "type": "OWNS",
+      "from": "ORG-MIG-001",
+      "to": "AST-SRV-02",
+      "support": [
+        "35_asset_register.xml"
+      ]
+    },
+    {
+      "type": "MANAGES",
+      "from": "EMP-004",
+      "to": "DEPT-PROC",
+      "support": [
+        "02_organisational_chart_employee_directory.docx",
+        "16_employment_agreement_EMP-004.docx"
+      ]
+    },
+    {
+      "type": "APPROVES",
+      "from": "EMP-004",
+      "to": "PO-2026-00418",
+      "support": [
+        "08_purchase_order_PO-2026-00418.pdf",
+        "38_business_email_thread.html"
+      ]
+    },
+    {
+      "type": "DELIVERS_TO",
+      "from": "ORG-MIG-001",
+      "to": "ORG-APEX-001",
+      "support": [
+        "10_delivery_note_DN-2026-557.pdf"
+      ]
+    },
+    {
+      "type": "ASSIGNED_TO",
+      "from": "EMP-009",
+      "to": "PRJ-ATLAS-26",
+      "support": [
+        "19_expense_claim_EXP-2026-071.docx",
+        "34_project_status_report_Atlas.pptx"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "id": "F-001",
+      "type": "REGISTRATION_NUMBER",
+      "subject": "ORG-MIG-001",
+      "value": "2018/447291/07",
+      "support": [
+        "01_company_registration_certificate.pdf"
+      ]
+    },
+    {
+      "id": "F-002",
+      "type": "VAT_NUMBER",
+      "subject": "ORG-MIG-001",
+      "value": "4760291845",
+      "support": [
+        "01_company_registration_certificate.pdf",
+        "40_scanned_invoice_VFS-INV-882.png"
+      ]
+    },
+    {
+      "id": "F-003",
+      "type": "INVOICE_TOTAL",
+      "subject": "CI-2026-01052",
+      "value": 136275,
+      "currency": "ZAR",
+      "support": [
+        "06_customer_invoice_CI-2026-01052.pdf",
+        "21_general_ledger_export.csv",
+        "39_operational_data.xlsx"
+      ]
+    },
+    {
+      "id": "F-004",
+      "type": "PAYMENT_AMOUNT",
+      "subject": "RA-2026-0714",
+      "value": 90000,
+      "currency": "ZAR",
+      "support": [
+        "13_payment_remittance_RA-2026-0714.pdf",
+        "12_bank_statement_July_2026.xlsx",
+        "21_general_ledger_export.csv"
+      ]
+    },
+    {
+      "id": "F-005",
+      "type": "INVOICE_BALANCE",
+      "subject": "CI-2026-01052",
+      "value": 46275,
+      "currency": "ZAR",
+      "support": [
+        "06_customer_invoice_CI-2026-01052.pdf",
+        "13_payment_remittance_RA-2026-0714.pdf"
+      ]
+    },
+    {
+      "id": "F-006",
+      "type": "PURCHASE_ORDER_TOTAL",
+      "subject": "PO-2026-00418",
+      "value": 254380,
+      "currency": "ZAR",
+      "support": [
+        "08_purchase_order_PO-2026-00418.pdf",
+        "39_operational_data.xlsx"
+      ]
+    },
+    {
+      "id": "F-007",
+      "type": "SUPPLIER_INVOICE_TOTAL",
+      "subject": "SI-USW-7719",
+      "value": 269560,
+      "currency": "ZAR",
+      "support": [
+        "07_supplier_invoice_SI-USW-7719.pdf",
+        "23_accounts_payable_ageing.xlsx",
+        "39_operational_data.xlsx"
+      ]
+    },
+    {
+      "id": "F-008",
+      "type": "DELIVERY_QUANTITY",
+      "subject": "DN-2026-557",
+      "value": 46,
+      "unit": "EA",
+      "support": [
+        "10_delivery_note_DN-2026-557.pdf",
+        "37_customer_support_ticket_TKT-8041.txt"
+      ]
+    },
+    {
+      "id": "F-009",
+      "type": "ORDER_QUANTITY",
+      "subject": "SO-2026-0081",
+      "value": 50,
+      "unit": "EA",
+      "support": [
+        "09_sales_order_SO-2026-0081.xml",
+        "10_delivery_note_DN-2026-557.pdf"
+      ]
+    },
+    {
+      "id": "F-010",
+      "type": "CREDIT_LIMIT",
+      "subject": "ORG-APEX-001",
+      "value": 500000,
+      "currency": "ZAR",
+      "support": [
+        "03_customer_master_list.xlsx",
+        "22_accounts_receivable_ageing.xlsx",
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "F-011",
+      "type": "CREDIT_EXPOSURE",
+      "subject": "ORG-APEX-001",
+      "value": 612480,
+      "currency": "ZAR",
+      "support": [
+        "22_accounts_receivable_ageing.xlsx",
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "F-012",
+      "type": "SLA_EXPIRY",
+      "subject": "SLA-VFS-2025-09",
+      "value": "2026-06-30",
+      "support": [
+        "17_service_level_agreement_VFS-2025-09.pdf",
+        "40_scanned_invoice_VFS-INV-882.png"
+      ]
+    },
+    {
+      "id": "F-013",
+      "type": "SUPPLIER_INVOICE_DATE",
+      "subject": "VFS-INV-882",
+      "value": "2026-07-12",
+      "support": [
+        "40_scanned_invoice_VFS-INV-882.png",
+        "23_accounts_payable_ageing.xlsx"
+      ]
+    },
+    {
+      "id": "F-014",
+      "type": "EMPLOYEE_DEPARTMENT",
+      "subject": "EMP-004",
+      "value": "Procurement",
+      "valid_from": "2023-02-01",
+      "support": [
+        "02_organisational_chart_employee_directory.docx",
+        "16_employment_agreement_EMP-004.docx"
+      ]
+    },
+    {
+      "id": "F-015",
+      "type": "EMPLOYEE_DEPARTMENT_ASSERTION",
+      "subject": "EMP-004",
+      "value": "Operations",
+      "support": [
+        "20_payroll_report_July_2026.xlsx"
+      ],
+      "quality": "CONFLICTING"
+    },
+    {
+      "id": "F-016",
+      "type": "ASSET_LOCATION",
+      "subject": "AST-FL-07",
+      "value": "Germiston Plant",
+      "valid_from": "2026-07-01",
+      "valid_to": "2026-07-19",
+      "support": [
+        "35_asset_register.xml"
+      ]
+    },
+    {
+      "id": "F-017",
+      "type": "ASSET_LOCATION",
+      "subject": "AST-FL-07",
+      "value": "Midrand Warehouse",
+      "valid_from": "2026-07-20",
+      "support": [
+        "32_audit_finding_AF-2026-09.pdf",
+        "36_warehouse_stock_report.xlsx"
+      ],
+      "supersedes": "F-016"
+    },
+    {
+      "id": "F-018",
+      "type": "BOARD_RESOLUTION_EFFECTIVE",
+      "subject": "BR-2026-14",
+      "value": "2026-08-01",
+      "support": [
+        "30_board_meeting_minutes_2026-07-22.docx"
+      ]
+    },
+    {
+      "id": "F-019",
+      "type": "PROCUREMENT_MANAGER_LIMIT",
+      "subject": "EMP-004",
+      "value": 150000,
+      "currency": "ZAR",
+      "valid_to": "2026-07-31",
+      "support": [
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    },
+    {
+      "id": "F-020",
+      "type": "PROCUREMENT_MANAGER_LIMIT",
+      "subject": "EMP-004",
+      "value": 225000,
+      "currency": "ZAR",
+      "valid_from": "2026-08-01",
+      "support": [
+        "29_delegation_of_authority_matrix.xlsx",
+        "30_board_meeting_minutes_2026-07-22.docx"
+      ]
+    },
+    {
+      "id": "F-021",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-MIG-001",
+      "value": "Evidence-linked fact 21",
+      "support": [
+        "01_company_registration_certificate.pdf"
+      ]
+    },
+    {
+      "id": "F-022",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-APEX-001",
+      "value": "Evidence-linked fact 22",
+      "support": [
+        "02_organisational_chart_employee_directory.docx"
+      ]
+    },
+    {
+      "id": "F-023",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-CHM-001",
+      "value": "Evidence-linked fact 23",
+      "support": [
+        "03_customer_master_list.xlsx"
+      ]
+    },
+    {
+      "id": "F-024",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-NSC-001",
+      "value": "Evidence-linked fact 24",
+      "support": [
+        "04_supplier_master_list.csv"
+      ]
+    },
+    {
+      "id": "F-025",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-USW-001",
+      "value": "Evidence-linked fact 25",
+      "support": [
+        "05_product_inventory_catalogue.xlsx"
+      ]
+    },
+    {
+      "id": "F-026",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-VFS-001",
+      "value": "Evidence-linked fact 26",
+      "support": [
+        "06_customer_invoice_CI-2026-01052.pdf"
+      ]
+    },
+    {
+      "id": "F-027",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-NCA-001",
+      "value": "Evidence-linked fact 27",
+      "support": [
+        "07_supplier_invoice_SI-USW-7719.pdf"
+      ]
+    },
+    {
+      "id": "F-028",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-001",
+      "value": "Evidence-linked fact 28",
+      "support": [
+        "08_purchase_order_PO-2026-00418.pdf"
+      ]
+    },
+    {
+      "id": "F-029",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-002",
+      "value": "Evidence-linked fact 29",
+      "support": [
+        "09_sales_order_SO-2026-0081.xml"
+      ]
+    },
+    {
+      "id": "F-030",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-003",
+      "value": "Evidence-linked fact 30",
+      "support": [
+        "10_delivery_note_DN-2026-557.pdf"
+      ]
+    },
+    {
+      "id": "F-031",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-004",
+      "value": "Evidence-linked fact 31",
+      "support": [
+        "11_goods_received_note_GRN-2026-331.txt"
+      ]
+    },
+    {
+      "id": "F-032",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-005",
+      "value": "Evidence-linked fact 32",
+      "support": [
+        "12_bank_statement_July_2026.xlsx"
+      ]
+    },
+    {
+      "id": "F-033",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-006",
+      "value": "Evidence-linked fact 33",
+      "support": [
+        "13_payment_remittance_RA-2026-0714.pdf"
+      ]
+    },
+    {
+      "id": "F-034",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-007",
+      "value": "Evidence-linked fact 34",
+      "support": [
+        "14_customer_contract_APEX-2024-11.docx"
+      ]
+    },
+    {
+      "id": "F-035",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-008",
+      "value": "Evidence-linked fact 35",
+      "support": [
+        "15_supplier_agreement_USW-2025-03.docx"
+      ]
+    },
+    {
+      "id": "F-036",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-009",
+      "value": "Evidence-linked fact 36",
+      "support": [
+        "16_employment_agreement_EMP-004.docx"
+      ]
+    },
+    {
+      "id": "F-037",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-010",
+      "value": "Evidence-linked fact 37",
+      "support": [
+        "17_service_level_agreement_VFS-2025-09.pdf"
+      ]
+    },
+    {
+      "id": "F-038",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "EMP-011",
+      "value": "Evidence-linked fact 38",
+      "support": [
+        "18_non_disclosure_agreement_NDA-2026-014.docx"
+      ]
+    },
+    {
+      "id": "F-039",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "DEPT-FIN",
+      "value": "Evidence-linked fact 39",
+      "support": [
+        "19_expense_claim_EXP-2026-071.docx"
+      ]
+    },
+    {
+      "id": "F-040",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "DEPT-PROC",
+      "value": "Evidence-linked fact 40",
+      "support": [
+        "20_payroll_report_July_2026.xlsx"
+      ]
+    },
+    {
+      "id": "F-041",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "DEPT-OPS",
+      "value": "Evidence-linked fact 41",
+      "support": [
+        "21_general_ledger_export.csv"
+      ]
+    },
+    {
+      "id": "F-042",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "DEPT-SALES",
+      "value": "Evidence-linked fact 42",
+      "support": [
+        "22_accounts_receivable_ageing.xlsx"
+      ]
+    },
+    {
+      "id": "F-043",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "DEPT-IT",
+      "value": "Evidence-linked fact 43",
+      "support": [
+        "23_accounts_payable_ageing.xlsx"
+      ]
+    },
+    {
+      "id": "F-044",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "LOC-HQ",
+      "value": "Evidence-linked fact 44",
+      "support": [
+        "24_budget_financial_forecast.xlsx"
+      ]
+    },
+    {
+      "id": "F-045",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "LOC-PLANT",
+      "value": "Evidence-linked fact 45",
+      "support": [
+        "25_internal_approval_policy.docx"
+      ]
+    },
+    {
+      "id": "F-046",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "LOC-WH",
+      "value": "Evidence-linked fact 46",
+      "support": [
+        "26_procurement_policy.pdf"
+      ]
+    },
+    {
+      "id": "F-047",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "PRJ-ATLAS-26",
+      "value": "Evidence-linked fact 47",
+      "support": [
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "F-048",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "PROD-100",
+      "value": "Evidence-linked fact 48",
+      "support": [
+        "28_information_security_policy.html"
+      ]
+    },
+    {
+      "id": "F-049",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "PROD-220",
+      "value": "Evidence-linked fact 49",
+      "support": [
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    },
+    {
+      "id": "F-050",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "PROD-310",
+      "value": "Evidence-linked fact 50",
+      "support": [
+        "30_board_meeting_minutes_2026-07-22.docx"
+      ]
+    },
+    {
+      "id": "F-051",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "AST-CNC-04",
+      "value": "Evidence-linked fact 51",
+      "support": [
+        "31_incident_report_INC-2026-017.json"
+      ]
+    },
+    {
+      "id": "F-052",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "AST-FL-07",
+      "value": "Evidence-linked fact 52",
+      "support": [
+        "32_audit_finding_AF-2026-09.pdf"
+      ]
+    },
+    {
+      "id": "F-053",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "AST-SRV-02",
+      "value": "Evidence-linked fact 53",
+      "support": [
+        "33_compliance_report_Q2_2026.json"
+      ]
+    },
+    {
+      "id": "F-054",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ACC-BANK-001",
+      "value": "Evidence-linked fact 54",
+      "support": [
+        "34_project_status_report_Atlas.pptx"
+      ]
+    },
+    {
+      "id": "F-055",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-EBT-UNKNOWN",
+      "value": "Evidence-linked fact 55",
+      "support": [
+        "35_asset_register.xml"
+      ]
+    },
+    {
+      "id": "F-056",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-MIG-001",
+      "value": "Evidence-linked fact 56",
+      "support": [
+        "36_warehouse_stock_report.xlsx"
+      ]
+    },
+    {
+      "id": "F-057",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-APEX-001",
+      "value": "Evidence-linked fact 57",
+      "support": [
+        "37_customer_support_ticket_TKT-8041.txt"
+      ]
+    },
+    {
+      "id": "F-058",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-CHM-001",
+      "value": "Evidence-linked fact 58",
+      "support": [
+        "38_business_email_thread.html"
+      ]
+    },
+    {
+      "id": "F-059",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-NSC-001",
+      "value": "Evidence-linked fact 59",
+      "support": [
+        "39_operational_data.xlsx"
+      ]
+    },
+    {
+      "id": "F-060",
+      "type": "SYNTHETIC_OPERATIONAL_FACT",
+      "subject": "ORG-USW-001",
+      "value": "Evidence-linked fact 60",
+      "support": [
+        "40_scanned_invoice_VFS-INV-882.png"
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "id": "POL-01",
+      "rule": "Department manager may approve up to ZAR 25,000.",
+      "support": [
+        "25_internal_approval_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-02",
+      "rule": "Functional manager may approve up to ZAR 150,000 through 31 July 2026.",
+      "support": [
+        "25_internal_approval_policy.docx",
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    },
+    {
+      "id": "POL-03",
+      "rule": "CFO approval is required above ZAR 200,000 before PO release.",
+      "support": [
+        "26_procurement_policy.pdf",
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    },
+    {
+      "id": "POL-04",
+      "rule": "CEO and CFO approval are required above ZAR 500,000.",
+      "support": [
+        "25_internal_approval_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-05",
+      "rule": "Requester may not be sole approver or payment releaser.",
+      "support": [
+        "25_internal_approval_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-06",
+      "rule": "Three written quotations are required above ZAR 100,000.",
+      "support": [
+        "26_procurement_policy.pdf"
+      ]
+    },
+    {
+      "id": "POL-07",
+      "rule": "Invoices must quote a valid purchase order.",
+      "support": [
+        "26_procurement_policy.pdf"
+      ]
+    },
+    {
+      "id": "POL-08",
+      "rule": "Freight or price variance above 2% requires written approval.",
+      "support": [
+        "26_procurement_policy.pdf"
+      ]
+    },
+    {
+      "id": "POL-09",
+      "rule": "Order splitting to avoid thresholds is prohibited.",
+      "support": [
+        "26_procurement_policy.pdf"
+      ]
+    },
+    {
+      "id": "POL-10",
+      "rule": "Emergency procurement must be documented within two business days.",
+      "support": [
+        "26_procurement_policy.pdf"
+      ]
+    },
+    {
+      "id": "POL-11",
+      "rule": "Orders exceeding customer credit limits must be held.",
+      "support": [
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-12",
+      "rule": "Only CFO may approve a credit-limit override.",
+      "support": [
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-13",
+      "rule": "Partial payments follow explicit remittance allocation.",
+      "support": [
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-14",
+      "rule": "Named accounts and MFA are mandatory.",
+      "support": [
+        "28_information_security_policy.html"
+      ]
+    },
+    {
+      "id": "POL-15",
+      "rule": "Confidential exports require approval and encryption.",
+      "support": [
+        "28_information_security_policy.html"
+      ]
+    },
+    {
+      "id": "POL-16",
+      "rule": "Security incidents must be reported within four hours.",
+      "support": [
+        "28_information_security_policy.html"
+      ]
+    },
+    {
+      "id": "POL-17",
+      "rule": "Missing expense receipts are allowed only below ZAR 1,000.",
+      "support": [
+        "19_expense_claim_EXP-2026-071.docx",
+        "25_internal_approval_policy.docx"
+      ]
+    },
+    {
+      "id": "POL-18",
+      "rule": "Procurement Manager limit becomes ZAR 225,000 on 01 August 2026.",
+      "support": [
+        "30_board_meeting_minutes_2026-07-22.docx",
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "EX-01",
+      "scenario": "Invoice amount differs from purchase order",
+      "values": {
+        "po": 254380,
+        "invoice": 269560,
+        "variance": 15180
+      },
+      "support": [
+        "07_supplier_invoice_SI-USW-7719.pdf",
+        "08_purchase_order_PO-2026-00418.pdf"
+      ]
+    },
+    {
+      "id": "EX-02",
+      "scenario": "Payment only partially settles invoice",
+      "values": {
+        "invoice": 136275,
+        "payment": 90000,
+        "remaining": 46275
+      },
+      "support": [
+        "06_customer_invoice_CI-2026-01052.pdf",
+        "13_payment_remittance_RA-2026-0714.pdf",
+        "12_bank_statement_July_2026.xlsx"
+      ]
+    },
+    {
+      "id": "EX-03",
+      "scenario": "Manager approves above authority",
+      "support": [
+        "08_purchase_order_PO-2026-00418.pdf",
+        "25_internal_approval_policy.docx",
+        "29_delegation_of_authority_matrix.xlsx",
+        "38_business_email_thread.html"
+      ]
+    },
+    {
+      "id": "EX-04",
+      "scenario": "Supplier has three name variants",
+      "support": [
+        "04_supplier_master_list.csv",
+        "07_supplier_invoice_SI-USW-7719.pdf",
+        "08_purchase_order_PO-2026-00418.pdf",
+        "11_goods_received_note_GRN-2026-331.txt"
+      ]
+    },
+    {
+      "id": "EX-05",
+      "scenario": "Expired contract but invoice continues",
+      "support": [
+        "17_service_level_agreement_VFS-2025-09.pdf",
+        "40_scanned_invoice_VFS-INV-882.png",
+        "23_accounts_payable_ageing.xlsx"
+      ]
+    },
+    {
+      "id": "EX-06",
+      "scenario": "Employee department disagreement",
+      "values": {
+        "authoritative": "Procurement",
+        "conflicting": "Operations"
+      },
+      "support": [
+        "02_organisational_chart_employee_directory.docx",
+        "16_employment_agreement_EMP-004.docx",
+        "20_payroll_report_July_2026.xlsx"
+      ]
+    },
+    {
+      "id": "EX-07",
+      "scenario": "Delivery short by four units",
+      "support": [
+        "09_sales_order_SO-2026-0081.xml",
+        "10_delivery_note_DN-2026-557.pdf",
+        "37_customer_support_ticket_TKT-8041.txt"
+      ]
+    },
+    {
+      "id": "EX-08",
+      "scenario": "Contract approval clause conflicts with internal policy",
+      "support": [
+        "15_supplier_agreement_USW-2025-03.docx",
+        "26_procurement_policy.pdf",
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    },
+    {
+      "id": "EX-09",
+      "scenario": "Bank payment has no matching invoice",
+      "support": [
+        "12_bank_statement_July_2026.xlsx",
+        "21_general_ledger_export.csv",
+        "39_operational_data.xlsx"
+      ]
+    },
+    {
+      "id": "EX-10",
+      "scenario": "Duplicate customer invoices",
+      "support": [
+        "06_customer_invoice_CI-2026-01052.pdf",
+        "39_operational_data.xlsx"
+      ]
+    },
+    {
+      "id": "EX-11",
+      "scenario": "Customer exceeds credit limit",
+      "support": [
+        "03_customer_master_list.xlsx",
+        "22_accounts_receivable_ageing.xlsx",
+        "27_credit_collections_policy.docx"
+      ]
+    },
+    {
+      "id": "EX-12",
+      "scenario": "Procurement bypasses approval chain",
+      "support": [
+        "08_purchase_order_PO-2026-00418.pdf",
+        "26_procurement_policy.pdf",
+        "38_business_email_thread.html"
+      ]
+    },
+    {
+      "id": "EX-13",
+      "scenario": "Board resolution changes policy prospectively",
+      "support": [
+        "30_board_meeting_minutes_2026-07-22.docx",
+        "29_delegation_of_authority_matrix.xlsx"
+      ]
+    },
+    {
+      "id": "EX-14",
+      "scenario": "Later document corrects earlier asset location",
+      "support": [
+        "35_asset_register.xml",
+        "32_audit_finding_AF-2026-09.pdf",
+        "36_warehouse_stock_report.xlsx"
+      ]
+    },
+    {
+      "id": "EX-15",
+      "scenario": "Unknown entity absent from master data",
+      "entity": "Eastern Bearings Trading",
+      "support": [
+        "04_supplier_master_list.csv",
+        "12_bank_statement_July_2026.xlsx",
+        "21_general_ledger_export.csv"
+      ]
+    },
+    {
+      "id": "EX-16",
+      "scenario": "Expense claim lacks required receipt",
+      "support": [
+        "19_expense_claim_EXP-2026-071.docx",
+        "25_internal_approval_policy.docx"
+      ]
+    },
+    {
+      "id": "EX-17",
+      "scenario": "Security policy violation",
+      "support": [
+        "28_information_security_policy.html",
+        "31_incident_report_INC-2026-017.json",
+        "33_compliance_report_Q2_2026.json"
+      ]
+    }
+  ]
+}
