@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { Check, FileText, Target, UserRound } from "lucide-react";
 
 const orgniMark = `${import.meta.env.BASE_URL}orgni-mark.png`;
@@ -6,6 +7,67 @@ const teamsLogo = `${import.meta.env.BASE_URL}integrations/teams.svg`;
 const xeroLogo = `${import.meta.env.BASE_URL}integrations/xero.svg`;
 
 const ease = [0.2, 0.8, 0.2, 1] as const;
+
+type Stat = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+  compare?: string;
+};
+
+function CountUp({
+  value,
+  prefix = "",
+  suffix = "",
+  reduced,
+}: {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  reduced: boolean;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const [n, setN] = useState(reduced ? value : 0);
+
+  useEffect(() => {
+    if (!inView || reduced) return;
+    const controls = animate(0, value, {
+      duration: 1.2,
+      ease: [0.2, 0.8, 0.2, 1],
+      onUpdate: (v) => setN(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [inView, reduced, value]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {prefix}
+      {n}
+      {suffix}
+    </span>
+  );
+}
+
+function StatBlock({ stat, reduced }: { stat: Stat; reduced: boolean }) {
+  return (
+    <div className="min-w-0">
+      <p className="font-serif text-2xl leading-none tracking-tight md:text-3xl">
+        <CountUp
+          value={stat.value}
+          prefix={stat.prefix}
+          suffix={stat.suffix}
+          reduced={reduced}
+        />
+      </p>
+      <p className="mt-1.5 text-xs font-medium">{stat.label}</p>
+      {stat.compare && (
+        <p className="text-xs text-muted-foreground">{stat.compare}</p>
+      )}
+    </div>
+  );
+}
 
 function Pill({
   children,
@@ -201,6 +263,10 @@ const stages = [
     title: "You ask, Orgni delivers.",
     involvement: "You start every task",
     Visual: TodayVisual,
+    stats: [
+      { value: 3, prefix: "~", suffix: " min", label: "per routine task", compare: "instead of ~45 min by hand" },
+      { value: 200, label: "requests you still make", compare: "one per task, each week" },
+    ] as Stat[],
   },
   {
     label: "Next",
@@ -209,6 +275,10 @@ const stages = [
     title: "The business triggers the work.",
     involvement: "You approve the exceptions",
     Visual: NextVisual,
+    stats: [
+      { value: 0, label: "requests needed", compare: "work starts from the event" },
+      { value: 20, prefix: "~", label: "exceptions reach you", compare: "out of ~200 tasks a week" },
+    ] as Stat[],
   },
   {
     label: "Long-term",
@@ -217,6 +287,10 @@ const stages = [
     title: "You set the goal. Work keeps moving.",
     involvement: "You set direction and limits",
     Visual: LongTermVisual,
+    stats: [
+      { value: 24, suffix: "/7", label: "routine work in motion", compare: "inside the limits you set" },
+      { value: 1, prefix: "~", suffix: " h", label: "of your week on routine", compare: "down from ~150 h across the team" },
+    ] as Stat[],
   },
 ];
 
@@ -295,11 +369,17 @@ export function DirectionSection() {
               </div>
               <p className="mt-2 text-lg font-medium leading-snug">{stage.title}</p>
 
-              <div className="mt-5 min-w-0 rounded-xl bg-muted/50 p-3">
+              <div className="mb-5 mt-5 min-w-0 flex-1 rounded-xl bg-muted/50 p-3">
                 <stage.Visual reduced={reduced} />
               </div>
 
-              <div className="mt-auto flex items-center gap-2 pt-5 text-sm text-muted-foreground">
+              <div className="mt-auto grid grid-cols-2 gap-4 border-t border-border pt-5 ">
+                {stage.stats.map((stat) => (
+                  <StatBlock key={stat.label} stat={stat} reduced={reduced} />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 pt-5 text-sm text-muted-foreground">
                 <UserRound className="h-4 w-4" />
                 {stage.involvement}
               </div>
@@ -309,8 +389,9 @@ export function DirectionSection() {
 
         <p className="mt-8 text-sm text-muted-foreground">
           <FileText className="mr-1.5 inline h-3.5 w-3.5 align-[-2px]" />
-          Today is live. Next and long-term describe where Orgni is heading,
-          not a claim about the product today.
+          Figures are an illustrative example for a team handling ~200 routine
+          tasks a week, not measured results. Today is live; Next and
+          long-term describe where Orgni is heading.
         </p>
       </div>
     </section>
