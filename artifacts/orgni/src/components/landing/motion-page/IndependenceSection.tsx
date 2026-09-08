@@ -1,23 +1,41 @@
 import { motion } from "framer-motion";
+import { Bot, Code2, LayoutGrid, Mic, type LucideIcon } from "lucide-react";
 
-const interfaces = [
-  "Teams",
-  "Voice",
-  "Email",
-  "Chat",
-  "API",
-  "Internal apps",
-  "Other agents",
+type Item = { label: string; logo?: string; icon?: LucideIcon; wordmark?: boolean };
+
+const logo = (file: string) => `${import.meta.env.BASE_URL}integrations/${file}.svg`;
+
+const interfaces: Item[] = [
+  { label: "Microsoft Teams", logo: logo("teams") },
+  { label: "Slack", logo: logo("slack") },
+  { label: "Outlook", logo: logo("outlook") },
+  { label: "Gmail", logo: logo("gmail") },
+  { label: "WhatsApp", logo: logo("whatsapp") },
+  { label: "Voice", icon: Mic },
+  { label: "API", icon: Code2 },
+  { label: "Internal apps", icon: LayoutGrid },
+  { label: "Other agents", icon: Bot },
 ];
 
-const core = [
+const capabilities: Item[] = [
+  { label: "OpenAI", logo: logo("openai") },
+  { label: "Anthropic", logo: logo("anthropic"), wordmark: true },
+  { label: "Gemini", logo: logo("gemini"), wordmark: true },
+  { label: "Salesforce", logo: logo("salesforce") },
+  { label: "SAP", logo: logo("sap") },
+  { label: "Xero", logo: logo("xero") },
+  { label: "Jira", logo: logo("jira") },
+  { label: "GitHub", logo: logo("github") },
+];
+
+const core: Item[] = [
   "Business context",
   "Memory",
   "Identity",
   "Permissions",
   "Policies",
   "Operational state",
-];
+].map((label) => ({ label }));
 
 function Layer({
   label,
@@ -26,7 +44,7 @@ function Layer({
   delay,
 }: {
   label: string;
-  items: string[];
+  items: Item[];
   tone: "light" | "dark" | "muted";
   delay: number;
 }) {
@@ -59,10 +77,18 @@ function Layer({
       <div className="flex flex-wrap gap-2 px-5 pb-5 md:px-6">
         {items.map((item) => (
           <span
-            key={item}
-            className={`rounded-full border px-3 py-1 text-sm ${chip}`}
+            key={item.label}
+            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm ${chip}`}
           >
-            {item}
+            {item.logo && (
+              <img
+                src={item.logo}
+                alt={item.wordmark ? item.label : ""}
+                className={item.wordmark ? "h-3 w-auto object-contain" : "h-4 w-4 object-contain"}
+              />
+            )}
+            {item.icon && <item.icon className="h-4 w-4 opacity-70" />}
+            {!item.wordmark && item.label}
           </span>
         ))}
       </div>
@@ -119,8 +145,8 @@ export function IndependenceSection() {
           <Layer label="Held by Orgni" items={core} tone="dark" delay={0.6} />
           <Connector delay={0.8} />
           <Layer
-            label="Capabilities"
-            items={["Models", "Tools", "Systems"]}
+            label="Models, tools and systems"
+            items={capabilities}
             tone="muted"
             delay={0.9}
           />
