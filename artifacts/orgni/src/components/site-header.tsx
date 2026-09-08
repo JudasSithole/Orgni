@@ -70,7 +70,7 @@ export function SiteHeader({ dark }: { dark?: boolean }) {
         <div className="flex items-center gap-10">
           <Link href="/" className="group flex items-center gap-3">
             <img
-              src={`${import.meta.env.BASE_URL}orgni-logo.png`}
+              src={`${import.meta.env.BASE_URL}orgni-mark.png`}
               alt="Orgni logo"
               className="h-8 w-8 object-contain"
             />
