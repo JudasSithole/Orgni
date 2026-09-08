@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Check } from "lucide-react";
+import {
+  Bell,
+  Calendar,
+  Check,
+  FileText,
+  MessageSquare,
+  Send,
+  Users,
+} from "lucide-react";
 
 const COMMAND = "@Orgni prepare everything for tomorrow’s client meeting.";
 
@@ -15,7 +23,7 @@ const steps = [
 
 const TYPE_MS = 32;
 const STEP_MS = 650;
-const HOLD_MS = 4200;
+const HOLD_MS = 9000;
 
 export function ExperienceSection() {
   const reduced = useReducedMotion() ?? false;
@@ -80,78 +88,181 @@ export function ExperienceSection() {
           viewport={{ amount: 0.15 }}
           className="flex items-center"
         >
-          <div className="w-full max-w-2xl rounded-2xl border border-border bg-background shadow-sm">
-
-            <div className="border-b border-border px-5 py-6 md:px-7">
-              <p className="min-h-[2.6em] text-lg font-medium leading-snug md:text-2xl">
-                <span className="text-primary">{COMMAND.slice(0, 6)}</span>
-                {COMMAND.slice(6, typed)}
-                {!reduced && typed < COMMAND.length && (
-                  <span className="ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] animate-pulse bg-foreground" />
-                )}
-              </p>
+          <div
+            className="w-full overflow-hidden rounded-2xl border border-border bg-white shadow-lg"
+            aria-label="Example conversation with Orgni inside Microsoft Teams"
+          >
+            {/* Window chrome */}
+            <div className="flex items-center gap-2 border-b border-[#e1dfdd] bg-[#f5f5f5] px-4 py-2.5">
+              <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+              <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+              <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+              <span className="ml-3 text-xs font-medium text-[#616161]">
+                Microsoft Teams
+              </span>
             </div>
 
-            <ol className="px-5 py-4 md:px-7">
-              {steps.map((step, i) => {
-                const complete = i < done;
-                const current = i === done && typed === COMMAND.length && !ready;
-                return (
-                  <li
-                    key={step}
-                    className="flex items-center gap-4 border-b border-border/60 py-3 last:border-b-0"
+            <div className="flex">
+              {/* Left rail */}
+              <div className="hidden w-16 shrink-0 flex-col items-center gap-5 border-r border-[#e1dfdd] bg-[#ebebeb] py-4 sm:flex">
+                {[
+                  { label: "Activity", icon: Bell },
+                  { label: "Chat", icon: MessageSquare, active: true },
+                  { label: "Teams", icon: Users },
+                  { label: "Calendar", icon: Calendar },
+                ].map(({ label, icon: Icon, active: on }) => (
+                  <div
+                    key={label}
+                    className={`flex flex-col items-center gap-1 text-[10px] ${
+                      on ? "text-[#5b5fc7]" : "text-[#616161]"
+                    }`}
                   >
-                    <span
-                      className={`flex h-5 w-5 shrink-0 items-center justify-center border transition-colors duration-300 ${
-                        complete
-                          ? "border-foreground bg-foreground text-background"
-                          : current
-                            ? "border-primary"
-                            : "border-border"
-                      }`}
-                    >
-                      {complete && <Check className="h-3 w-3" strokeWidth={3} />}
-                      {current && (
-                        <span className="h-1.5 w-1.5 animate-pulse bg-primary" />
-                      )}
-                    </span>
-                    <span
-                      className={`text-base transition-colors duration-300 md:text-lg ${
-                        complete ? "text-foreground" : "text-muted-foreground/60"
-                      }`}
-                    >
-                      {step}
-                    </span>
-                  </li>
-                );
-              })}
-            </ol>
+                    <Icon className="h-5 w-5" strokeWidth={on ? 2.2 : 1.8} />
+                    {label}
+                  </div>
+                ))}
+              </div>
 
-            <div className="flex min-h-16 items-center justify-between border-t border-border px-5 md:px-7">
-              <span className="text-sm text-muted-foreground">Status</span>
-              <AnimatePresence mode="wait" initial={false}>
-                {ready ? (
-                  <motion.span
-                    key="ready"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-lg font-medium text-primary"
-                  >
-                    Ready.
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="working"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-sm text-muted-foreground"
-                  >
-                    {typed < COMMAND.length ? "Listening" : "Working"}
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              {/* Conversation */}
+              <div className="flex min-w-0 flex-1 flex-col">
+                <div className="flex items-center gap-3 border-b border-[#e1dfdd] px-4 py-3">
+                  <img
+                    src={`${import.meta.env.BASE_URL}orgni-logo.png`}
+                    alt=""
+                    className="h-8 w-8 rounded-md object-contain"
+                  />
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-[#242424]">
+                      Orgni
+                    </p>
+                    <p className="text-xs text-[#616161]">Available</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4 bg-[#f5f5f5] px-4 py-5 md:px-6">
+                  {/* User message */}
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#5b5fc7] text-xs font-semibold text-white">
+                      SM
+                    </span>
+                    <div className="min-w-0">
+                      <p className="mb-1 text-xs text-[#616161]">
+                        Sarah Mokoena <span className="ml-2">09:14</span>
+                      </p>
+                      <div className="rounded-lg rounded-tl-none bg-[#e8ebfa] px-4 py-3 text-[15px] leading-snug text-[#242424]">
+                        <span className="font-semibold text-[#5b5fc7]">
+                          {COMMAND.slice(0, 6)}
+                        </span>
+                        {COMMAND.slice(6, typed)}
+                        {!reduced && typed < COMMAND.length && (
+                          <span className="ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] animate-pulse bg-[#242424]" />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Orgni reply */}
+                  <AnimatePresence>
+                    {typed === COMMAND.length && (
+                      <motion.div
+                        key="reply"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-start gap-3"
+                      >
+                        <img
+                          src={`${import.meta.env.BASE_URL}orgni-logo.png`}
+                          alt=""
+                          className="h-8 w-8 shrink-0 rounded-full object-contain"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <p className="mb-1 text-xs text-[#616161]">
+                            Orgni{" "}
+                            <span className="ml-1 rounded bg-[#e1dfdd] px-1 text-[10px] font-medium">
+                              APP
+                            </span>
+                            <span className="ml-2">09:14</span>
+                          </p>
+                          <div className="rounded-lg rounded-tl-none border border-[#e1dfdd] bg-white px-4 py-3 text-[15px] text-[#242424]">
+                            <p className="leading-snug">
+                              {ready
+                                ? "Done. Here is your brief for tomorrow’s meeting with Halden Logistics."
+                                : "On it. Preparing everything for tomorrow’s meeting…"}
+                            </p>
+                            <ul className="mt-3 space-y-2">
+                              {steps.map((step, i) => {
+                                const complete = i < done;
+                                const current = i === done && !ready;
+                                return (
+                                  <li
+                                    key={step}
+                                    className={`flex items-center gap-2.5 text-sm transition-colors duration-300 ${
+                                      complete
+                                        ? "text-[#242424]"
+                                        : current
+                                          ? "text-[#616161]"
+                                          : "text-[#a19f9d]"
+                                    }`}
+                                  >
+                                    <span
+                                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${
+                                        complete
+                                          ? "bg-[#13a10e] text-white"
+                                          : current
+                                            ? "border border-[#5b5fc7]"
+                                            : "border border-[#c8c6c4]"
+                                      }`}
+                                    >
+                                      {complete && (
+                                        <Check className="h-2.5 w-2.5" strokeWidth={3} />
+                                      )}
+                                      {current && (
+                                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#5b5fc7]" />
+                                      )}
+                                    </span>
+                                    {step}
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                            <AnimatePresence>
+                              {ready && (
+                                <motion.div
+                                  key="attachment"
+                                  initial={{ opacity: 0, y: 6 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  className="mt-4 flex items-center gap-3 rounded-md border border-[#e1dfdd] bg-[#faf9f8] px-3 py-2.5"
+                                >
+                                  <span className="flex h-9 w-9 items-center justify-center rounded bg-[#2b579a] text-white">
+                                    <FileText className="h-4 w-4" />
+                                  </span>
+                                  <div className="min-w-0 flex-1">
+                                    <p className="truncate text-sm font-medium">
+                                      Halden Logistics – Meeting brief.docx
+                                    </p>
+                                    <p className="text-xs text-[#616161]">
+                                      Shared with you · Ready
+                                    </p>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Compose box */}
+                <div className="border-t border-[#e1dfdd] bg-white px-4 py-3">
+                  <div className="flex items-center justify-between rounded-md border border-[#c8c6c4] px-3 py-2 text-sm text-[#a19f9d]">
+                    Type a message
+                    <Send className="h-4 w-4 text-[#5b5fc7]" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
