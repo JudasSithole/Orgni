@@ -59,31 +59,28 @@ export function ExperienceSection() {
   const ready = done === steps.length;
 
   return (
-    <section className="border-b border-border bg-muted/40">
-      <div className="mx-auto grid max-w-[1600px] border-x border-border lg:grid-cols-12">
-        <div className="px-6 py-16 md:px-12 md:py-24 lg:col-span-4 lg:border-r lg:border-border">
-          <p className="orgni-kicker mb-10">The experience</p>
-          <h2 className="font-serif text-4xl leading-[1.02] md:text-5xl">
+    <section className="bg-muted/40">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[2fr_3fr] lg:gap-16">
+        <motion.div initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}>
+          <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
             Give Orgni work. Get the result.
           </h2>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-            Orgni does not only answer questions. Hand it a piece of work and
-            it comes back completed, with the context gathered from across the
-            business.
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+            Hand Orgni a task and it comes back done, with the context gathered
+            from across the business.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
           onViewportEnter={() => setActive(true)}
           onViewportLeave={() => setActive(false)}
           viewport={{ amount: 0.15 }}
-          className="flex items-center px-6 py-12 md:px-12 md:py-20 lg:col-span-8"
+          className="flex items-center"
         >
-          <div className="w-full max-w-2xl border border-border bg-background shadow-sm">
-            <div className="flex items-center justify-between border-b border-border px-5 py-3">
-              <span className="orgni-index">Request</span>
-              <span className="orgni-index">Orgni</span>
-            </div>
+          <div className="w-full max-w-2xl rounded-2xl border border-border bg-background shadow-sm">
 
             <div className="border-b border-border px-5 py-6 md:px-7">
               <p className="min-h-[2.6em] text-lg font-medium leading-snug md:text-2xl">
@@ -131,7 +128,7 @@ export function ExperienceSection() {
             </ol>
 
             <div className="flex min-h-16 items-center justify-between border-t border-border px-5 md:px-7">
-              <span className="orgni-index">Status</span>
+              <span className="text-sm text-muted-foreground">Status</span>
               <AnimatePresence mode="wait" initial={false}>
                 {ready ? (
                   <motion.span
@@ -139,7 +136,7 @@ export function ExperienceSection() {
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="font-serif text-2xl text-primary"
+                    className="text-lg font-medium text-primary"
                   >
                     Ready.
                   </motion.span>
@@ -149,7 +146,7 @@ export function ExperienceSection() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="font-mono text-xs font-bold uppercase text-muted-foreground"
+                    className="text-sm text-muted-foreground"
                   >
                     {typed < COMMAND.length ? "Listening" : "Working"}
                   </motion.span>

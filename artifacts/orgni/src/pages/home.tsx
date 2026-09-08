@@ -10,7 +10,6 @@ import { UseCasesSection } from "@/components/landing/motion-page/UseCasesSectio
 import { InfrastructureStorySection } from "@/components/landing/motion-page/InfrastructureStorySection";
 import { IndependenceSection } from "@/components/landing/motion-page/IndependenceSection";
 import { DirectionSection } from "@/components/landing/motion-page/DirectionSection";
-import { ResearchSection } from "@/components/landing/motion-page/ResearchSection";
 import { KeepMovingCta } from "@/components/landing/motion-page/KeepMovingCta";
 
 export default function Home() {
@@ -35,7 +34,6 @@ export default function Home() {
         <InfrastructureStorySection />
         <IndependenceSection />
         <DirectionSection />
-        <ResearchSection />
         <KeepMovingCta />
       </main>
 

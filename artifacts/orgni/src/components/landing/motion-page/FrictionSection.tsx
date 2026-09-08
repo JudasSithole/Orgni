@@ -163,43 +163,31 @@ export function FrictionSection() {
   const reduced = useReducedMotion() ?? false;
 
   return (
-    <section className="border-b border-border">
-      <div className="mx-auto max-w-[1600px] border-x border-border">
-        <div className="grid lg:grid-cols-12">
-          <div className="border-b border-border p-6 lg:col-span-3 lg:border-b-0 lg:border-r lg:p-8">
-            <span className="orgni-index">OLX / 002 — GROWTH</span>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="px-6 py-16 md:px-12 md:py-24 lg:col-span-9"
-          >
-            <h2 className="max-w-4xl font-serif text-4xl leading-[1.02] md:text-6xl">
-              Growth should not create friction.
-            </h2>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              As businesses grow, so do the people, systems, conversations,
-              decisions, and dependencies required to keep them running.
-            </p>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed md:text-xl">
-              Work should not stop because someone is waiting for an answer, a
-              document, an approval, an update, or another person.
-            </p>
-          </motion.div>
-        </div>
+    <section className="bg-muted/40">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <motion.div initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }} className="max-w-2xl">
+          <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
+            Growth should not create friction.
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            Work should not stop because someone is waiting for an answer, a
+            document, an approval, or another person.
+          </p>
+        </motion.div>
 
-        <div className="grid border-t border-border md:grid-cols-2">
-          <div className="border-b border-border p-6 md:border-b-0 md:border-r md:p-10">
-            <p className="orgni-index mb-6">Without an operational layer</p>
-            <div className="aspect-[520/380]">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-background p-6 md:p-8">
+            <p className="text-sm font-medium text-muted-foreground">Without Orgni</p>
+            <div className="mt-4 aspect-[520/380]">
               <ComplexityVisual reduced={reduced} />
             </div>
           </div>
-          <div className="p-6 md:p-10">
-            <p className="orgni-index mb-6 !text-primary">With Orgni</p>
-            <div className="aspect-[520/380]">
+          <div className="rounded-2xl border border-border bg-background p-6 md:p-8">
+            <p className="text-sm font-medium text-primary">With Orgni</p>
+            <div className="mt-4 aspect-[520/380]">
               <FlowThroughVisual reduced={reduced} />
             </div>
           </div>

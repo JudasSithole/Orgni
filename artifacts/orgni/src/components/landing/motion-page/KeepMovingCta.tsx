@@ -5,57 +5,30 @@ import { OLYXEE_CONTACT_URL, ORGNI_PRODUCT_URL } from "@/lib/links";
 
 export function KeepMovingCta() {
   return (
-    <section className="border-b border-border">
-      <div className="mx-auto grid max-w-[1600px] border-x border-border lg:grid-cols-12">
-        <div className="hidden border-r border-border p-8 lg:col-span-2 lg:flex lg:flex-col lg:justify-between">
-          <span className="orgni-index">OLX / NEXT</span>
-          <span className="font-serif text-6xl leading-none text-primary">→</span>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+    <section className="bg-muted/40">
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="px-6 py-20 md:px-12 md:py-28 lg:col-span-7"
-        >
-          <p className="orgni-kicker mb-10">Get started</p>
-          <h2 className="font-serif text-5xl leading-[0.98] md:text-7xl">
-            Keep your business
-            <br />
-            <span className="text-primary">moving.</span>
-          </h2>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            See how Orgni can become part of the way your organisation works.
-          </p>
-        </motion.div>
-
-        <div className="grid border-t border-border lg:col-span-3 lg:border-l lg:border-t-0">
-          <Link
-            href={ORGNI_PRODUCT_URL}
-            className="group flex min-h-52 flex-col justify-between bg-primary p-7 text-primary-foreground transition-colors hover:bg-foreground md:p-10"
-          >
-            <span className="orgni-index !text-primary-foreground/70">
-              Flagship product
-            </span>
-            <div className="flex items-end justify-between">
-              <span className="font-serif text-4xl leading-none">
-                Explore
-                <br />
-                Orgni
-              </span>
-              <ArrowUpRight className="h-8 w-8 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-            </div>
+          transition={{ duration: 0.5 }}
+        className="mx-auto max-w-6xl px-6 py-24 text-center md:py-32"
+      >
+        <h2 className="font-serif text-4xl leading-tight tracking-tight md:text-6xl">
+          Keep your business <span className="text-primary">moving.</span>
+        </h2>
+        <p className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+          See how Orgni can become part of the way your organisation works.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href={ORGNI_PRODUCT_URL} className="inline-flex h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition-colors hover:bg-primary">
+            Explore Orgni
+            <ArrowUpRight className="h-4 w-4" />
           </Link>
-          <a
-            href={OLYXEE_CONTACT_URL}
-            className="flex min-h-28 items-center justify-between border-t border-border p-7 font-mono text-xs font-bold uppercase transition-colors hover:bg-muted md:p-10"
-          >
+          <a href={OLYXEE_CONTACT_URL} className="inline-flex h-12 items-center gap-2 rounded-full border border-border px-6 text-sm font-medium transition-colors hover:border-foreground">
             Talk to Olyxee
-            <ArrowUpRight className="h-5 w-5" />
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

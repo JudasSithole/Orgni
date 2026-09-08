@@ -47,20 +47,20 @@ function Layer({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay }}
-      className={`border ${shell}`}
+      className={`rounded-2xl border ${shell}`}
     >
-      <div className="flex items-center justify-between px-5 py-3 md:px-7">
+      <div className="flex items-center justify-between px-5 pt-4 pb-2 md:px-6">
         <span
-          className={`orgni-index ${tone === "dark" ? "!text-white/55" : ""}`}
+          className={`text-sm font-medium ${tone === "dark" ? "text-white/60" : "text-muted-foreground"}`}
         >
           {label}
         </span>
       </div>
-      <div className="flex flex-wrap gap-2 px-5 pb-5 md:px-7 md:pb-6">
+      <div className="flex flex-wrap gap-2 px-5 pb-5 md:px-6">
         {items.map((item) => (
           <span
             key={item}
-            className={`border px-3 py-1.5 font-mono text-[11px] font-bold uppercase ${chip}`}
+            className={`rounded-full border px-3 py-1 text-sm ${chip}`}
           >
             {item}
           </span>
@@ -86,61 +86,44 @@ function Connector({ delay }: { delay: number }) {
 
 export function IndependenceSection() {
   return (
-    <section className="border-b border-border bg-muted/40">
-      <div className="mx-auto grid max-w-[1600px] border-x border-border lg:grid-cols-12">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+    <section>
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-2 lg:gap-16">
+        <motion.div initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="px-6 py-16 md:px-12 md:py-24 lg:col-span-5 lg:border-r lg:border-border"
-        >
-          <p className="orgni-kicker mb-10">Independence</p>
-          <h2 className="font-serif text-4xl leading-[1.02] md:text-5xl">
+          transition={{ duration: 0.5 }}>
+          <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
             Not tied to one interface. Not tied to one model.
           </h2>
-          <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <p>
-              <span className="text-foreground">Teams is an interface,</span>{" "}
-              not the product. People reach Orgni from wherever work already
-              happens.
-            </p>
-            <p>
-              <span className="text-foreground">
-                AI models are capabilities Orgni can use,
-              </span>{" "}
-              not Orgni itself. As models and tools change, the business
-              context, memory, and permissions underneath stay in place.
-            </p>
-          </div>
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+            People reach Orgni from wherever work already happens. As models
+            and tools change, your business context and permissions stay in
+            place.
+          </p>
         </motion.div>
 
-        <div className="px-6 py-12 md:px-12 md:py-20 lg:col-span-7">
-          <div className="mx-auto max-w-2xl">
-            <Layer label="Interfaces" items={interfaces} tone="light" delay={0} />
-            <Connector delay={0.25} />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: 0.35 }}
-              className="flex items-center justify-between border border-primary bg-primary px-5 py-5 text-primary-foreground md:px-7"
-            >
-              <span className="font-serif text-3xl md:text-4xl">Orgni</span>
-              <span className="orgni-index !text-primary-foreground/70">
-                Operational layer
-              </span>
-            </motion.div>
-            <Connector delay={0.5} />
-            <Layer label="Held by Orgni" items={core} tone="dark" delay={0.6} />
-            <Connector delay={0.8} />
-            <Layer
-              label="Capabilities"
-              items={["Models", "Tools", "Systems"]}
-              tone="muted"
-              delay={0.9}
-            />
-          </div>
+        <div className="mx-auto w-full max-w-xl">
+          <Layer label="Interfaces" items={interfaces} tone="light" delay={0} />
+          <Connector delay={0.25} />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.35 }}
+            className="flex items-center justify-between rounded-2xl bg-primary px-5 py-5 text-primary-foreground md:px-6"
+          >
+            <span className="text-2xl font-medium">Orgni</span>
+            <span className="text-sm text-primary-foreground/80">Operational layer</span>
+          </motion.div>
+          <Connector delay={0.5} />
+          <Layer label="Held by Orgni" items={core} tone="dark" delay={0.6} />
+          <Connector delay={0.8} />
+          <Layer
+            label="Capabilities"
+            items={["Models", "Tools", "Systems"]}
+            tone="muted"
+            delay={0.9}
+          />
         </div>
       </div>
     </section>

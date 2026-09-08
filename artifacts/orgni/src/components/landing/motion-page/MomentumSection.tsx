@@ -55,39 +55,21 @@ export function MomentumSection() {
   const reduced = useReducedMotion() ?? false;
 
   return (
-    <section className="border-b border-border bg-foreground text-background">
-      <div className="mx-auto grid max-w-[1600px] border-x border-white/20 lg:grid-cols-12">
-        <div className="hidden border-r border-white/20 p-8 lg:col-span-1 lg:flex lg:flex-col lg:justify-between">
-          <span className="orgni-index !text-white/55">OLX / 005</span>
-          <span className="font-serif text-6xl leading-none text-primary">→</span>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+    <section className="bg-foreground text-background">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:py-28 lg:grid-cols-2 lg:gap-16">
+        <motion.div initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="px-6 py-20 md:px-12 md:py-32 lg:col-span-6 lg:px-14"
-        >
-          <p className="orgni-kicker mb-10 text-white/70">Momentum</p>
-          <h2 className="font-serif text-5xl leading-[0.98] md:text-7xl lg:text-8xl">
+          transition={{ duration: 0.5 }}>
+          <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
             Move at the speed of your ambition.
           </h2>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
-            As organisations grow, complexity grows with them. Orgni helps
-            prevent that complexity from becoming operational friction.
-          </p>
-          <p className="mt-10 font-mono text-sm font-bold uppercase md:text-base">
-            <span className="text-white/60">Less waiting.</span>{" "}
-            <span className="text-white/80">Fewer blockers.</span>{" "}
-            <span className="text-primary">Faster operations.</span>
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-white/70">
+            Less waiting. Fewer blockers. Faster operations.
           </p>
         </motion.div>
-
-        <div className="border-t border-white/20 p-6 md:p-10 lg:col-span-5 lg:border-l lg:border-t-0 lg:p-14">
-          <div className="h-full min-h-[320px]">
-            <AccelerationVisual reduced={reduced} />
-          </div>
+        <div className="h-[280px] md:h-[320px]">
+          <AccelerationVisual reduced={reduced} />
         </div>
       </div>
     </section>

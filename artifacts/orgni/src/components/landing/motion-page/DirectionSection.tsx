@@ -4,52 +4,41 @@ import { ArrowRight } from "lucide-react";
 const stages = [
   {
     label: "Today",
-    chain: ["Human", "Orgni", "Work"],
+    chain: ["You ask", "Orgni", "Work done"],
     note: "Someone asks. Orgni gathers the context and completes the work.",
     live: true,
   },
   {
     label: "Next",
-    chain: ["Business event", "Orgni", "Work"],
-    note: "A shipment slips, an invoice lands, a contract changes — and the routine follow-through begins without a prompt.",
+    chain: ["Business event", "Orgni", "Work done"],
+    note: "Something changes in the business and the routine follow-through starts on its own.",
     live: false,
   },
   {
     label: "Long-term",
-    chain: ["Goals + constraints", "Continuous intelligent operation"],
-    note: "The organisation sets the direction and the boundaries; routine operation keeps moving within them.",
+    chain: ["Goals set", "Continuous operation"],
+    note: "You set the direction and the boundaries. Routine work keeps moving within them.",
     live: false,
   },
 ];
 
 export function DirectionSection() {
   return (
-    <section className="border-b border-border">
-      <div className="mx-auto max-w-[1600px] border-x border-border">
-        <div className="grid lg:grid-cols-12">
-          <div className="border-b border-border p-6 lg:col-span-3 lg:border-b-0 lg:border-r lg:p-8">
-            <span className="orgni-index">OLX / 009 — DIRECTION</span>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="px-6 py-16 md:px-12 md:py-24 lg:col-span-9"
-          >
-            <h2 className="max-w-4xl font-serif text-4xl leading-[1.02] md:text-6xl">
-              From asking for work to work happening automatically.
-            </h2>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              As the infrastructure becomes more capable, routine work can
-              increasingly happen without waiting for someone to initiate every
-              step. This is the direction we are building towards, not a claim
-              about today.
-            </p>
-          </motion.div>
-        </div>
+    <section className="bg-muted/40">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <motion.div initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }} className="max-w-2xl">
+          <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
+            From asking for work to work happening automatically.
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            This is where we are heading, not a claim about today.
+          </p>
+        </motion.div>
 
-        <div className="grid gap-px border-t border-border bg-border lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {stages.map((stage, i) => (
             <motion.div
               key={stage.label}
@@ -57,39 +46,35 @@ export function DirectionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 * i }}
-              className="flex min-h-64 flex-col justify-between bg-background p-6 md:p-8"
+              className="rounded-2xl border border-border bg-background p-6 md:p-7"
             >
-              <div className="flex items-center justify-between">
-                <span className="orgni-index">{stage.label}</span>
+              <div className="flex items-center justify-between text-sm">
+                <span className="font-medium">{stage.label}</span>
                 <span
-                  className={`font-mono text-[11px] font-bold uppercase ${
-                    stage.live ? "text-primary" : "text-muted-foreground/60"
+                  className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                    stage.live
+                      ? "bg-primary/10 text-primary"
+                      : "bg-muted text-muted-foreground"
                   }`}
                 >
-                  {stage.live ? "Available" : "Direction"}
+                  {stage.live ? "Available now" : "Coming"}
                 </span>
               </div>
-              <div className="mt-10">
-                <p className="flex flex-wrap items-center gap-x-3 gap-y-2 font-serif text-2xl md:text-3xl">
-                  {stage.chain.map((item, j) => (
-                    <span key={item} className="inline-flex items-center gap-3">
-                      <span
-                        className={
-                          item === "Orgni" ? "text-primary" : undefined
-                        }
-                      >
-                        {item}
-                      </span>
-                      {j < stage.chain.length - 1 && (
-                        <ArrowRight className="h-5 w-5 text-muted-foreground" />
-                      )}
+              <p className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-lg font-medium">
+                {stage.chain.map((item, j) => (
+                  <span key={item} className="inline-flex items-center gap-2">
+                    <span className={item === "Orgni" ? "text-primary" : undefined}>
+                      {item}
                     </span>
-                  ))}
-                </p>
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  {stage.note}
-                </p>
-              </div>
+                    {j < stage.chain.length - 1 && (
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    )}
+                  </span>
+                ))}
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                {stage.note}
+              </p>
             </motion.div>
           ))}
         </div>

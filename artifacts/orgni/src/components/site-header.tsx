@@ -5,13 +5,11 @@ import {
   X,
   ChevronDown,
   ArrowRight,
-  Bot,
-  Book,
   type LucideIcon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { LOGIN_URL } from "@/lib/links";
+import { LOGIN_URL, OLYXEE_CONTACT_URL } from "@/lib/links";
 
 type NavItem = {
   title: string;
@@ -28,38 +26,14 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    title: "Product",
-    href: "/infrastructure",
-    match: ["/infrastructure"],
-  },
-  {
     title: "Use cases",
     href: "/use-cases",
     match: ["/use-cases"],
   },
   {
-    title: "Research",
-    href: "/research",
-    match: ["/research", "/thesis"],
-  },
-  {
-    title: "Developers",
-    href: "/developers",
-    match: ["/developers", "/docs", "/api-reference", "/agents"],
-    dropdown: [
-      {
-        title: "Agents",
-        href: "/developers",
-        icon: Bot,
-        desc: "Power your agent with Orgni: API, MCP and SDK quickstart.",
-      },
-      {
-        title: "Documentation",
-        href: "/docs",
-        icon: Book,
-        desc: "Guides, core concepts, and integration walkthroughs.",
-      },
-    ],
+    title: "Contact",
+    href: OLYXEE_CONTACT_URL,
+    external: true,
   },
 ];
 

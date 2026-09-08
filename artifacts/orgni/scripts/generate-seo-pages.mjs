@@ -20,20 +20,6 @@ const pages = [
     schemaType: "CollectionPage",
   },
   {
-    path: "/infrastructure",
-    title: "Organisational Intelligence Infrastructure - Orgni",
-    description:
-      "Connect business systems, documents, and AI agents through governed organisational context with traceable evidence.",
-    schemaType: "WebPage",
-  },
-  {
-    path: "/developers",
-    title: "Orgni for Developers and AI Agents",
-    description:
-      "Give AI agents governed access to organisational identity, relationships, policies, evidence, and operational state.",
-    schemaType: "TechArticle",
-  },
-  {
     path: "/pricing",
     title: "Orgni Pricing - Start with Organisational Intelligence",
     description:
@@ -46,14 +32,6 @@ const pages = [
     description:
       "Learn how Orgni turns organisational evidence into structured operational intelligence and how developers build with it.",
     schemaType: "TechArticle",
-  },
-  {
-    path: "/research",
-    title: "Organisational Intelligence Research - Orgni",
-    description:
-      "Research on verified organisational context and reliable infrastructure for AI systems operating inside businesses.",
-    schemaType: "CollectionPage",
-    type: "article",
   },
   {
     path: "/thesis",

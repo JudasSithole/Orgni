@@ -41,22 +41,6 @@ export function SiteFooter({ dark = false }: { dark?: boolean }) {
                   Use Cases
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/infrastructure"
-                  className="text-muted-foreground hover:text-foreground transition-colors font-light text-sm"
-                >
-                  Infrastructure
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/developers"
-                  className="text-muted-foreground hover:text-foreground transition-colors font-light text-sm"
-                >
-                  Developers
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -65,14 +49,6 @@ export function SiteFooter({ dark = false }: { dark?: boolean }) {
               Resources
             </h3>
             <ul className="space-y-4">
-              <li>
-                <Link
-                  href="/research"
-                  className="text-muted-foreground hover:text-foreground transition-colors font-light text-sm"
-                >
-                  Research
-                </Link>
-              </li>
               <li>
                 <Link
                   href="/docs"
