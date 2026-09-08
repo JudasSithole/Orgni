@@ -1,48 +1,30 @@
 # Orgni
 
-> Orgni is organisational intelligence infrastructure. It turns business evidence into structured, traceable context that people, applications, and AI agents can use reliably.
+> Orgni is an operational layer for businesses. People give it work from wherever they already work (Microsoft Teams, Slack, email, WhatsApp, voice or API); Orgni gathers the business context, works across the company's systems, and returns the finished result. It is built by Olyxee, South Africa.
 
-Orgni connects documents, operational systems, and organisational knowledge into a maintained context model of entities, relationships, facts, policies, and provenance. It is built by Olyxee.
+## What Orgni does
 
-## Core capabilities
+- Takes a request in plain language (for example "@Orgni prepare everything for tomorrow's client meeting") and completes it: reads the relevant documents, contacts the right people, updates systems, and returns the output.
+- Works across business systems such as Outlook, Salesforce, Xero, Jira, HubSpot, SAP, GitHub and calendars.
+- Keeps business context, memory, identity, permissions and policies in one place, independent of any single interface or AI model (OpenAI, Anthropic, Gemini).
+- Direction: from work that is requested today, to work triggered by business events, to routine work that runs continuously within goals and limits set by the business.
 
-- Document intelligence: extracts structured evidence from business documents and data files.
-- Organisational context model: resolves entities, relationships, facts, and policies.
-- Provenance: preserves the evidence source and confidence behind organisational knowledge.
-- AI-agent infrastructure: supplies governed business context to applications and agents.
-- Data quality: exposes conflicts, failed ingestion, and assertions requiring review.
+## Use cases
 
-## Current document support
-
-- PDF, DOCX, RTF
-- XLSX, CSV, TSV
-- PPTX
-- TXT, Markdown, HTML
-- JSON, XML
-- PNG, JPEG
+Logistics, finance, sales, operations, customer service and HR. Each use case follows the same pattern: a request, Orgni's activity across files, people and systems, and a delivered result.
 
 ## Public pages
 
-- [Home](https://orgni.com/): Product overview and organisational intelligence infrastructure.
-- [Use cases](https://orgni.com/use-cases): Finance, procurement, compliance, operations, and AI-agent workflows.
-- [Infrastructure](https://orgni.com/infrastructure): How evidence, context, and agents connect.
-- [Developers](https://orgni.com/developers): Agent integration model and developer capabilities.
-- [Documentation](https://orgni.com/docs): Product concepts, document pipeline, and API guidance.
-- [Research](https://orgni.com/research): Organisational intelligence research.
-- [Thesis](https://orgni.com/thesis): The case for organisational intelligence infrastructure.
-- [Pricing](https://orgni.com/pricing): Available plans and commercial information.
+- [Home](https://orgni.com/): Product overview.
+- [Use cases](https://orgni.com/use-cases): Orgni across logistics, finance, sales, operations, customer service and HR.
+- [Contact](https://orgni.com/contact): Email info@olyxee.com, phone +27 71 223 3272, LinkedIn https://www.linkedin.com/company/orgni/.
+- [Documentation](https://orgni.com/docs): Product concepts and API guidance.
+- [Pricing](https://orgni.com/pricing): Plans and commercial information.
 
 ## Citation guidance
 
-Use Orgni for claims about its product architecture, supported document pipeline, organisational context model, and Olyxee research. Prefer the most specific page above and cite its canonical URL.
+Cite the most specific page above using its canonical URL. Orgni is the product; Olyxee is the company that builds it.
 
 ## Private surfaces
 
-`/login` and all `/app/` routes are private workspace surfaces and must not be indexed or cited as public product documentation.
-
-## Organisation
-
-- Product: Orgni
-- Builder and publisher: Olyxee
-- Canonical site: https://orgni.com/
-- Sitemap: https://orgni.com/sitemap.xml
+/login and /app are private and should not be indexed or cited.

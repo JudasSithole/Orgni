@@ -13,9 +13,9 @@ import { KeepMovingCta } from "@/components/landing/motion-page/KeepMovingCta";
 
 export default function Home() {
   useSeo({
-    title: "Olyxee - Operational intelligence for businesses in motion",
+    title: "Orgni - Operational intelligence for businesses in motion",
     description:
-      "Olyxee builds operational intelligence infrastructure that helps organisations understand what is happening, reduce operational friction, and keep work moving. Orgni is its flagship product.",
+      "Orgni is an AI operational layer for your business. Ask it for work in Teams, Slack or email and it gathers the context, works across your systems, and returns the finished result. Built by Olyxee.",
     path: "/",
   });
 

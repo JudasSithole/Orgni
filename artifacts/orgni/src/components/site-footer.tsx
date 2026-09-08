@@ -8,7 +8,7 @@ import {
 } from "@/lib/links";
 
 const linkClass =
-  "text-sm text-neutral-400 transition-colors hover:text-white";
+  "inline-flex min-h-10 items-center text-sm text-neutral-400 transition-colors hover:text-white";
 
 const columns = [
   {
@@ -35,7 +35,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 pb-8 pt-16 md:pt-20">
         <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-3">
+            <Link href="/" className="inline-flex min-h-10 items-center gap-3">
               <img
                 src={`${import.meta.env.BASE_URL}orgni-mark.png`}
                 alt="Orgni logo"
@@ -47,7 +47,7 @@ export function SiteFooter() {
               Operational intelligence for businesses in motion. Built by
               Olyxee.
             </p>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+            <div className="mt-4 flex flex-wrap gap-x-6">
               <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
                 {CONTACT_EMAIL}
               </a>
@@ -66,7 +66,7 @@ export function SiteFooter() {
           {columns.map((column) => (
             <div key={column.heading}>
               <h3 className="mb-5 text-sm font-medium">{column.heading}</h3>
-              <ul className="space-y-3">
+              <ul className="-my-1 space-y-0">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
@@ -85,18 +85,18 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-neutral-500 md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} Olyxee Ltd. All rights reserved.</p>
+        <div className="mt-16 flex flex-col items-start justify-between gap-1 border-t border-white/10 pt-4 text-xs text-neutral-500 md:flex-row md:items-center">
+          <p className="py-2.5">© {new Date().getFullYear()} Olyxee Ltd. All rights reserved.</p>
           <div className="flex gap-6">
             <a
               href="https://www.olyxee.com/privacy"
-              className="transition-colors hover:text-white"
+              className="inline-flex min-h-10 items-center transition-colors hover:text-white"
             >
               Privacy policy
             </a>
             <a
               href="https://www.olyxee.com/terms"
-              className="transition-colors hover:text-white"
+              className="inline-flex min-h-10 items-center transition-colors hover:text-white"
             >
               Terms of service
             </a>

@@ -68,7 +68,7 @@ export function SiteHeader({ dark }: { dark?: boolean }) {
     >
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-6">
         <div className="flex items-center gap-10">
-          <Link href="/" className="group flex items-center gap-3">
+          <Link href="/" className="group flex min-h-10 items-center gap-3">
             <img
               src={`${import.meta.env.BASE_URL}orgni-mark.png`}
               alt="Orgni logo"

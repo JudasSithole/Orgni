@@ -51,7 +51,7 @@ export function useSeo({
   description,
   path,
   image = DEFAULT_OG_IMAGE,
-  imageAlt = "Orgni organisational intelligence infrastructure",
+  imageAlt = "Orgni - operational intelligence for businesses in motion",
   type = "website",
   robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   jsonLd,
