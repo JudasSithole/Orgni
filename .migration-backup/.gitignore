@@ -1,0 +1,71 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+.expo
+.expo-shared
+
+# dependencies
+node_modules
+.pnpm-store/
+.turbo/
+**/.turbo/
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+.api.*.log
+.document-intelligence.*.log
+.ontology.*.log
+.web.*.log
+.web-*.log
+/typings
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Replit
+.cache/
+.local/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Document service runtime uploads
+services/document-service/uploads/
+intelligence/document-intelligence/uploads/
+/uploads/

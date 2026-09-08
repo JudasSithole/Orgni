@@ -33,10 +33,4 @@ components:
           type: string
       required:
         - status
-    ErrorResponse:
-      type: object
-      required:
-        - error
-      properties:
-        error:
-          type: string
+

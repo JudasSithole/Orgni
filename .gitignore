@@ -10,9 +10,6 @@ out-tsc
 
 # dependencies
 node_modules
-.pnpm-store/
-.turbo/
-**/.turbo/
 
 # IDEs and editors
 /.idea
@@ -38,17 +35,7 @@ node_modules
 npm-debug.log
 yarn-error.log
 testem.log
-.api.*.log
-.document-intelligence.*.log
-.ontology.*.log
-.web.*.log
-.web-*.log
 /typings
-
-# Local environment and secrets
-.env
-.env.*
-!.env.example
 
 # System Files
 .DS_Store
@@ -60,12 +47,3 @@ Thumbs.db
 # Replit
 .cache/
 .local/
-
-# Python bytecode
-__pycache__/
-*.py[cod]
-
-# Document service runtime uploads
-services/document-service/uploads/
-intelligence/document-intelligence/uploads/
-/uploads/

@@ -1,0 +1,34 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./lib/db"
+    },
+    {
+      "path": "./lib/api-client-react"
+    },
+    {
+      "path": "./lib/api-zod"
+    },
+    {
+      "path": "./packages/contracts"
+    },
+    {
+      "path": "./intelligence/organizational-tokenizer"
+    },
+    {
+      "path": "./packages/config"
+    },
+    {
+      "path": "./packages/observability"
+    },
+    {
+      "path": "./packages/auth"
+    },
+    {
+      "path": "./packages/testing"
+    }
+  ]
+}
