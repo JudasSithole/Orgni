@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { OLYXEE_CONTACT_URL, ORGNI_PRODUCT_URL } from "@/lib/links";
+import { CONTACT_URL, ORGNI_PRODUCT_URL } from "@/lib/links";
 
 export function KeepMovingCta() {
   return (
@@ -24,9 +24,9 @@ export function KeepMovingCta() {
             Explore Orgni
             <ArrowUpRight className="h-4 w-4" />
           </Link>
-          <a href={OLYXEE_CONTACT_URL} className="inline-flex h-12 items-center gap-2 rounded-full border border-border px-6 text-sm font-medium transition-colors hover:border-foreground">
-            Talk to Olyxee
-          </a>
+          <Link href={CONTACT_URL} className="inline-flex h-12 items-center gap-2 rounded-full border border-border px-6 text-sm font-medium transition-colors hover:border-foreground">
+            Talk to us
+          </Link>
         </div>
       </motion.div>
     </section>

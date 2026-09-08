@@ -15,5 +15,10 @@ export const ORGNI_PRODUCT_URL = "/use-cases";
 /** Olyxee company site. */
 export const OLYXEE_URL = "https://olyxee.com";
 
-/** Landing-page "Talk to Olyxee" contact. */
-export const OLYXEE_CONTACT_URL = "https://www.olyxee.com/contact";
+/** In-site contact page. */
+export const CONTACT_URL = "/contact";
+
+export const CONTACT_EMAIL = "info@olyxee.com";
+export const CONTACT_PHONE_DISPLAY = "+27 71 223 3272";
+export const CONTACT_PHONE_TEL = "+27712233272";
+export const LINKEDIN_URL = "https://www.linkedin.com/company/orgni/";

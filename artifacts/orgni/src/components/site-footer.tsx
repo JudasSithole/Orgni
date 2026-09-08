@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { LOGIN_URL } from "@/lib/links";
+import { CONTACT_URL, LOGIN_URL } from "@/lib/links";
 
 export function SiteFooter({ dark = false }: { dark?: boolean }) {
   const footerClass = `border-t border-border bg-background ${dark ? "dark" : ""}`;
@@ -82,12 +82,12 @@ export function SiteFooter({ dark = false }: { dark?: boolean }) {
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:hello@olyxee.com"
+                <Link
+                  href={CONTACT_URL}
                   className="text-muted-foreground hover:text-foreground transition-colors font-light text-sm"
                 >
-                  Contact Sales
-                </a>
+                  Contact
+                </Link>
               </li>
               <li>
                 <a

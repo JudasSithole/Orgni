@@ -7,7 +7,6 @@ import { OrgniSection } from "@/components/landing/motion-page/OrgniSection";
 import { ExperienceSection } from "@/components/landing/motion-page/ExperienceSection";
 import { MomentumSection } from "@/components/landing/motion-page/MomentumSection";
 import { UseCasesSection } from "@/components/landing/motion-page/UseCasesSection";
-import { InfrastructureStorySection } from "@/components/landing/motion-page/InfrastructureStorySection";
 import { IndependenceSection } from "@/components/landing/motion-page/IndependenceSection";
 import { DirectionSection } from "@/components/landing/motion-page/DirectionSection";
 import { KeepMovingCta } from "@/components/landing/motion-page/KeepMovingCta";
@@ -31,7 +30,6 @@ export default function Home() {
         <ExperienceSection />
         <MomentumSection />
         <UseCasesSection />
-        <InfrastructureStorySection />
         <IndependenceSection />
         <DirectionSection />
         <KeepMovingCta />

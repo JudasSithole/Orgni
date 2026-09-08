@@ -20,6 +20,13 @@ const pages = [
     schemaType: "CollectionPage",
   },
   {
+    path: "/contact",
+    title: "Contact - Orgni",
+    description:
+      "Talk to the Orgni team by email, phone, or LinkedIn.",
+    schemaType: "ContactPage",
+  },
+  {
     path: "/pricing",
     title: "Orgni Pricing - Start with Organisational Intelligence",
     description:

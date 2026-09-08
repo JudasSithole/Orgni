@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LOGIN_URL, OLYXEE_CONTACT_URL } from "@/lib/links";
+import { CONTACT_URL, LOGIN_URL } from "@/lib/links";
 
 type NavItem = {
   title: string;
@@ -19,8 +19,8 @@ const navItems: NavItem[] = [
   },
   {
     title: "Contact",
-    href: OLYXEE_CONTACT_URL,
-    external: true,
+    href: CONTACT_URL,
+    match: [CONTACT_URL],
   },
 ];
 
