@@ -14,9 +14,9 @@ const image = `${siteUrl}/opengraph.jpg`;
 const pages = [
   {
     path: "/use-cases",
-    title: "Business AI Use Cases for Trusted Operations - Orgni",
+    title: "Use cases - Orgni",
     description:
-      "See how Orgni turns organisational evidence into trusted answers for finance, procurement, compliance, operations, and AI agents.",
+      "See how Orgni keeps work moving across logistics, finance, sales, operations, customer service, and HR.",
     schemaType: "CollectionPage",
   },
   {

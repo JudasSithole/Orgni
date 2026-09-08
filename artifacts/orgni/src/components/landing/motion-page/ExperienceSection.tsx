@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Bell,
   Calendar,
@@ -9,6 +9,15 @@ import {
   Send,
   Users,
 } from "lucide-react";
+
+const TEAMS_LOGO = `${import.meta.env.BASE_URL}integrations/teams.svg`;
+
+const members = [
+  { initials: "SM", color: "bg-[#5b5fc7]" },
+  { initials: "DN", color: "bg-[#c239b3]" },
+  { initials: "TK", color: "bg-[#0f7b6c]" },
+  { initials: "AP", color: "bg-[#ca5010]" },
+];
 
 const COMMAND = "@Orgni prepare everything for tomorrow’s client meeting.";
 
@@ -86,10 +95,10 @@ export function ExperienceSection() {
           onViewportEnter={() => setActive(true)}
           onViewportLeave={() => setActive(false)}
           viewport={{ amount: 0.15 }}
-          className="flex items-center"
+          className="flex min-w-0 items-center"
         >
           <div
-            className="w-full overflow-hidden rounded-2xl border border-border bg-white shadow-lg"
+            className="w-full min-w-0 overflow-hidden rounded-2xl border border-border bg-white shadow-lg"
             aria-label="Example conversation with Orgni inside Microsoft Teams"
           >
             {/* Window chrome */}
@@ -97,7 +106,8 @@ export function ExperienceSection() {
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-              <span className="ml-3 text-xs font-medium text-[#616161]">
+              <span className="ml-3 flex items-center gap-2 text-xs font-medium text-[#616161]">
+                <img src={TEAMS_LOGO} alt="" className="h-4 w-4" />
                 Microsoft Teams
               </span>
             </div>
@@ -105,6 +115,7 @@ export function ExperienceSection() {
             <div className="flex">
               {/* Left rail */}
               <div className="hidden w-16 shrink-0 flex-col items-center gap-5 border-r border-[#e1dfdd] bg-[#ebebeb] py-4 sm:flex">
+                <img src={TEAMS_LOGO} alt="Microsoft Teams" className="mb-1 h-7 w-7" />
                 {[
                   { label: "Activity", icon: Bell },
                   { label: "Chat", icon: MessageSquare, active: true },
@@ -126,20 +137,44 @@ export function ExperienceSection() {
               {/* Conversation */}
               <div className="flex min-w-0 flex-1 flex-col">
                 <div className="flex items-center gap-3 border-b border-[#e1dfdd] px-4 py-3">
-                  <img
-                    src={`${import.meta.env.BASE_URL}orgni-logo.png`}
-                    alt=""
-                    className="h-8 w-8 rounded-md object-contain"
-                  />
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-[#242424]">
-                      Orgni
-                    </p>
-                    <p className="text-xs text-[#616161]">Available</p>
+                  <div className="flex -space-x-2">
+                    {members.slice(0, 3).map((m) => (
+                      <span
+                        key={m.initials}
+                        className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[11px] font-semibold text-white ${m.color}`}
+                      >
+                        {m.initials}
+                      </span>
+                    ))}
                   </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-[#242424]">
+                      Halden Logistics – Account team
+                    </p>
+                    <p className="text-xs text-[#616161]">
+                      {members.length} members · Orgni added
+                    </p>
+                  </div>
+                  <Users className="hidden h-4 w-4 text-[#616161] sm:block" />
                 </div>
 
-                <div className="flex flex-col gap-4 bg-[#f5f5f5] px-4 py-5 md:px-6">
+                <div className="flex h-[640px] flex-col sm:h-[580px] gap-4 overflow-hidden bg-[#f5f5f5] px-4 py-5 md:px-6">
+                  {/* Earlier group message */}
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#c239b3] text-xs font-semibold text-white">
+                      DN
+                    </span>
+                    <div className="min-w-0">
+                      <p className="mb-1 text-xs text-[#616161]">
+                        David Naidoo <span className="ml-2">09:12</span>
+                      </p>
+                      <div className="rounded-lg rounded-tl-none bg-white px-4 py-2.5 text-[15px] leading-snug text-[#242424]">
+                        Halden moved the meeting to tomorrow 10:00. Can someone
+                        pull everything together?
+                      </div>
+                    </div>
+                  </div>
+
                   {/* User message */}
                   <div className="flex items-start gap-3">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#5b5fc7] text-xs font-semibold text-white">
@@ -162,19 +197,16 @@ export function ExperienceSection() {
                   </div>
 
                   {/* Orgni reply */}
-                  <AnimatePresence>
-                    {typed === COMMAND.length && (
-                      <motion.div
-                        key="reply"
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex items-start gap-3"
-                      >
+                  <motion.div
+                    animate={{ opacity: typed === COMMAND.length ? 1 : 0, y: typed === COMMAND.length ? 0 : 8 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-start gap-3"
+                    aria-hidden={typed !== COMMAND.length}
+                  >
                         <img
                           src={`${import.meta.env.BASE_URL}orgni-logo.png`}
-                          alt=""
-                          className="h-8 w-8 shrink-0 rounded-full object-contain"
+                          alt="Orgni"
+                          className="h-8 w-8 shrink-0 rounded-full object-cover"
                         />
                         <div className="min-w-0 flex-1">
                           <p className="mb-1 text-xs text-[#616161]">
@@ -185,10 +217,10 @@ export function ExperienceSection() {
                             <span className="ml-2">09:14</span>
                           </p>
                           <div className="rounded-lg rounded-tl-none border border-[#e1dfdd] bg-white px-4 py-3 text-[15px] text-[#242424]">
-                            <p className="leading-snug">
+                            <p className="min-h-[2.6em] leading-snug">
                               {ready
-                                ? "Done. Here is your brief for tomorrow’s meeting with Halden Logistics."
-                                : "On it. Preparing everything for tomorrow’s meeting…"}
+                                ? "Done. Here is the brief for tomorrow’s 10:00 with Halden Logistics, shared with everyone here."
+                                : "On it, Sarah. Preparing everything for tomorrow’s meeting…"}
                             </p>
                             <ul className="mt-3 space-y-2">
                               {steps.map((step, i) => {
@@ -226,14 +258,12 @@ export function ExperienceSection() {
                                 );
                               })}
                             </ul>
-                            <AnimatePresence>
-                              {ready && (
-                                <motion.div
-                                  key="attachment"
-                                  initial={{ opacity: 0, y: 6 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  className="mt-4 flex items-center gap-3 rounded-md border border-[#e1dfdd] bg-[#faf9f8] px-3 py-2.5"
-                                >
+                            <motion.div
+                              animate={{ opacity: ready ? 1 : 0, y: ready ? 0 : 6 }}
+                              transition={{ duration: 0.3 }}
+                              className="mt-4 flex items-center gap-3 rounded-md border border-[#e1dfdd] bg-[#faf9f8] px-3 py-2.5"
+                              aria-hidden={!ready}
+                            >
                                   <span className="flex h-9 w-9 items-center justify-center rounded bg-[#2b579a] text-white">
                                     <FileText className="h-4 w-4" />
                                   </span>
@@ -242,23 +272,19 @@ export function ExperienceSection() {
                                       Halden Logistics – Meeting brief.docx
                                     </p>
                                     <p className="text-xs text-[#616161]">
-                                      Shared with you · Ready
+                                      Shared with the group · Ready
                                     </p>
                                   </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
+                            </motion.div>
                           </div>
                         </div>
                       </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
 
                 {/* Compose box */}
                 <div className="border-t border-[#e1dfdd] bg-white px-4 py-3">
                   <div className="flex items-center justify-between rounded-md border border-[#c8c6c4] px-3 py-2 text-sm text-[#a19f9d]">
-                    Type a message
+                    Message Halden Logistics – Account team
                     <Send className="h-4 w-4 text-[#5b5fc7]" />
                   </div>
                 </div>
