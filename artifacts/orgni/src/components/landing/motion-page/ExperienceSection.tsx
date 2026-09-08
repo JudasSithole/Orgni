@@ -3,12 +3,12 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   Bell,
   Calendar,
-  Check,
   FileText,
   MessageSquare,
   Send,
   Users,
 } from "lucide-react";
+import { ActivityItem, type Activity } from "./ActivityItem";
 
 const TEAMS_LOGO = `${import.meta.env.BASE_URL}integrations/teams.svg`;
 
@@ -21,13 +21,13 @@ const members = [
 
 const COMMAND = "@Orgni prepare everything for tomorrow’s client meeting.";
 
-const steps = [
-  "Gathered recent emails",
-  "Found the latest proposal",
-  "Retrieved account history",
-  "Identified unresolved issues",
-  "Prepared the meeting brief",
-  "Checked relevant calendars",
+const steps: Activity[] = [
+  { kind: "system", source: "Outlook", note: "12 emails with Halden Logistics, last 30 days", icon: "mail" },
+  { kind: "file", name: "Halden Logistics – Proposal v3.pdf", type: "pdf", meta: "SharePoint · sent 2 weeks ago" },
+  { kind: "system", source: "Salesforce", note: "Account history, 3 open opportunities", icon: "database" },
+  { kind: "person", name: "Thabo Khumalo", initials: "TK", via: "Teams", note: "asked about the open delivery issue" },
+  { kind: "file", name: "Halden Logistics – Meeting brief.docx", type: "docx", meta: "created just now" },
+  { kind: "system", source: "Calendar", note: "Tomorrow 10:00 · 4 attendees confirmed", icon: "calendar" },
 ];
 
 const TYPE_MS = 32;
@@ -158,7 +158,7 @@ export function ExperienceSection() {
                   <Users className="hidden h-4 w-4 text-[#616161] sm:block" />
                 </div>
 
-                <div className="flex h-[640px] flex-col sm:h-[580px] gap-4 overflow-hidden bg-[#f5f5f5] px-4 py-5 md:px-6">
+                <div className="flex h-[820px] flex-col sm:h-[710px] gap-4 overflow-hidden bg-[#f5f5f5] px-4 py-5 md:px-6">
                   {/* Earlier group message */}
                   <div className="flex items-start gap-3">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#c239b3] text-xs font-semibold text-white">
@@ -222,42 +222,16 @@ export function ExperienceSection() {
                                 ? "Done. Here is the brief for tomorrow’s 10:00 with Halden Logistics, shared with everyone here."
                                 : "On it, Sarah. Preparing everything for tomorrow’s meeting…"}
                             </p>
-                            <ul className="mt-3 space-y-2">
-                              {steps.map((step, i) => {
-                                const complete = i < done;
-                                const current = i === done && !ready;
-                                return (
-                                  <li
-                                    key={step}
-                                    className={`flex items-center gap-2.5 text-sm transition-colors duration-300 ${
-                                      complete
-                                        ? "text-[#242424]"
-                                        : current
-                                          ? "text-[#616161]"
-                                          : "text-[#a19f9d]"
-                                    }`}
-                                  >
-                                    <span
-                                      className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${
-                                        complete
-                                          ? "bg-[#13a10e] text-white"
-                                          : current
-                                            ? "border border-[#5b5fc7]"
-                                            : "border border-[#c8c6c4]"
-                                      }`}
-                                    >
-                                      {complete && (
-                                        <Check className="h-2.5 w-2.5" strokeWidth={3} />
-                                      )}
-                                      {current && (
-                                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#5b5fc7]" />
-                                      )}
-                                    </span>
-                                    {step}
-                                  </li>
-                                );
-                              })}
-                            </ul>
+                            <div className="mt-3 space-y-1.5">
+                              {steps.map((step, i) => (
+                                <ActivityItem
+                                  key={i}
+                                  item={step}
+                                  index={i}
+                                  state={i < done ? "done" : i === done && !ready ? "current" : "pending"}
+                                />
+                              ))}
+                            </div>
                             <motion.div
                               animate={{ opacity: ready ? 1 : 0, y: ready ? 0 : 6 }}
                               transition={{ duration: 0.3 }}
