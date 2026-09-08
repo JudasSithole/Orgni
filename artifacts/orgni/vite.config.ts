@@ -5,27 +5,30 @@ import { defineConfig } from 'vite';
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
+// PORT is only needed for the dev/preview servers. On static hosts such as
+// Vercel the config is loaded for `vite build` without a PORT, so we only
+// enforce it when a server is actually going to start.
+const isServe = process.argv.some(
+  (arg) => arg === 'serve' || arg === 'dev' || arg === 'preview',
+) || !process.argv.includes('build');
+
 const rawPort = process.env.PORT;
 
-if (!rawPort) {
+if (isServe && !rawPort) {
   throw new Error(
     'PORT environment variable is required but was not provided.',
   );
 }
 
-const port = Number(rawPort);
+const port = rawPort ? Number(rawPort) : undefined;
 
-if (Number.isNaN(port) || port <= 0) {
+if (rawPort && (Number.isNaN(port) || (port as number) <= 0)) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
-const basePath = process.env.BASE_PATH;
-
-if (!basePath) {
-  throw new Error(
-    'BASE_PATH environment variable is required but was not provided.',
-  );
-}
+// BASE_PATH is set by the Replit workspace (path-based routing). Outside of
+// Replit the site is served from the domain root.
+const basePath = process.env.BASE_PATH || '/';
 
 export default defineConfig({
   base: basePath,
