@@ -16,7 +16,7 @@ import { useOrgni } from "@/lib/orgni/service";
 import {
   productApi,
   teamsPackageUrl,
-  type SimulateResult,
+  type AskResult,
   type TeamsStatus,
 } from "@/lib/orgni/http-service";
 import { Panel } from "./primitives";
@@ -162,16 +162,16 @@ export function TeamsAppSection() {
 function TestOrgni() {
   const { session } = useAuth();
   const { refresh } = useOrgni();
-  const [text, setText] = useState("prepare everything for tomorrow's client meeting");
+  const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
-  const [result, setResult] = useState<SimulateResult | null>(null);
+  const [result, setResult] = useState<AskResult | null>(null);
 
   async function run() {
     if (!session || !text.trim()) return;
     setBusy(true);
     setResult(null);
     try {
-      setResult(await productApi.simulate(session.token, text.trim(), "You (test)"));
+      setResult(await productApi.ask(session.token, text.trim()));
       refresh();
     } catch {
       setResult(null);
@@ -182,18 +182,19 @@ function TestOrgni() {
 
   return (
     <Panel className="space-y-3 p-5">
-      <div className="text-sm font-medium">Test Orgni</div>
+      <div className="text-sm font-medium">Ask Orgni</div>
       <p className="text-xs text-muted-foreground">
-        Runs the same engine the Teams bot uses, against your current settings.
-        The result is logged to Activity.
+        Give Orgni work from here — the same as mentioning @Orgni in Teams. The
+        result is logged to Activity.
       </p>
       <Textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={2}
+        placeholder="e.g. find the latest signed contract for this account"
         className="text-sm"
       />
-      <Button size="sm" onClick={run} disabled={busy}>
+      <Button size="sm" onClick={run} disabled={busy || !text.trim()}>
         {busy ? <Loader2 className="size-4 animate-spin" /> : null}
         Send to Orgni
       </Button>

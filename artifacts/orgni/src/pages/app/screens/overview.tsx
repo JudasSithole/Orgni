@@ -8,7 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useOrgni } from "@/lib/orgni/service";
 import { PageHeader, Panel } from "@/components/app/primitives";
-import { PageSkeleton, DemoDataNote } from "@/components/app/states";
+import { PageSkeleton } from "@/components/app/states";
 import { relativeTime, clockTime } from "@/lib/orgni/format";
 
 function greeting() {
@@ -19,7 +19,7 @@ function greeting() {
 }
 
 export default function Overview() {
-  const { state, loading, usingDemoData, refresh } = useOrgni();
+  const { state, loading, refresh } = useOrgni();
 
   useEffect(() => {
     refresh();
@@ -159,7 +159,7 @@ export default function Overview() {
             ))}
           </ul>
         )}
-        {usingDemoData ? <DemoDataNote /> : null}
+
       </section>
     </div>
   );

@@ -5,9 +5,11 @@
  * truth the Teams bot reads. All routes are tenant-scoped via `req.principal`.
  */
 import { Router, type IRouter, type Request, type Response } from "express";
+import { config } from "../lib/config";
 import { getProductStore, emptyState } from "../product/store";
 import { CONNECTION_CATALOG } from "../product/defaults";
 import { processRequest, resolveAction } from "../product/engine";
+import { sendMemberInvite } from "../lib/email";
 import type { OrgniState } from "../product/types";
 
 const router: IRouter = Router();
@@ -95,8 +97,11 @@ router.post("/product/members", async (req, res) => {
   const role = ["owner", "admin", "member"].includes(req.body?.role)
     ? req.body.role
     : "member";
+  const tid = tenant(req);
+  let added = false;
   await withState(req, res, (state) => {
     if (state.members.some((m) => m.email === email)) return;
+    added = true;
     state.members = [
       ...state.members,
       {
@@ -110,6 +115,14 @@ router.post("/product/members", async (req, res) => {
     ];
     return state;
   });
+  if (added && tid) {
+    const org = (await getProductStore().getState(tid)).organisation;
+    void sendMemberInvite({
+      to: email,
+      organisationName: org?.name ?? "your organisation",
+      invitedByEmail: req.principal?.sub ?? null,
+    });
+  }
 });
 
 /** PATCH /api/product/members/:email — { name?, role?, avatar? }.
@@ -306,11 +319,11 @@ router.post("/product/activity/:id/resolve", async (req, res) => {
 });
 
 /**
- * POST /api/product/simulate — run the Orgni engine with a message, exactly as
- * the Teams bot would. Lets you exercise the full flow without Teams.
- *   body: { text: string, requestedBy?: string }
+ * POST /api/product/ask — give Orgni work from the web console. Runs the same
+ * engine the Teams bot uses and logs the result to Activity.
+ *   body: { text: string }
  */
-router.post("/product/simulate", async (req, res) => {
+router.post("/product/ask", async (req, res) => {
   const tid = tenant(req);
   if (!tid) {
     res.status(400).json({ error: "missing_tenant" });
@@ -324,13 +337,17 @@ router.post("/product/simulate", async (req, res) => {
   const result = await processRequest({
     tenantId: tid,
     text,
-    requestedBy: req.body?.requestedBy ?? "You (simulated)",
+    requestedBy: req.principal?.sub ?? null,
   });
   res.json(result);
 });
 
-/** POST /api/product/reset — clear this tenant's product state. */
+/** POST /api/product/reset — clear this tenant's product state. Dev only. */
 router.post("/product/reset", async (req, res) => {
+  if (config.NODE_ENV === "production") {
+    res.status(404).json({ error: "not_found" });
+    return;
+  }
   const tid = tenant(req);
   if (!tid) {
     res.status(400).json({ error: "missing_tenant" });

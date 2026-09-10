@@ -328,15 +328,6 @@ function StepConnect({
 
 /* ---------------- Step 3 — Context ---------------- */
 
-const DATA_SOURCES = [
-  { label: "SharePoint", connected: true },
-  { label: "OneDrive", connected: true },
-  { label: "Google Drive", connected: false },
-  { label: "CRM", connected: false },
-  { label: "Database", connected: false },
-  { label: "Custom API", connected: false },
-];
-
 function StepContext({
   onNext,
   onBack,
@@ -344,12 +335,28 @@ function StepContext({
   onNext: () => void;
   onBack: () => void;
 }) {
-  const { state, addFiles, startLearning } = useOrgni();
+  const { state, addFiles } = useOrgni();
+  const [, navigate] = useLocation();
   const fileRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
   const { toast } = useToast();
   const kn = state.knowledge;
   const hasSources = kn.sources.length > 0;
+  const msConnected = state.connections.some(
+    (c) => c.key === "microsoft-365" && c.status === "connected",
+  );
+  const gwConnected = state.connections.some(
+    (c) => c.key === "google-workspace" && c.status === "connected",
+  );
+
+  const dataSources = [
+    { label: "SharePoint", connected: msConnected },
+    { label: "OneDrive", connected: msConnected },
+    { label: "Google Drive", connected: gwConnected },
+    { label: "CRM", connected: false },
+    { label: "Database", connected: false },
+    { label: "Custom API", connected: false },
+  ];
 
   async function onPick(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);
@@ -357,11 +364,17 @@ function StepContext({
     setBusy(true);
     try {
       const { added, failed } = await addFiles(files);
-      startLearning();
       toast({
-        title: `${added} file${added === 1 ? "" : "s"} added`,
+        title:
+          added > 0
+            ? `${added} file${added === 1 ? "" : "s"} added`
+            : "Nothing was added",
         description:
-          failed > 0 ? `${failed} could not be read.` : "Orgni is learning your organisation.",
+          added === 0
+            ? "Orgni couldn't reach the ingestion service. See Settings."
+            : failed > 0
+              ? `${failed} could not be read.`
+              : "Orgni is processing them now.",
       });
     } finally {
       setBusy(false);
@@ -370,12 +383,17 @@ function StepContext({
   }
 
   const discoveries = useMemo(
-    () => [
-      { value: kn.counts.documents || 148, label: "documents understood" },
-      { value: kn.counts.people || 32, label: "people identified" },
-      { value: kn.counts.customers || 14, label: "customers identified" },
-      { value: kn.counts.processes || 7, label: "processes identified" },
-    ],
+    () =>
+      (
+        [
+          ["documents", "documents"],
+          ["people", "people"],
+          ["customers", "customers"],
+          ["processes", "processes"],
+        ] as const
+      )
+        .map(([key, label]) => ({ value: kn.counts[key] ?? 0, label }))
+        .filter((d) => d.value > 0),
     [kn.counts],
   );
 
@@ -408,7 +426,7 @@ function StepContext({
       </Button>
 
       <div className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border">
-        {DATA_SOURCES.map((s) => (
+        {dataSources.map((s) => (
           <div key={s.label} className="flex items-center justify-between px-4 py-3 text-sm">
             <span className="flex items-center gap-2.5">
               <ServiceLogo label={s.label} size={18} />
@@ -422,6 +440,7 @@ function StepContext({
             ) : (
               <button
                 type="button"
+                onClick={() => navigate("/app/settings/connections")}
                 className="text-xs font-medium text-muted-foreground hover:text-foreground"
               >
                 Connect
@@ -434,11 +453,11 @@ function StepContext({
       {kn.state === "learning" ? (
         <div className="mt-6 flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm">
           <Loader2 className="size-4 animate-spin text-muted-foreground" />
-          Orgni is learning your organisation…
+          Orgni is processing what you've added…
         </div>
       ) : null}
 
-      {kn.state === "ready" && hasSources ? (
+      {discoveries.length > 0 ? (
         <div className="mt-6 rounded-2xl border border-border bg-card p-5">
           <div className="text-sm font-medium">What Orgni found</div>
           <ul className="mt-3 grid grid-cols-2 gap-3 text-sm">

@@ -81,13 +81,3 @@ export function SuccessNote({ children }: { children: ReactNode }) {
     </div>
   );
 }
-
-/** A subtle inline banner noting that figures are demo data, not live. */
-export function DemoDataNote({ children }: { children?: ReactNode }) {
-  return (
-    <p className="text-xs text-muted-foreground">
-      {children ??
-        "Showing example data. Connect your systems and add files to see your organisation."}
-    </p>
-  );
-}

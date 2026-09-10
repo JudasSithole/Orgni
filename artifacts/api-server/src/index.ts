@@ -1,9 +1,18 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 import { config } from "./lib/config";
+import { setIntelligenceProvider } from "./product/engine";
 import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync } from "node:fs";
 import path from "node:path";
+
+// Use a real model for the Orgni engine when an API key is configured;
+// otherwise the deterministic template provider stays in place.
+if (process.env.ANTHROPIC_API_KEY) {
+  void import("./product/intelligence-anthropic")
+    .then((m) => setIntelligenceProvider(m.createAnthropicProvider()))
+    .catch((err) => logger.error({ err }, "failed to load Anthropic provider"));
+}
 
 function startDocumentIntelligence(): ChildProcess | null {
   if (config.DOCUMENT_INTELLIGENCE_URL) return null;

@@ -86,6 +86,21 @@ export const apiEnvSchema = baseEnvSchema.extend({
    * message maps to (e.g. "tenant_acme-inc"). Skips the AAD-tenant lookup.
    */
   TEAMS_DEFAULT_ORGNI_TENANT: z.string().optional(),
+
+  /* ---- Intelligence -------------------------------------------------- */
+  /** Anthropic API key. When set, the Orgni engine uses a real model; when
+   *  unset it falls back to the deterministic template provider. */
+  ANTHROPIC_API_KEY: z.string().optional(),
+  /** Model id for the engine (default "claude-opus-5"). */
+  ORGNI_MODEL: z.string().optional(),
+
+  /* ---- Email (member invites) -------------------------------------- */
+  /** Resend API key. When set, invite emails are sent via Resend's HTTP API. */
+  RESEND_API_KEY: z.string().optional(),
+  /** Verified "from" address for outbound mail, e.g. "Orgni <no-reply@orgni.com>". */
+  EMAIL_FROM: z.string().optional(),
+  /** Base URL of the web app, for links in emails (falls back to PUBLIC_BASE_URL). */
+  APP_BASE_URL: z.string().url().optional(),
 });
 
 /** Worker service configuration. */

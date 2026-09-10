@@ -67,6 +67,11 @@ export interface KnowledgeSummary {
   state: "idle" | "learning" | "ready";
   /** Files/records the org has added. */
   sources: KnowledgeSource[];
+  /** The map, built from the model API. Empty until real data exists. */
+  graph: {
+    nodes: { id: string; label: string; category: KnowledgeCategory; detail: string }[];
+    edges: { source: string; target: string; label: string }[];
+  };
 }
 
 export interface KnowledgeSource {

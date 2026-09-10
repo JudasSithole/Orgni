@@ -30,7 +30,7 @@ seam that changes.
 | `MICROSOFT_APP_TENANT_ID` | Entra tenant id — only for `SingleTenant` / `UserAssignedMSI`. |
 | `TEAMS_APP_ID` | GUID for the Teams app itself (from the manifest). Deep links use it. |
 | `TEAMS_DEFAULT_ORGNI_TENANT` | Single-org shortcut: every Teams message maps to this Orgni tenant id. |
-| `DATABASE_URL` | Optional. Without it, product state is in-memory (fine for a demo). |
+| `DATABASE_URL` | Optional. Without it, product state is in-memory (lost on restart). |
 
 ## Registration steps
 

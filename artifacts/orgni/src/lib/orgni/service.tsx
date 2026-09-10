@@ -2,9 +2,9 @@
  * OrgniProvider — the single source of truth for the product experience.
  *
  * Prefers the server API (`/api/product/*`) so the web app and the Teams bot
- * agree. When the API is unreachable it falls back to a localStorage-backed
- * mock so the app still works offline / without a backend. `knowledge` is
- * always derived client-side from the documents API (+ demo data).
+ * agree. When the API is unreachable it falls back to a localStorage cache so
+ * the app still renders. `knowledge` is always derived from the model API
+ * (documents + entities + relationships) — empty until real data exists.
  */
 import {
   createContext,
@@ -17,13 +17,19 @@ import {
   type ReactNode,
 } from "react";
 import { useAuth } from "@/lib/auth";
-import { getOverview, listDocuments, uploadDocument, ApiError } from "@/lib/api";
+import {
+  listDocuments,
+  listEntities,
+  listRelationships,
+  uploadDocument,
+  ApiError,
+} from "@/lib/api";
 import { productApi } from "./http-service";
 import { CONNECTION_CATALOG } from "./defaults";
+import { buildKnowledgeView } from "./knowledge";
 import {
   clearState,
   connectFromCatalog,
-  demoEnrichment,
   initialState,
   loadState,
   organisationFromInput,
@@ -35,8 +41,6 @@ import type {
   AudienceScope,
   CapabilityKey,
   KnowledgeSource,
-  KnowledgeSummary,
-  OrgniAction,
   OrgniState,
 } from "./types";
 
@@ -46,8 +50,6 @@ interface OrgniContextValue {
   backendConnected: boolean;
   /** True while the first load is in flight. */
   loading: boolean;
-  /** True when knowledge figures are demo data, not live. */
-  usingDemoData: boolean;
 
   createOrganisation: (input: {
     name: string;
@@ -61,7 +63,6 @@ interface OrgniContextValue {
   disconnect: (id: string) => void;
 
   addFiles: (files: File[]) => Promise<{ added: number; failed: number }>;
-  startLearning: () => void;
 
   setCapability: (key: CapabilityKey, enabled: boolean) => void;
   setApproval: (key: ApprovalCategoryKey, level: ApprovalLevel) => void;
@@ -78,7 +79,6 @@ interface OrgniContextValue {
   removeMember: (email: string) => void;
 
   resolveApproval: (id: string, approve: boolean) => void;
-  logAction: (action: Omit<OrgniAction, "id" | "at">) => void;
 
   /** Re-pull product state from the server (after a simulate / external change). */
   refresh: () => void;
@@ -87,8 +87,6 @@ interface OrgniContextValue {
 }
 
 const OrgniContext = createContext<OrgniContextValue | null>(null);
-
-const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /** Merge a server product-state payload onto local state, keeping `knowledge`. */
 function mergeServer(local: OrgniState, server: Partial<OrgniState>): OrgniState {
@@ -126,7 +124,60 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
     saveState(tenantId, state);
   }, [tenantId, state]);
 
-  // Load product state from the API, then enrich knowledge from documents.
+  const patch = useCallback((fn: (prev: OrgniState) => OrgniState) => {
+    setState(fn);
+  }, []);
+
+  /** Pull knowledge (documents, entities, relationships) from the model API.
+   *  Each call is caught so a missing DB / ontology yields an empty view
+   *  rather than leaving stale cached figures on screen. */
+  const loadKnowledge = useCallback(async () => {
+    if (!session) return;
+    try {
+      const [docs, ents, rels] = await Promise.all([
+        listDocuments(session.token).catch(() => ({ documents: [] })),
+        listEntities(session.token).catch(() => ({ entities: [] })),
+        listRelationships(session.token).catch(() => ({ relationships: [] })),
+      ]);
+      const sources: KnowledgeSource[] = docs.documents.map((d) => ({
+        id: d.sourceId,
+        name: d.filename,
+        kind: "file",
+        addedAt: d.uploadedAt,
+        state:
+          d.state === "COMPLETED" || d.state === "PROCESSED"
+            ? "understood"
+            : d.state === "FAILED"
+              ? "failed"
+              : "processing",
+        origin: "Uploaded file",
+      }));
+      const view = buildKnowledgeView({
+        entities: ents.entities,
+        relationships: rels.relationships,
+      });
+      const processing = sources.some((s) => s.state === "processing");
+      const hasAnything = sources.length > 0 || view.total > 0;
+      setState((prev) => ({
+        ...prev,
+        knowledge: {
+          ...prev.knowledge,
+          sources,
+          counts: view.counts,
+          graph: view.graph,
+          state: processing ? "learning" : hasAnything ? "ready" : "idle",
+          lastUpdatedAt: hasAnything
+            ? (sources[0]?.addedAt ?? new Date().toISOString())
+            : null,
+        },
+      }));
+    } catch (err) {
+      // Model API unavailable (no DB / ontology) — knowledge stays empty.
+      if (!(err instanceof ApiError)) throw err;
+    }
+  }, [session]);
+
+  // Load product state, then knowledge, from the API on session change.
   useEffect(() => {
     let cancelled = false;
     if (!session) {
@@ -135,7 +186,6 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
     }
     setLoading(true);
     (async () => {
-      // 1. Product state (the shared source of truth).
       try {
         const server = await productApi.getState(session.token);
         if (cancelled) return;
@@ -146,63 +196,13 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
         usesServer.current = false;
         setBackendConnected(false);
       }
-
-      // 2. Knowledge enrichment (best effort).
-      try {
-        const [docs, overview] = await Promise.all([
-          listDocuments(session.token),
-          getOverview(session.token).catch(() => null),
-        ]);
-        if (cancelled) return;
-        const sources: KnowledgeSource[] = docs.documents.map((d) => ({
-          id: d.sourceId,
-          name: d.filename,
-          kind: "file",
-          addedAt: d.uploadedAt,
-          state:
-            d.state === "COMPLETED" || d.state === "PROCESSED"
-              ? "understood"
-              : d.state === "FAILED"
-                ? "failed"
-                : "processing",
-          origin: "Uploaded file",
-        }));
-        setState((prev) => {
-          const counts = { ...prev.knowledge.counts };
-          if (overview) {
-            counts.documents = overview.sources.total;
-            counts.people = overview.entities;
-          }
-          const hasData = sources.length > 0;
-          return {
-            ...prev,
-            knowledge: {
-              ...prev.knowledge,
-              sources,
-              counts,
-              state: hasData ? "ready" : prev.knowledge.state,
-              lastUpdatedAt: hasData
-                ? (sources[0]?.addedAt ?? prev.knowledge.lastUpdatedAt)
-                : prev.knowledge.lastUpdatedAt,
-            },
-          };
-        });
-      } catch (err) {
-        if (err instanceof ApiError) {
-          /* persistence unavailable — keep whatever knowledge we have */
-        }
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
+      if (!cancelled) await loadKnowledge();
+      if (!cancelled) setLoading(false);
     })();
     return () => {
       cancelled = true;
     };
-  }, [session]);
-
-  const patch = useCallback((fn: (prev: OrgniState) => OrgniState) => {
-    setState(fn);
-  }, []);
+  }, [session, loadKnowledge]);
 
   /** Run a server call when connected; fall back to a local reducer otherwise. */
   const dual = useCallback(
@@ -235,7 +235,6 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
           /* fall through */
         }
       }
-      await wait(400);
       patch((prev) => ({ ...prev, organisation: organisationFromInput(input) }));
     },
     [patch, session],
@@ -269,12 +268,7 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
     if (usesServer.current && session) {
       void productApi
         .patchOnboarding(session.token, { complete: true })
-        .then((next) =>
-          setState((prev) => {
-            const merged = mergeServer(prev, next);
-            return { ...merged, ...demoKnowledgeIfEmpty(merged) };
-          }),
-        )
+        .then((next) => setState((prev) => mergeServer(prev, next)))
         .catch(() => {});
       return;
     }
@@ -287,7 +281,6 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
               onboardingComplete: true,
               onboardingStep: 7,
             },
-            ...demoKnowledgeIfEmpty(prev),
           }
         : prev,
     );
@@ -328,75 +321,43 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
 
   const addFiles = useCallback<OrgniContextValue["addFiles"]>(
     async (files) => {
+      if (!session) return { added: 0, failed: files.length };
       let added = 0;
       let failed = 0;
       const newSources: KnowledgeSource[] = [];
       for (const file of files) {
-        if (session && backendConnected) {
-          try {
-            const res = await uploadDocument(session.token, file);
-            added += 1;
-            newSources.push({
-              id: res.sourceId,
-              name: file.name,
-              kind: "file",
-              addedAt: new Date().toISOString(),
-              state: res.state === "FAILED" ? "failed" : "understood",
-              origin: "Uploaded file",
-            });
-          } catch {
-            failed += 1;
-          }
-        } else {
-          await wait(250);
+        try {
+          const res = await uploadDocument(session.token, file);
           added += 1;
           newSources.push({
-            id: `src_${Date.now().toString(36)}_${added}`,
+            id: res.sourceId,
             name: file.name,
             kind: "file",
             addedAt: new Date().toISOString(),
-            state: "processing",
+            state: res.state === "FAILED" ? "failed" : "processing",
             origin: "Uploaded file",
           });
+        } catch {
+          failed += 1;
         }
       }
-      patch((prev) => ({
-        ...prev,
-        knowledge: {
-          ...prev.knowledge,
-          sources: [...newSources, ...prev.knowledge.sources],
-          state: "learning",
-          lastUpdatedAt: new Date().toISOString(),
-        },
-      }));
-      return { added, failed };
-    },
-    [patch, session, backendConnected],
-  );
-
-  const startLearning = useCallback(() => {
-    patch((prev) => ({
-      ...prev,
-      knowledge: { ...prev.knowledge, state: "learning" },
-    }));
-    setTimeout(() => {
-      patch((prev) => {
-        const enriched = demoEnrichment(prev);
-        return {
+      if (newSources.length > 0) {
+        patch((prev) => ({
           ...prev,
           knowledge: {
-            ...enriched.knowledge,
-            sources: prev.knowledge.sources.map((s) => ({
-              ...s,
-              state: s.state === "processing" ? "understood" : s.state,
-            })),
-            state: "ready",
+            ...prev.knowledge,
+            sources: [...newSources, ...prev.knowledge.sources],
+            state: "learning",
             lastUpdatedAt: new Date().toISOString(),
           },
-        };
-      });
-    }, 2400);
-  }, [patch]);
+        }));
+      }
+      // Pick up processing progress from the model API shortly after.
+      setTimeout(() => void loadKnowledge(), 4000);
+      return { added, failed };
+    },
+    [patch, session, loadKnowledge],
+  );
 
   const setCapability = useCallback<OrgniContextValue["setCapability"]>(
     (key, enabled) => {
@@ -458,7 +419,6 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
 
   const installTeams = useCallback<OrgniContextValue["installTeams"]>(async () => {
     patch((prev) => ({ ...prev, teams: { ...prev.teams, state: "installing" } }));
-    await wait(1400);
     await dual(
       (token) => productApi.installTeams(token),
       (prev) => ({
@@ -557,30 +517,15 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
     [dual],
   );
 
-  const logAction = useCallback<OrgniContextValue["logAction"]>(
-    (action) => {
-      patch((prev) => ({
-        ...prev,
-        activity: [
-          {
-            ...action,
-            id: `act_${Date.now().toString(36)}`,
-            at: new Date().toISOString(),
-          },
-          ...prev.activity,
-        ],
-      }));
-    },
-    [patch],
-  );
-
   const refresh = useCallback(() => {
-    if (!usesServer.current || !session) return;
-    void productApi
-      .getState(session.token)
-      .then((next) => setState((prev) => mergeServer(prev, next)))
-      .catch(() => {});
-  }, [session]);
+    if (session && usesServer.current) {
+      void productApi
+        .getState(session.token)
+        .then((next) => setState((prev) => mergeServer(prev, next)))
+        .catch(() => {});
+    }
+    void loadKnowledge();
+  }, [session, loadKnowledge]);
 
   const resetWorkspace = useCallback(() => {
     if (usesServer.current && session) {
@@ -593,22 +538,17 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
     setState(initialState());
   }, [tenantId, session]);
 
-  const usingDemoData =
-    !backendConnected && state.knowledge.counts.documents > 0;
-
   const value = useMemo<OrgniContextValue>(
     () => ({
       state,
       backendConnected,
       loading,
-      usingDemoData,
       createOrganisation,
       setOnboardingStep,
       completeOnboarding,
       connect,
       disconnect,
       addFiles,
-      startLearning,
       setCapability,
       setApproval,
       setPermissionLevel,
@@ -618,7 +558,6 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
       updateMember,
       removeMember,
       resolveApproval,
-      logAction,
       refresh,
       resetWorkspace,
     }),
@@ -626,14 +565,12 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
       state,
       backendConnected,
       loading,
-      usingDemoData,
       createOrganisation,
       setOnboardingStep,
       completeOnboarding,
       connect,
       disconnect,
       addFiles,
-      startLearning,
       setCapability,
       setApproval,
       setPermissionLevel,
@@ -643,18 +580,12 @@ export function OrgniProvider({ children }: { children: ReactNode }) {
       updateMember,
       removeMember,
       resolveApproval,
-      logAction,
       refresh,
       resetWorkspace,
     ],
   );
 
   return <OrgniContext.Provider value={value}>{children}</OrgniContext.Provider>;
-}
-
-function demoKnowledgeIfEmpty(prev: OrgniState): { knowledge: KnowledgeSummary } {
-  const enriched = demoEnrichment(prev);
-  return { knowledge: enriched.knowledge };
 }
 
 export function useOrgni(): OrgniContextValue {

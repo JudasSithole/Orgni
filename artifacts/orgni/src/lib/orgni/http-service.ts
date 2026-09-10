@@ -48,7 +48,7 @@ export interface TeamsStatus {
   packageUrl: string;
 }
 
-export interface SimulateResult {
+export interface AskResult {
   reply: string;
   needsApproval: boolean;
   action: OrgniState["activity"][number];
@@ -135,10 +135,10 @@ export const productApi = {
       body: JSON.stringify({ approve }),
     }),
 
-  simulate: (token: string, text: string, requestedBy?: string) =>
-    req<SimulateResult>("/api/product/simulate", token, {
+  ask: (token: string, text: string) =>
+    req<AskResult>("/api/product/ask", token, {
       method: "POST",
-      body: JSON.stringify({ text, requestedBy }),
+      body: JSON.stringify({ text }),
     }),
 
   reset: (token: string) =>

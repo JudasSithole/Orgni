@@ -25,10 +25,9 @@ import {
 import "@xyflow/react/dist/style.css";
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import {
-  DEMO_KNOWLEDGE_OBJECTS,
-  type KnowledgeGraphEdge,
-  type KnowledgeGraphNode,
+import type {
+  KnowledgeGraphEdge,
+  KnowledgeGraphNode,
 } from "@/lib/orgni/defaults";
 import type { KnowledgeCategory } from "@/lib/orgni/types";
 
@@ -378,7 +377,6 @@ function GraphInspector({
         name: other?.label ?? otherId,
       };
     });
-  const full = DEMO_KNOWLEDGE_OBJECTS.find((o) => o.id === node.id);
 
   return (
     <div className="absolute right-3 top-3 z-10 max-h-[calc(100%-1.5rem)] w-72 overflow-y-auto rounded-xl border border-border bg-background p-4 shadow-lg">
@@ -399,17 +397,6 @@ function GraphInspector({
           <X className="size-3.5" />
         </button>
       </div>
-
-      {full ? (
-        <dl className="mt-3 space-y-1 border-t border-border pt-3 text-xs">
-          {full.related.map((r) => (
-            <div key={r.label} className="flex justify-between gap-3">
-              <dt className="text-muted-foreground">{r.label}</dt>
-              <dd className="text-right">{r.value}</dd>
-            </div>
-          ))}
-        </dl>
-      ) : null}
 
       {links.length > 0 ? (
         <div className="mt-3 border-t border-border pt-3">

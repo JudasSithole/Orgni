@@ -12,8 +12,6 @@ import {
   DEFAULT_CAPABILITIES,
   DEFAULT_INTELLIGENCE,
   DEFAULT_PERMISSIONS,
-  DEMO_ACTIVITY,
-  DEMO_KNOWLEDGE_COUNTS,
 } from "./defaults";
 import type {
   Capability,
@@ -44,6 +42,7 @@ export function emptyKnowledge(): KnowledgeSummary {
     lastUpdatedAt: null,
     state: "idle",
     sources: [],
+    graph: { nodes: [], edges: [] },
   };
 }
 
@@ -65,22 +64,6 @@ export function initialState(): OrgniState {
   };
 }
 
-/** State used for the demo / "explore" experience once onboarding completes. */
-export function demoEnrichment(state: OrgniState): OrgniState {
-  return {
-    ...state,
-    knowledge: {
-      ...state.knowledge,
-      counts: { ...DEMO_KNOWLEDGE_COUNTS },
-      state: "ready",
-      lastUpdatedAt: state.knowledge.lastUpdatedAt ?? new Date().toISOString(),
-    },
-    activity:
-      state.activity.length > 0
-        ? state.activity
-        : DEMO_ACTIVITY.map((a) => ({ ...a })),
-  };
-}
 
 export function loadState(tenantId: string): OrgniState {
   const base = initialState();
@@ -92,7 +75,8 @@ export function loadState(tenantId: string): OrgniState {
     return {
       ...base,
       ...parsed,
-      knowledge: { ...base.knowledge, ...(parsed.knowledge ?? {}) },
+      // Knowledge is always re-derived from the model API — never cached.
+      knowledge: base.knowledge,
       permissions: { ...base.permissions, ...(parsed.permissions ?? {}) },
       teams: { ...base.teams, ...(parsed.teams ?? {}) },
       intelligence: { ...base.intelligence, ...(parsed.intelligence ?? {}) },
@@ -115,7 +99,10 @@ export function loadState(tenantId: string): OrgniState {
 
 export function saveState(tenantId: string, state: OrgniState): void {
   try {
-    localStorage.setItem(storageKey(tenantId), JSON.stringify(state));
+    // Don't cache knowledge (large, always re-derived) or avatars.
+    const { knowledge: _k, ...rest } = state;
+    void _k;
+    localStorage.setItem(storageKey(tenantId), JSON.stringify(rest));
   } catch {
     /* storage unavailable — state stays in memory for this session */
   }

@@ -1,17 +1,13 @@
 /**
- * Knowledge — "What Orgni understands", as an interactive map. Click any node
- * to see what Orgni knows about it and what it's connected to.
+ * Knowledge — "What Orgni understands", as an interactive map built from the
+ * model API. Empty until Orgni has processed real information.
  */
 import { useState } from "react";
 import { Link } from "wouter";
 import { Network, List as ListIcon } from "lucide-react";
 import { useOrgni } from "@/lib/orgni/service";
 import { PageHeader } from "@/components/app/primitives";
-import { PageSkeleton, EmptyState, DemoDataNote } from "@/components/app/states";
-import {
-  DEMO_KNOWLEDGE_GRAPH,
-  DEMO_KNOWLEDGE_OBJECTS,
-} from "@/lib/orgni/defaults";
+import { PageSkeleton, EmptyState } from "@/components/app/states";
 import { KnowledgeGraph, CATEGORY_LABEL } from "@/components/app/knowledge-graph";
 import type { KnowledgeCategory } from "@/lib/orgni/types";
 import { relativeTime } from "@/lib/orgni/format";
@@ -27,14 +23,11 @@ const ORDER: KnowledgeCategory[] = [
 ];
 
 export default function Knowledge() {
-  const { state, loading, usingDemoData } = useOrgni();
+  const { state, loading } = useOrgni();
   const [view, setView] = useState<"graph" | "list">("graph");
   const kn = state.knowledge;
 
   if (loading && !state.organisation) return <PageSkeleton />;
-
-  const total = ORDER.reduce((sum, c) => sum + (kn.counts[c] ?? 0), 0);
-  const empty = total === 0 && kn.state !== "learning";
 
   const summary = ORDER.filter((c) => (kn.counts[c] ?? 0) > 0)
     .map((c) => `${kn.counts[c]} ${CATEGORY_LABEL[c].toLowerCase()}`)
@@ -46,12 +39,12 @@ export default function Knowledge() {
       <PageHeader
         title="What Orgni understands"
         description={
-          !empty
+          summary
             ? `${summary}${kn.lastUpdatedAt ? ` — updated ${relativeTime(kn.lastUpdatedAt)}` : ""}`
-            : "Orgni continuously builds this from the information your organisation already uses."
+            : "Orgni builds this from the information your organisation already uses."
         }
         action={
-          !empty ? (
+          kn.graph.nodes.length > 0 ? (
             <div className="inline-flex overflow-hidden rounded-lg border border-border">
               {(
                 [
@@ -80,55 +73,45 @@ export default function Knowledge() {
 
       {kn.state === "learning" ? (
         <div className="rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-          Orgni is learning your organisation…
+          Orgni is processing what you've added…
         </div>
       ) : null}
 
-      {empty ? (
-        <EmptyState
-          title="Nothing yet"
-          description="Add files or connect a system and Orgni will start building context automatically."
-          action={
-            <Link
-              href="/app/settings/connections"
-              className="rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background"
-            >
-              Add knowledge
-            </Link>
-          }
-        />
+      {kn.graph.nodes.length === 0 ? (
+        kn.state === "learning" ? null : (
+          <EmptyState
+            title="Nothing yet"
+            description="Connect Microsoft 365 or add files, and Orgni will start building context automatically."
+            action={
+              <Link
+                href="/app/settings/connections"
+                className="rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background"
+              >
+                Add knowledge
+              </Link>
+            }
+          />
+        )
       ) : view === "graph" ? (
-        <KnowledgeGraph data={DEMO_KNOWLEDGE_GRAPH} />
+        <KnowledgeGraph data={kn.graph} />
       ) : (
-        <KnowledgeList />
-      )}
-
-      {!empty && usingDemoData ? <DemoDataNote /> : null}
-    </div>
-  );
-}
-
-function KnowledgeList() {
-  return (
-    <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border">
-      {DEMO_KNOWLEDGE_OBJECTS.map((o) => (
-        <li
-          key={o.id}
-          className="flex items-center justify-between gap-3 px-4 py-3.5 text-sm"
-        >
-          <div className="min-w-0">
-            <div className="font-medium">{o.name}</div>
-            {o.subtitle ? (
-              <div className="truncate text-xs text-muted-foreground">
-                {o.subtitle}
+        <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border">
+          {kn.graph.nodes.map((o) => (
+            <li
+              key={o.id}
+              className="flex items-center justify-between gap-3 px-4 py-3.5 text-sm"
+            >
+              <div className="min-w-0">
+                <div className="font-medium">{o.label}</div>
+                <div className="truncate text-xs text-muted-foreground">{o.detail}</div>
               </div>
-            ) : null}
-          </div>
-          <span className="shrink-0 text-xs text-muted-foreground">
-            {CATEGORY_LABEL[o.category]}
-          </span>
-        </li>
-      ))}
-    </ul>
+              <span className="shrink-0 text-xs text-muted-foreground">
+                {CATEGORY_LABEL[o.category]}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
