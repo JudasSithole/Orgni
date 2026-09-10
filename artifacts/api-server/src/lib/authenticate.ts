@@ -9,7 +9,6 @@
  * External ID lands, only `verifyToken` changes; this contract stays.
  */
 import type { NextFunction, Request, Response } from "express";
-import { getAuth } from "@clerk/express";
 import { authSecret, config } from "./config";
 import { verifyToken, type SessionPrincipal } from "./auth";
 import { createDb } from "@workspace/db/connect";
@@ -34,28 +33,6 @@ export async function authenticate(
   res: Response,
   next: NextFunction,
 ): Promise<void> {
-  const clerk = getAuth(req);
-  const clerkUserId = clerk?.sessionClaims?.userId ?? clerk?.userId;
-  if (clerkUserId) {
-    const userId = String(clerkUserId);
-    const claimedRoles = clerk.sessionClaims?.roles;
-    const roles = Array.isArray(claimedRoles)
-      ? claimedRoles.filter((role): role is string => typeof role === "string")
-      : clerk.orgRole === "org:admin"
-        ? ["Owner"]
-        : ["Member"];
-    const tenantIdentity = clerk.orgId ?? userId;
-    req.principal = {
-      sub: userId,
-      tenantId: `tenant_${tenantIdentity}`,
-      roles,
-      iat: 0,
-      exp: Math.floor(Date.now() / 1000) + 3600,
-    };
-    next();
-    return;
-  }
-
   const header = req.header("authorization");
   if (header?.startsWith("Bearer ")) {
     const bearer = header.slice(7).trim();

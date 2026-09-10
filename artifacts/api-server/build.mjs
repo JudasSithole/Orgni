@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { build as esbuild } from "esbuild";
 import esbuildPluginPino from "esbuild-plugin-pino";
-import { rm } from "node:fs/promises";
+import { rm, cp } from "node:fs/promises";
 
 // Plugins (e.g. 'esbuild-plugin-pino') may use `require` to resolve dependencies
 globalThis.require = createRequire(import.meta.url);
@@ -29,6 +29,14 @@ async function buildAll() {
     // - use path traversal to read files (e.g. @google-cloud/secret-manager loads sibling .proto files)
     external: [
       "*.node",
+      // Bot Framework SDK — heavy, with deep @azure/* transitive deps that
+      // resolve cleanly from node_modules at runtime but not when bundled.
+      "botbuilder",
+      "botbuilder-core",
+      "botbuilder-dialogs",
+      "botframework-connector",
+      "botframework-schema",
+      "adaptivecards",
       "sharp",
       "better-sqlite3",
       "sqlite3",
@@ -118,6 +126,13 @@ globalThis.__dirname = __bannerPath.dirname(globalThis.__filename);
     `,
     },
   });
+
+  // Static assets the runtime reads by path (Teams app icons).
+  await cp(
+    path.resolve(artifactDir, "src/teams/assets"),
+    path.resolve(distDir, "assets"),
+    { recursive: true },
+  ).catch(() => {});
 }
 
 buildAll().catch((err) => {

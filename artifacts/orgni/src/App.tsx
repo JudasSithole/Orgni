@@ -7,9 +7,6 @@ import {
 } from "wouter";
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ClerkProvider, SignIn, SignUp } from "@clerk/react";
-import { publishableKeyFromHost } from "@clerk/react/internal";
-import { shadcn } from "@clerk/themes";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -20,72 +17,13 @@ import Pricing from "@/pages/pricing";
 import Docs from "@/pages/docs";
 import Thesis from "@/pages/thesis";
 import Login from "@/pages/login";
-import Console from "@/pages/console";
+import AppShell from "@/pages/app/shell";
 import { CommandPaletteProvider } from "@/components/command-palette";
 import { ScrollToTopButton } from "@/components/scroll-to-top";
 import { AuthProvider } from "@/lib/auth";
 
 const queryClient = new QueryClient();
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const clerkPubKey = publishableKeyFromHost(
-  window.location.hostname,
-  import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
-);
-const clerkProxyUrl =
-  import.meta.env.VITE_CLERK_PROXY_URL ||
-  (import.meta.env.PROD ? "/api/__clerk" : "");
-
-function stripBase(path: string): string {
-  return basePath && path.startsWith(basePath)
-    ? path.slice(basePath.length) || "/"
-    : path;
-}
-
-const clerkAppearance = {
-  theme: shadcn,
-  cssLayerName: "clerk",
-  options: {
-    logoPlacement: "inside" as const,
-    logoLinkUrl: basePath || "/",
-    logoImageUrl: `${window.location.origin}${basePath}/logo.svg`,
-  },
-  variables: {
-    colorPrimary: "#ff4d00",
-    colorForeground: "#171717",
-    colorMutedForeground: "#666666",
-    colorBackground: "#ffffff",
-    colorInput: "#fafafa",
-    colorInputForeground: "#171717",
-    colorDanger: "#dc2626",
-    colorNeutral: "#d4d4d4",
-    fontFamily: "Geist, sans-serif",
-    borderRadius: "0.25rem",
-  },
-};
-
-function SignInPage() {
-  return (
-    <div className="flex min-h-[100dvh] items-center justify-center bg-white px-4">
-      <SignIn
-        routing="path"
-        path={`${basePath}/sign-in`}
-        signUpUrl={`${basePath}/sign-up`}
-      />
-    </div>
-  );
-}
-
-function SignUpPage() {
-  return (
-    <div className="flex min-h-[100dvh] items-center justify-center bg-white px-4">
-      <SignUp
-        routing="path"
-        path={`${basePath}/sign-up`}
-        signInUrl={`${basePath}/sign-in`}
-      />
-    </div>
-  );
-}
 
 function ScrollRestore() {
   const [location] = useLocation();
@@ -108,11 +46,15 @@ function Router() {
       </Route>
       <Route path="/thesis" component={Thesis} />
       <Route path="/login" component={Login} />
-      <Route path="/sign-in/*?" component={SignInPage} />
-      <Route path="/sign-up/*?" component={SignUpPage} />
-      <Route path="/app" component={Console} />
-      <Route path="/app/:section" component={Console} />
-      <Route path="/app/:section/:id" component={Console} />
+      <Route path="/sign-in/*?">
+        <Redirect to="/login" />
+      </Route>
+      <Route path="/sign-up/*?">
+        <Redirect to="/login" />
+      </Route>
+      <Route path="/app" component={AppShell} />
+      <Route path="/app/:section" component={AppShell} />
+      <Route path="/app/:section/:id" component={AppShell} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -140,39 +82,14 @@ function ExperienceShell() {
 }
 
 function App() {
-  const [, setLocation] = useLocation();
   return (
-    <ClerkProvider
-      publishableKey={clerkPubKey}
-      proxyUrl={clerkProxyUrl}
-      appearance={clerkAppearance}
-      signInUrl={`${basePath}/sign-in`}
-      signUpUrl={`${basePath}/sign-up`}
-      localization={{
-        signIn: {
-          start: {
-            title: "Sign in to Orgni",
-            subtitle: "Continue to your organizational intelligence workspace",
-          },
-        },
-        signUp: {
-          start: {
-            title: "Create your Orgni account",
-            subtitle: "Start building trusted organizational intelligence",
-          },
-        },
-      }}
-      routerPush={(to) => setLocation(stripBase(to))}
-      routerReplace={(to) => setLocation(stripBase(to), { replace: true })}
-    >
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <TooltipProvider>
-            <ExperienceShell />
-          </TooltipProvider>
-        </AuthProvider>
-      </QueryClientProvider>
-    </ClerkProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <ExperienceShell />
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

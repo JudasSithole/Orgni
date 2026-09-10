@@ -9,13 +9,13 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
-import { useAuth as useClerkAuth, useClerk, useUser } from "@clerk/react";
-import type { Session } from "./api";
+import { login as apiLogin, type Session } from "./api";
+
+const STORAGE_KEY = "orgni.session";
 
 interface AuthValue {
   session: Session | null;
@@ -25,51 +25,28 @@ interface AuthValue {
 
 const AuthContext = createContext<AuthValue | null>(null);
 
+function loadSession(): Session | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as Session) : null;
+  } catch {
+    return null;
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { user, isSignedIn } = useUser();
-  const { getToken } = useClerkAuth();
-  const { signOut } = useClerk();
-  const [token, setToken] = useState("");
-  const email = user?.primaryEmailAddress?.emailAddress ?? "";
+  const [session, setSession] = useState<Session | null>(loadSession);
 
-  useEffect(() => {
-    let active = true;
-    if (!isSignedIn) {
-      setToken("");
-      return;
-    }
-    void getToken().then((nextToken) => {
-      if (active) setToken(nextToken ?? "");
-    });
-    return () => {
-      active = false;
-    };
-  }, [getToken, isSignedIn]);
-
-  const session = useMemo<Session | null>(
-    () =>
-      isSignedIn && user && token
-        ? {
-            token,
-            email,
-            organization:
-              (user.publicMetadata.organization as string | undefined) ??
-              email.split("@")[1] ??
-              "Workspace",
-            tenantId: `tenant_${user.id}`,
-            roles: ["Owner"],
-          }
-        : null,
-    [email, isSignedIn, token, user],
-  );
-
-  const login = useCallback(async () => {
-    window.location.assign(`${import.meta.env.BASE_URL}sign-in`);
+  const login = useCallback(async (email: string, organization: string) => {
+    const s = await apiLogin(email, organization);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+    setSession(s);
   }, []);
 
   const logout = useCallback(() => {
-    void signOut({ redirectUrl: import.meta.env.BASE_URL });
-  }, [signOut]);
+    localStorage.removeItem(STORAGE_KEY);
+    setSession(null);
+  }, []);
 
   const value = useMemo(
     () => ({ session, login, logout }),

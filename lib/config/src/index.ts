@@ -58,6 +58,34 @@ export const apiEnvSchema = baseEnvSchema.extend({
   SESSION_SECRET: z.string().min(32).optional(),
   /** Optional local-development override retained for existing tooling. */
   AUTH_SECRET: z.string().min(16).optional(),
+
+  /* ---- Microsoft Teams bot / app ------------------------------------- */
+  /**
+   * Public base URL this API is reachable at, e.g. "https://api.orgni.com".
+   * Used to build the Teams app manifest (bot messaging endpoint, valid
+   * domains, config/task URLs). Falls back to the request origin when unset.
+   */
+  PUBLIC_BASE_URL: z.string().url().optional(),
+  /** Azure Bot / Entra app registration — the bot's application (client) id. */
+  MICROSOFT_APP_ID: z.string().optional(),
+  /** Client secret for the bot's app registration. */
+  MICROSOFT_APP_PASSWORD: z.string().optional(),
+  /** "MultiTenant" | "SingleTenant" | "UserAssignedMSI" (Bot Framework). */
+  MICROSOFT_APP_TYPE: z
+    .enum(["MultiTenant", "SingleTenant", "UserAssignedMSI"])
+    .default("MultiTenant"),
+  /** Entra tenant id — required only for SingleTenant / UserAssignedMSI bots. */
+  MICROSOFT_APP_TENANT_ID: z.string().optional(),
+  /**
+   * The Teams app id (GUID) from the app manifest. Distinct from the bot's
+   * MICROSOFT_APP_ID; used for deep links ("open Orgni in Teams").
+   */
+  TEAMS_APP_ID: z.string().optional(),
+  /**
+   * For single-organisation deployments: the Orgni tenant id every Teams
+   * message maps to (e.g. "tenant_acme-inc"). Skips the AAD-tenant lookup.
+   */
+  TEAMS_DEFAULT_ORGNI_TENANT: z.string().optional(),
 });
 
 /** Worker service configuration. */

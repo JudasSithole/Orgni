@@ -105,7 +105,7 @@ export function SiteHeader({ dark }: { dark?: boolean }) {
             href={LOGIN_URL}
             className="hidden h-10 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-medium text-background transition-colors hover:bg-primary lg:inline-flex"
           >
-            Request demo
+            Sign in
             <ArrowUpRight className="h-4 w-4" />
           </a>
 
@@ -151,7 +151,7 @@ export function SiteHeader({ dark }: { dark?: boolean }) {
                 href={LOGIN_URL}
                 className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground text-sm font-medium text-background transition-colors hover:bg-primary"
               >
-                Request demo
+                Sign in
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
