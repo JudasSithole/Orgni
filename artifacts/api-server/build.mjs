@@ -34,6 +34,7 @@ async function buildAll() {
       "botbuilder",
       "botbuilder-core",
       "botbuilder-dialogs",
+      "botbuilder-stdlib",
       "botframework-connector",
       "botframework-schema",
       "adaptivecards",
