@@ -1,0 +1,7 @@
+node_modules
+.migration-backup
+.git
+.gitignore
+*.log
+deploy-script-copy.txt
+github-production-federated-credential.json
