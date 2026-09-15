@@ -22,6 +22,20 @@
       "when": 1789061813684,
       "tag": "0002_members",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1789487360079,
+      "tag": "0003_microsoft_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1789487659299,
+      "tag": "0004_orgni_actions_source",
+      "breakpoints": true
     }
   ]
 }

@@ -20,7 +20,7 @@ says so and the connection is marked `mode: "mock"`.
 | **Public URL** | `PUBLIC_BASE_URL` | Teams manifest / email links fall back to request origin |
 | **LLM** | `ANTHROPIC_API_KEY` (+ `ORGNI_MODEL`) | Engine uses deterministic template replies |
 | **Teams bot** | `MICROSOFT_APP_ID/PASSWORD/TYPE`, `TEAMS_APP_ID`, Azure Bot registration | `@Orgni` in Teams doesn't work |
-| **Message routing** | `TEAMS_DEFAULT_ORGNI_TENANT` **or** per‑org tenant link | Bot can't map a Teams tenant to an Orgni org |
+| **Teams tenant linking** | Redirect URI `${PUBLIC_BASE_URL}/api/teams/connect/callback` on the app registration | "Connect Microsoft Teams" button stays disabled; orgs must use the manual tenant‑id fallback |
 | **Email (invites)** | `RESEND_API_KEY` + `EMAIL_FROM` | Member invites are added but no email is sent |
 | **Knowledge ingestion** | `DOCUMENT_INTELLIGENCE_URL`, `ONTOLOGY_URL` | File upload + the Knowledge map stay empty |
 | **Microsoft 365 sync** | OAuth + Microsoft Graph (not built) | "Connect Microsoft" is a guided demo, nothing syncs |
@@ -43,9 +43,12 @@ export DATABASE_URL="postgres://user:pass@host:5432/orgni"
 pnpm --filter @workspace/db run migrate      # applies migrations 0000–0002
 ```
 
-Migrations live in `lib/db/migrations/`. `0001_product_state` and `0002_members`
-create the product tables. Redeploy the API server after `DATABASE_URL` is set —
-it auto‑detects Postgres at boot (`src/product/store.ts`).
+Migrations live in `lib/db/migrations/`: `0001_product_state` and
+`0002_members` create the product tables, `0003_microsoft_identity` creates
+the Microsoft tenant/identity/conversation/audit tables, and
+`0004_orgni_actions_source` adds activity‑source tracking. Redeploy the API
+server after `DATABASE_URL` is set — it auto‑detects Postgres at boot
+(`src/product/store.ts`, `src/product/microsoft-identity.ts`).
 
 ---
 
@@ -114,28 +117,34 @@ in `src/index.ts`. That's the only change.
 
 ## 5. Microsoft Teams bot
 
-Fully implemented; needs **registration only**. Full walkthrough:
-`artifacts/api-server/src/teams/README.md`.
+Fully implemented; needs **one‑time registration by whoever owns the Olyxee
+Azure/Entra account**, done once for all customers. Full walkthrough with
+exact click‑paths: [`MICROSOFT_TEAMS_SETUP.md`](MICROSOFT_TEAMS_SETUP.md).
+Architecture and local-dev notes: `artifacts/api-server/src/teams/README.md`.
 
 1. Create an **Azure Bot** resource + Entra app registration. Record the app
    (client) id and create a client secret.
-2. Set on the API server:
+2. On that same app registration, add a **Web** redirect URI:
+   `${PUBLIC_BASE_URL}/api/teams/connect/callback` — this is what powers the
+   one‑click "Connect Microsoft Teams" button every customer uses.
+3. Set on the API server:
    `MICROSOFT_APP_ID`, `MICROSOFT_APP_PASSWORD`, `MICROSOFT_APP_TYPE`
    (`MultiTenant` / `SingleTenant`), `MICROSOFT_APP_TENANT_ID` (single‑tenant
-   only), `PUBLIC_BASE_URL`.
-3. In the Azure Bot → Configuration, set the **Messaging endpoint** to
+   only), `PUBLIC_BASE_URL`, `APP_BASE_URL`.
+4. In the Azure Bot → Configuration, set the **Messaging endpoint** to
    `${PUBLIC_BASE_URL}/api/teams/messages` and add the **Microsoft Teams**
    channel.
-4. Generate a GUID for the Teams app itself, set `TEAMS_APP_ID`.
-5. Download the app package: **Settings → Teams app → Download Teams app
-   package** (or `GET /api/teams/app-package.zip`). Upload it in Teams admin
-   center → *Manage apps*, or sideload it in the Teams client.
-6. **Message routing** — the bot must map an incoming Teams (AAD) tenant to an
-   Orgni tenant:
-   - Single‑org deployment: set `TEAMS_DEFAULT_ORGNI_TENANT` (e.g.
-     `tenant_acme-inc`).
-   - Multi‑org: each org links its Microsoft 365 tenant id via **Settings →
-     Teams app → Link** (`POST /api/teams/link`).
+5. Generate a GUID for the Teams app itself, set `TEAMS_APP_ID`.
+6. **Per‑organisation, self‑serve from here** — each Orgni customer admin goes
+   to **Settings → Integrations → Microsoft Teams → Connect Microsoft Teams**,
+   approves Microsoft's admin‑consent prompt, and Orgni links their Microsoft
+   tenant automatically (`POST /api/teams/connect/start` →
+   `GET /api/teams/connect/callback`). They then download the generated app
+   package from that same screen and upload/sideload it into their Teams
+   tenant. No env var or redeploy per customer — tenant→organisation mapping
+   is stored in the `microsoft_connections` table, one row per customer,
+   unique per Microsoft tenant id. A manual fallback (`POST /api/teams/link`)
+   exists for local dev or if the OAuth app isn't registered yet.
 
 ---
 

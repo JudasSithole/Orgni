@@ -46,6 +46,14 @@ export interface TeamsStatus {
   appType: string;
   messagingEndpoint: string;
   packageUrl: string;
+  /** True once the API can build a "Connect Microsoft Teams" link. */
+  connectAvailable: boolean;
+  /** The linked Microsoft 365 tenant, or null if not connected. */
+  connection: {
+    microsoftTenantId: string;
+    connectedBy: string | null;
+    connectedAt: string;
+  } | null;
 }
 
 export interface AskResult {
@@ -152,6 +160,12 @@ export const productApi = {
       method: "POST",
       body: JSON.stringify({ aadTenantId }),
     }),
+
+  connectTeamsStart: (token: string) =>
+    req<{ url: string }>("/api/teams/connect/start", token, { method: "POST" }),
+
+  disconnectTeams: (token: string) =>
+    req<{ ok: boolean }>("/api/teams/disconnect", token, { method: "POST" }),
 };
 
 /** Absolute URL for the Teams app package download (needs the auth header,

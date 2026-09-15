@@ -1,0 +1,1 @@
+ALTER TABLE "orgni_actions" ADD COLUMN "source" text DEFAULT 'web' NOT NULL;

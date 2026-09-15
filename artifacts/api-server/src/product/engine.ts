@@ -23,8 +23,10 @@ export interface EngineRequest {
   tenantId: string;
   /** Raw text after the @Orgni mention is stripped. */
   text: string;
-  /** Display name of the person who asked, when known. */
+  /** Display name (or resolved email) of the person who asked, when known. */
   requestedBy?: string | null;
+  /** Where the request came from. Defaults to "web". */
+  source?: "web" | "microsoft_teams";
   /** Bot Framework conversation reference, when the request came from Teams. */
   conversationRef?: unknown;
 }
@@ -214,6 +216,7 @@ export async function processRequest(req: EngineRequest): Promise<EngineResult> 
     actionsPerformed: [],
     reason: "",
     result: "",
+    source: req.source ?? "web",
     conversationRef: req.conversationRef,
   };
 

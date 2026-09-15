@@ -19,3 +19,4 @@
 export * from "./documents";
 export * from "./api-keys";
 export * from "./product";
+export * from "./microsoft";

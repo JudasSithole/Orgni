@@ -15,8 +15,6 @@ export interface Organisation {
   onboardingStep: number;
   onboardingComplete: boolean;
   createdAt: string;
-  /** AAD/Entra tenant id of the Microsoft 365 org, once Teams is linked. */
-  teamsAadTenantId?: string | null;
 }
 
 export interface ConnectionService {
@@ -115,6 +113,8 @@ export interface OrgniAction {
     kind: "email" | "record_update" | "financial";
     fields: { label: string; value: string }[];
   };
+  /** Where the request came from. */
+  source?: "web" | "microsoft_teams";
   /** Bot Framework conversation reference, when the request came from Teams. */
   conversationRef?: unknown;
 }

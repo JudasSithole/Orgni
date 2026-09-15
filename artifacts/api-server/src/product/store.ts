@@ -119,7 +119,6 @@ class DrizzleProductStore implements ProductStore {
           onboardingStep: org[0].onboardingStep,
           onboardingComplete: org[0].onboardingComplete,
           createdAt: org[0].createdAt.toISOString(),
-          teamsAadTenantId: org[0].teamsAadTenantId,
         }
       : null;
 
@@ -172,6 +171,7 @@ class DrizzleProductStore implements ProductStore {
           reason: a.reason,
           result: a.result,
           approval: (a.approval as OrgniAction["approval"]) ?? undefined,
+          source: (a.source as OrgniAction["source"]) ?? "web",
           conversationRef: a.conversationRef ?? undefined,
         }))
         .sort((x, y) => y.at.localeCompare(x.at)),
@@ -203,7 +203,6 @@ class DrizzleProductStore implements ProductStore {
             website: o.website,
             onboardingStep: o.onboardingStep,
             onboardingComplete: o.onboardingComplete,
-            teamsAadTenantId: o.teamsAadTenantId ?? null,
           })
           .onConflictDoUpdate({
             target: organisations.tenantId,
@@ -213,7 +212,6 @@ class DrizzleProductStore implements ProductStore {
               website: o.website,
               onboardingStep: o.onboardingStep,
               onboardingComplete: o.onboardingComplete,
-              teamsAadTenantId: o.teamsAadTenantId ?? null,
               updatedAt: new Date(),
             },
           });
@@ -293,6 +291,7 @@ class DrizzleProductStore implements ProductStore {
             reason: a.reason,
             result: a.result,
             approval: a.approval ?? null,
+            source: a.source ?? "web",
             conversationRef: a.conversationRef ?? null,
           })),
         );

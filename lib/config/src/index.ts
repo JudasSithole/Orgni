@@ -81,11 +81,6 @@ export const apiEnvSchema = baseEnvSchema.extend({
    * MICROSOFT_APP_ID; used for deep links ("open Orgni in Teams").
    */
   TEAMS_APP_ID: z.string().optional(),
-  /**
-   * For single-organisation deployments: the Orgni tenant id every Teams
-   * message maps to (e.g. "tenant_acme-inc"). Skips the AAD-tenant lookup.
-   */
-  TEAMS_DEFAULT_ORGNI_TENANT: z.string().optional(),
 
   /* ---- Intelligence -------------------------------------------------- */
   /** Anthropic API key. When set, the Orgni engine uses a real model; when

@@ -116,6 +116,8 @@ export const orgniActions = pgTable(
     result: text("result").notNull().default(""),
     /** { kind, fields:[{label,value}] } when status === awaiting_approval */
     approval: jsonb("approval"),
+    /** "web" | "microsoft_teams" */
+    source: text("source").notNull().default("web"),
     /** Teams conversation reference so a decision can be posted back. */
     conversationRef: jsonb("conversation_ref"),
   },

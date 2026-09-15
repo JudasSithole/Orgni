@@ -23,8 +23,6 @@ export interface Organisation {
   /** Onboarding progress — the last completed step index (0 = nothing done). */
   onboardingStep: number;
   onboardingComplete: boolean;
-  /** AAD/Entra tenant id of the linked Microsoft 365 org (Teams routing). */
-  teamsAadTenantId?: string | null;
 }
 
 export interface ConnectionCapabilitySummary {
@@ -174,6 +172,8 @@ export interface OrgniAction {
     kind: "email" | "record_update" | "financial";
     fields: { label: string; value: string }[];
   };
+  /** Where the request came from — "microsoft_teams" or "web". */
+  source?: "web" | "microsoft_teams";
 }
 
 export interface IntelligenceSettings {
