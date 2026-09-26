@@ -434,23 +434,31 @@ def test_missing_ocr_and_drift_caps_at_review():
     assert out["trust_score"] == 0.69
     assert out["verdict"] == "REVIEW"
 
-
 @pytest.mark.parametrize(
-    "missing, expected_trust, expected_level",
+    "missing, raw_without_cap",
     [
-        ({"extraction_data": None}, 0.89, "trusted"),
-        ({"validation_data": None}, 0.8075, "low"),
+        ({"extraction_data": None}, 0.89),
+        ({"validation_data": None}, 0.8075),
     ],
 )
-def test_missing_extraction_or_validation_can_still_be_approved_characterization(
-    missing, expected_trust, expected_level
-):
-    # The Fix 6 cap only looks at OCR and drift, so a document with no
-    # validation (or no extraction) data at all can still be APPROVED.
+def test_missing_extraction_or_validation_now_caps_at_review(missing, raw_without_cap):
+    # Fix 7: extraction_data and validation_data are now included in the
+    # missing-data cap, alongside ocr_data and drift_data. Before this fix,
+    # these cases scored `raw_without_cap` and were APPROVED.
     out = _run(**missing)
-    assert out["trust_score"] == pytest.approx(expected_trust)
-    assert out["risk_level"] == expected_level
-    assert out["verdict"] == "APPROVED"
+    assert out["trust_score"] == 0.69
+    assert out["verdict"] == "REVIEW"
+    b = out["score_breakdown"]
+    raw = sum(WEIGHTS[k] * b[k] for k in WEIGHTS)
+    assert raw == pytest.approx(raw_without_cap)
+
+
+def test_all_four_components_missing_still_caps_at_review_not_lower():
+    # Missing-data cap is a ceiling (min with 0.69), not an additional
+    # penalty stacked on top of the raw score.
+    out = score("DOC-5")
+    assert out["trust_score"] == 0.45  # raw score, already below 0.69
+    assert out["verdict"] == "REVIEW"
 
 
 @pytest.mark.parametrize(

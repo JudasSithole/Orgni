@@ -5,6 +5,13 @@ Aggregates OCR, extraction, validation and drift signals into a trust score.
 Fix 5/6 — stricter scoring: missing OCR confidence or missing drift data
 is now treated as a real risk signal, not near-safe. Weak evidence routes
 to REVIEW, never straight to APPROVED.
+
+Fix 7 — the missing-data cap (Fix 6) only checked ocr_data/drift_data for
+`is None`, so a document with no extraction or validation data at all could
+still be APPROVED. The cap now also covers extraction_data and validation_data.
+Tracked separately: the cap still only checks `is None`, so an empty dict
+({}) or OCR pages with no confidence values still bypass it, since the
+component scoring (not the identity of the input) is what decides "absent".
 """
 from __future__ import annotations
 
@@ -119,10 +126,14 @@ def score(
     if drift_data and drift_data.get("severity") == "high":
         trust = min(trust, 0.64)
 
-    # Fix 6: weak evidence (missing OCR or missing drift data) caps at REVIEW,
-    # never APPROVED — even if other components look clean
+    # Fix 6/7: weak evidence (any of OCR, extraction, validation or drift data
+    # missing outright) caps at REVIEW, never APPROVED — even if other
+    # components look clean. Originally only checked ocr_data/drift_data;
+    # extraction_data and validation_data are now covered too (Fix 7).
     missing_data_components = sum([
         ocr_data is None,
+        extraction_data is None,
+        validation_data is None,
         drift_data is None,
     ])
     if missing_data_components > 0:
