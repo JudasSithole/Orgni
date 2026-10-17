@@ -89,9 +89,13 @@ Before going live you should still:
    direction and the limiter either throttles everyone together or trusts
    spoofed `X-Forwarded-For`.
 
-Sessions are bearer tokens held in `localStorage`, which is readable by any
-script on the page. That is acceptable behind a strict CSP; move to an
-`HttpOnly` cookie before handling anything that would be costly to leak.
+Sessions are held in an `HttpOnly`, `SameSite=Lax` cookie (`orgni_session`)
+set by the API on sign-in, verification, and password-reset confirmation. The
+cookie is not readable by page script, so it cannot be stolen by XSS. The web
+console keeps only the principal (email, tenant, roles) in `localStorage` to
+render the UI; the actual token lives in the cookie and is sent automatically
+on same-origin requests. API/service clients still authenticate via
+`Authorization: Bearer` session tokens or API keys.
 
 ### Email verification
 
