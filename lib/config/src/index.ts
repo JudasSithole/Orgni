@@ -103,6 +103,16 @@ export const apiEnvSchema = baseEnvSchema.extend({
   EMAIL_FROM: z.string().optional(),
   /** Base URL of the web app, for links in emails (falls back to PUBLIC_BASE_URL). */
   APP_BASE_URL: z.string().url().optional(),
+
+  /* ---- OIDC / SSO -------------------------------------------------- */
+  /** OIDC issuer URL, e.g. "https://login.microsoftonline.com/{tenant}/v2.0". */
+  OIDC_ISSUER: z.string().url().optional(),
+  /** OIDC client id from the provider app registration. */
+  OIDC_CLIENT_ID: z.string().optional(),
+  /** OIDC client secret (used for token exchange at the callback). */
+  OIDC_CLIENT_SECRET: z.string().optional(),
+  /** Space-separated scopes requested from the provider (default "openid email profile"). */
+  OIDC_SCOPES: z.string().optional(),
 });
 
 /** Worker service configuration. */

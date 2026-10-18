@@ -18,7 +18,7 @@ import {
 } from "@workspace/db/schema";
 import { authSecret, config } from "../lib/config";
 import { issueToken } from "../lib/auth";
-import { authenticate, SESSION_COOKIE } from "../lib/authenticate";
+import { authenticate, SESSION_COOKIE, readCookie } from "../lib/authenticate";
 import { hashPassword, verifyPassword } from "../lib/passwords";
 import { emailConfigured, sendPasswordReset, sendVerificationEmail } from "../lib/email";
 import { logger } from "../lib/logger";
@@ -29,6 +29,7 @@ import {
   recoveryPolicy,
   signupPolicy,
 } from "../lib/throttle";
+import { verifyIdToken, oidcToPrincipal } from "../lib/oidc";
 
 const store = config.DATABASE_URL ? createDb(config.DATABASE_URL) : null;
 const router: IRouter = Router();
@@ -438,6 +439,92 @@ router.post("/auth/logout", (_req: Request, res: Response) => {
     `${SESSION_COOKIE}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0`,
   );
   res.status(204).end();
+});
+
+/**
+ * GET /api/auth/oidc/start — redirect the user to the OIDC provider's
+ * authorization endpoint. Sets a state cookie to bind the callback.
+ */
+router.get("/auth/oidc/start", (_req: Request, res: Response) => {
+  res.setHeader("Cache-Control", "no-store");
+  if (!config.OIDC_ISSUER || !config.OIDC_CLIENT_ID) {
+    res.status(503).json({ error: "oidc_not_configured" });
+    return;
+  }
+  const state = randomBytes(16).toString("hex");
+  const nonce = randomBytes(16).toString("hex");
+  const scopes = (config.OIDC_SCOPES ?? "openid email profile").split(/\s+/);
+  const params = new URLSearchParams({
+    client_id: config.OIDC_CLIENT_ID,
+    response_type: "id_token",
+    scope: scopes.join(" "),
+    redirect_uri: `${config.PUBLIC_BASE_URL ?? ""}/api/auth/oidc/callback`,
+    state,
+    nonce,
+  });
+  res.setHeader(
+    "Set-Cookie",
+    `orgni_oidc_state=${state}; HttpOnly; SameSite=Lax; Path=/; Max-Age=600`,
+  );
+  res.setHeader(
+    "Set-Cookie",
+    `orgni_oidc_nonce=${nonce}; HttpOnly; SameSite=Lax; Path=/; Max-Age=600`,
+  );
+  res.redirect(`${config.OIDC_ISSUER.replace(/\/+$/, "")}/authorize?${params}`);
+});
+
+/**
+ * GET /api/auth/oidc/callback — receive the ID token from the provider,
+ * verify it, and issue an Orgni session cookie.
+ */
+router.get("/auth/oidc/callback", async (req: Request, res: Response) => {
+  res.setHeader("Cache-Control", "no-store");
+  if (!config.OIDC_ISSUER || !config.OIDC_CLIENT_ID) {
+    res.status(503).json({ error: "oidc_not_configured" });
+    return;
+  }
+
+  const idToken = readText(req.query?.id_token);
+  const state = readText(req.query?.state);
+  const nonce = readText(req.query?.nonce);
+
+  const cookieState = readCookie(req.header("cookie"), "orgni_oidc_state");
+  const cookieNonce = readCookie(req.header("cookie"), "orgni_oidc_nonce");
+  if (!state || !cookieState || state !== cookieState) {
+    res.status(400).json({ error: "oidc_invalid_state" });
+    return;
+  }
+  if (!nonce || !cookieNonce || nonce !== cookieNonce) {
+    res.status(400).json({ error: "oidc_invalid_nonce" });
+    return;
+  }
+
+  const claims = await verifyIdToken(idToken);
+  if (!claims) {
+    res.status(401).json({ error: "oidc_invalid_token" });
+    return;
+  }
+
+  const principal = oidcToPrincipal(claims);
+  const { token } = issueToken(
+    { email: claims.email ?? claims.sub, tenantId: principal.tenantId, roles: principal.roles },
+    authSecret,
+  );
+  const secure = config.NODE_ENV === "production" ? "; Secure" : "";
+  res.setHeader(
+    "Set-Cookie",
+    `${SESSION_COOKIE}=${encodeURIComponent(token)}; HttpOnly; SameSite=Lax; Path=/; Max-Age=28800${secure}`,
+  );
+  // Clear the OIDC state cookies.
+  res.setHeader(
+    "Set-Cookie",
+    `orgni_oidc_state=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0`,
+  );
+  res.setHeader(
+    "Set-Cookie",
+    `orgni_oidc_nonce=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0`,
+  );
+  res.json({ principal });
 });
 
 export default router;

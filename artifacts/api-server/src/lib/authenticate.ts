@@ -14,6 +14,7 @@ import { authSecret, config } from "./config";
 import { verifyToken, type SessionPrincipal } from "./auth";
 import { createDb } from "@workspace/db/connect";
 import { hashApiKey, looksLikeApiKey } from "./api-keys";
+import { verifyIdToken, oidcToPrincipal } from "./oidc";
 
 // Lazy DB handle for API-key lookups. Session tokens never touch it.
 const store = config.DATABASE_URL ? createDb(config.DATABASE_URL) : null;
@@ -30,7 +31,7 @@ declare global {
 const isProd = config.NODE_ENV === "production";
 export const SESSION_COOKIE = "orgni_session";
 
-function readCookie(header: string | undefined, name: string): string | null {
+export function readCookie(header: string | undefined, name: string): string | null {
   const value = header
     ?.split(";")
     .map((part) => part.trim())
@@ -76,6 +77,16 @@ export async function authenticate(
       }
       res.status(401).json({ error: "invalid_api_key" });
       return;
+    }
+
+    // OIDC ID token (SSO / Entra External ID).
+    if (config.OIDC_ISSUER && config.OIDC_CLIENT_ID) {
+      const claims = await verifyIdToken(bearer);
+      if (claims) {
+        req.principal = oidcToPrincipal(claims);
+        next();
+        return;
+      }
     }
 
     // Otherwise a signed session token.
