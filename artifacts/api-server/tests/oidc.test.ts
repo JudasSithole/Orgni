@@ -14,6 +14,7 @@ import {
   verifyIdToken,
   oidcToPrincipal,
   tenantIdFromEmail,
+  __resetJwksCache,
 } from "../src/lib/oidc.js";
 
 const ISSUER = "https://login.example.com/v2.0";
@@ -32,6 +33,7 @@ let privateKey: crypto.KeyObject;
 let jwk: { kty: string; kid: string; use: string; alg: string; n: string; e: string };
 
 beforeEach(() => {
+  __resetJwksCache();
   originalFetch = globalThis.fetch;
 
   const { publicKey, privateKey: prv } = generateKeyPairSync("rsa", {

@@ -24,6 +24,11 @@ import type { SessionPrincipal } from "./auth";
 const b64url = (input: Buffer): string => input.toString("base64url");
 const b64urlDecode = (input: string): Buffer => Buffer.from(input, "base64url");
 
+/** Reset the JWKS cache. Exported for tests; not part of the public API. */
+export function __resetJwksCache(): void {
+  jwksCache = null;
+}
+
 interface Jwk {
   kty: string;
   kid: string;
@@ -134,7 +139,7 @@ function rsaVerify(jwk: Jwk, signingInput: string, signature: Buffer): boolean {
     };
     const key = createPublicKey({ key: jwkJson, format: "jwk" });
     const pem = key.export({ type: "spki", format: "pem" });
-    return verify("RSA-SHA256", Buffer.from(pem), Buffer.from(signingInput, "utf8"), signature);
+        return verify("RSA-SHA256", Buffer.from(signingInput, "utf8"), pem, signature);
   } catch {
     return false;
   }
@@ -193,13 +198,13 @@ export async function verifyIdToken(
     return null;
   }
   if (!Array.isArray(payload.aud) && payload.aud !== oidc.clientId) {
-    logger.warn({ aud: payload.aud, expected: oidc.clientId }, "oidc: audience mismatch");
-    return null;
-  }
-  if (Array.isArray(payload.aud) && !payload.aud.includes(oidc.clientId)) {
-    logger.warn({ aud: payload.aud, expected: oidc.clientId }, "oidc: audience not in list");
-    return null;
-  }
+      logger.warn({ aud: payload.aud, expected: oidc.clientId }, "oidc: audience mismatch");
+      return null;
+    }
+    if (Array.isArray(payload.aud) && !payload.aud.includes(oidc.clientId)) {
+      logger.warn({ aud: payload.aud, expected: oidc.clientId }, "oidc: audience not in list");
+      return null;
+    }
   if (typeof payload.exp !== "number" || payload.exp < now) {
     logger.warn({ exp: payload.exp, now }, "oidc: token expired");
     return null;
