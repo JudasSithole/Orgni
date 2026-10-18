@@ -60,3 +60,23 @@ CREATE UNIQUE INDEX "microsoft_connections_ms_tenant_uidx" ON "microsoft_connect
 CREATE INDEX "microsoft_connections_tenant_idx" ON "microsoft_connections" USING btree ("orgni_tenant_id");--> statement-breakpoint
 CREATE INDEX "teams_audit_log_tenant_idx" ON "teams_audit_log" USING btree ("orgni_tenant_id");--> statement-breakpoint
 CREATE INDEX "teams_conversations_tenant_idx" ON "teams_conversations" USING btree ("orgni_tenant_id");
+--> statement-breakpoint
+CREATE TABLE "microsoft_sync_tokens" (
+	"orgni_tenant_id" text PRIMARY KEY NOT NULL,
+	"envelope" jsonb NOT NULL,
+	"key_id" text,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE "microsoft_sync_cursors" (
+	"orgni_tenant_id" text PRIMARY KEY NOT NULL,
+	"drive_id" text,
+	"delta_link" text,
+	"token_fingerprint" text,
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
+CREATE INDEX "microsoft_sync_tokens_tenant_idx" ON "microsoft_sync_tokens" USING btree ("orgni_tenant_id");
+--> statement-breakpoint
+CREATE INDEX "microsoft_sync_cursors_tenant_idx" ON "microsoft_sync_cursors" USING btree ("orgni_tenant_id");

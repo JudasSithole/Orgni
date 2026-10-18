@@ -156,3 +156,54 @@ export type MicrosoftConnectionRow = typeof microsoftConnections.$inferSelect;
 export type ExternalIdentityRow = typeof externalIdentities.$inferSelect;
 export type TeamsConversationRow = typeof teamsConversations.$inferSelect;
 export type TeamsAuditLogRow = typeof teamsAuditLog.$inferSelect;
+
+/**
+ * Microsoft 365 sync — the vaulted refresh token + per-tenant sync cursor.
+ *
+ * Split into two tables on purpose: the token is read/written on every refresh
+ * (hot), while the cursor advances only on a successful pass (cold). Keeping
+ * them separate means a cursor write never contends with a token write, and
+ * the token row can be rotated independently of the delta link.
+ *
+ * The token is stored encrypted (see lib/worker/src/microsoft/tokens.ts); the
+ * key lives in the environment, never in the database. `keyId` records which
+ * key encrypted the row so rotation is a re-encrypt pass, not a schema change.
+ */
+export const microsoftSyncTokens = pgTable(
+  "microsoft_sync_tokens",
+  {
+    tenantId: text("orgni_tenant_id").primaryKey(),
+    envelope: jsonb("envelope").notNull(),
+    keyId: text("key_id"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [index("microsoft_sync_tokens_tenant_idx").on(t.tenantId)],
+);
+
+/**
+ * Delta cursor per tenant. `deltaLink` is the Graph @odata.deltaLink from the
+ * last successful pass; null means "start from the beginning of time" (a full
+ * initial sync). `tokenFingerprint` is a constant-time-comparable SHA-256 of
+ * the refresh token, used to detect rotation without decrypting.
+ */
+export const microsoftSyncCursors = pgTable(
+  "microsoft_sync_cursors",
+  {
+    tenantId: text("orgni_tenant_id").primaryKey(),
+    driveId: text("drive_id"),
+    deltaLink: text("delta_link"),
+    tokenFingerprint: text("token_fingerprint"),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [index("microsoft_sync_cursors_tenant_idx").on(t.tenantId)],
+);
+
+export type MicrosoftSyncTokenRow = typeof microsoftSyncTokens.$inferSelect;
+export type MicrosoftSyncCursorRow = typeof microsoftSyncCursors.$inferSelect;

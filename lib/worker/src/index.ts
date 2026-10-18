@@ -1,6 +1,7 @@
 import { loadEnv, workerEnvSchema } from "@workspace/config";
 import { createLogger } from "@workspace/observability";
-import { runJobLoop } from "./jobs/loop.js";
+import { runJobLoop, type JobLoopContext } from "./jobs/loop.js";
+import { createMicrosoftSyncJobSource } from "./microsoft/sync-job.js";
 
 /**
  * Orgni worker — background & asynchronous processing.
@@ -31,8 +32,13 @@ log.info(
   "worker started",
 );
 
+const jobSources: Array<(ctx: JobLoopContext) => Promise<void>> = [];
+const msSource = await createMicrosoftSyncJobSource({ env, log, isShuttingDown: () => shuttingDown });
+if (msSource) jobSources.push(msSource);
+
 await runJobLoop({
   env,
   log,
   isShuttingDown: () => shuttingDown,
+  jobSources,
 });
