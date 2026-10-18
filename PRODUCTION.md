@@ -80,10 +80,17 @@ behind multiple replicas, add a shared gateway limit as well.
 
 Before going live you should still:
 
-1. Consider wiring a real identity provider. The code is built for **Microsoft
-   Entra External ID** (OIDC) — the comments in
-   `artifacts/api-server/src/lib/auth.ts` and `authenticate.ts` mark the single
-   seam (`verifyToken` / `req.principal`). Downstream code only reads
+1. Wire a real identity provider. The code ships an **OIDC/SSO** seam built for
+   **Microsoft Entra External ID**: `GET /auth/oidc/start` kicks off the
+   authorization-code flow (state + nonce in `HttpOnly` cookies), and
+   `GET /auth/oidc/callback` verifies the returned ID token (RS256 signature via
+   JWKS fetched from the provider's `.well-known/openid-configuration`, plus
+   issuer/audience/expiry/nbf checks) and issues the session cookie. The
+   verification module is `artifacts/api-server/src/lib/oidc.ts`; it is wired
+   into `authenticate.ts` as a fourth bearer-token path (after API key, before
+   session token). Set `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`,
+   and `OIDC_SCOPES` in the environment to enable it — omit `OIDC_ISSUER` and
+   the routes return `503 oidc_not_configured`. Downstream code only reads
    `req.principal` (`{ sub, tenantId, roles }`), so nothing else changes.
 2. Verify `TRUST_PROXY_HOPS` matches your real hop count. Wrong in either
    direction and the limiter either throttles everyone together or trusts
@@ -130,6 +137,10 @@ this on does not lock anyone out.
 | `MAX_UPLOAD_BYTES` | Document upload cap (default 20 MB). |
 | `TRUST_PROXY_HOPS` | Reverse-proxy hops in front of the API (default `1`). Sets the hop count Express uses to resolve `req.ip`, which the credential rate limiting keys on. |
 | `APP_BASE_URL` | Web app origin, used to build password-reset links. Falls back to `PUBLIC_BASE_URL`. |
+| `OIDC_ISSUER` | Identity-provider issuer URL, e.g. `https://login.microsoftonline.com/<tenant>/v2.0`. Enables SSO; unset = no OIDC routes (they 503). |
+| `OIDC_CLIENT_ID` | RP client ID registered with the provider. |
+| `OIDC_CLIENT_SECRET` | RP client secret. |
+| `OIDC_SCOPES` | Space-separated scopes (default `openid email profile`). |
 
 **Dev‑only endpoints (404 in production):** `POST /api/product/reset`.
 

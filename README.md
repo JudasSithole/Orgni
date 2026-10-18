@@ -31,6 +31,14 @@ All under `/api`, all session-free except `GET /auth/me`.
 | `POST` | `/auth/password-reset/confirm` | Spend a reset token | `200` + session |
 | `GET` | `/auth/me` | Identify the current session | `200` principal |
 | `POST` | `/auth/logout` | Expire the browser session cookie | `204` |
+| `GET` | `/auth/oidc/start` | Begin SSO with an OIDC provider | `302` redirect to provider |
+| `GET` | `/auth/oidc/callback` | Finish SSO; verify ID token, issue session | `302` to app, or `400/503` on failure |
+
+OIDC is opt-in: set `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`
+to enable it; omit `OIDC_ISSUER` and the routes return `503
+oidc_not_configured`. The seam is `artifacts/api-server/src/lib/oidc.ts`
+(RS256 signature via JWKS, issuer/audience/expiry/nbf checks) wired into
+`authenticate.ts` as a fourth bearer-token path.
 
 ---
 
@@ -240,6 +248,7 @@ limit too.
 | `RESEND_API_KEY` + `EMAIL_FROM` | for verification | See below |
 | `APP_BASE_URL` | for links | Builds confirmation and reset links |
 | `TRUST_PROXY_HOPS` | recommended | Hop count for `req.ip`; wrong value throttles everyone together |
+| `OIDC_ISSUER` + `OIDC_CLIENT_ID` + `OIDC_CLIENT_SECRET` | for SSO | Enables `/auth/oidc/start` + `/auth/oidc/callback` (RS256 via JWKS). Omit `OIDC_ISSUER` to leave SSO disabled |
 
 **Email is a hard dependency of signup.** When `RESEND_API_KEY` and `EMAIL_FROM`
 are both set, verification is enforced. When they are not, verification is
@@ -392,8 +401,10 @@ identity store reads it too and will hit the live database.
   persists session bearer tokens in `localStorage`. The API still accepts
   `Authorization: Bearer` for service clients and API keys; browser requests
   authenticate through the `SameSite=Lax` session cookie.
-- **No social or SSO sign-in.** Self-service only. The pricing page advertises
-  SSO/SAML for Enterprise, which is a sales conversation, not a self-service
-  path.
+- **SSO/OIDC is opt-in, not self-service.** An OIDC identity-provider seam exists
+  (`/auth/oidc/start`, `/auth/oidc/callback`, `src/lib/oidc.ts`) for Microsoft
+  Entra External ID and any standards-compliant IdP, but it is disabled by
+  default — the pricing page's Enterprise SSO/SAML claim is still a sales
+  conversation until the env vars are set.
 - **Rate-limit counters are per process.** Fine for one replica; not across
   several.
